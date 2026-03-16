@@ -1,5 +1,5 @@
 aid: workday-advanced-compensation
-name: Workday Advanced Compensation API
+name: Workday Advanced Compensation
 description: API for managing compensation plans, budgets, allocations, and related processes in Workday
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 url: >-
