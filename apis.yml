@@ -15,30 +15,25 @@ apis:
       RESTful and SOAP APIs for managing compensation plans, merit increases, bonuses,
       stock awards, and compensation budgets.
     image: https://www.workday.com/content/dam/web/images/logo.png
-    humanUrl: 
-      https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
+    humanUrl: https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
     baseUrl: https://wd2-impl-services1.workday.com/ccx/service
     tags:
-      - compensation
+      - Bonuses
+      - Compensation
       - HR
-      - payroll
-      - merit
-      - bonuses
-      - stock awards
-      - salary planning
+      - Merit
+      - Payroll
+      - Salary Planning
+      - Stock Awards
     properties:
       - type: Documentation
-        url: 
-          https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
+        url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
       - type: OpenAPI
-        url: 
-          https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/Compensation.yaml
+        url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/Compensation.yaml
       - type: Authentication
-        url: 
-          https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
+        url: https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
       - type: Versioning
-        url: 
-          https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
+        url: https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
     contact:
       - type: Support
         url: https://www.workday.com/en-us/customer-experience/support.html
@@ -46,8 +41,7 @@ apis:
         url: https://community.workday.com/
     operations:
       - name: Get Compensation Plans
-        description: Retrieve compensation plan details including eligibility 
-          rules and budget pools
+        description: Retrieve compensation plan details including eligibility rules and budget pools
         method: GET
         path: /Compensation_Plan
       - name: Submit Compensation Changes
@@ -91,11 +85,9 @@ maintainers:
     email: kin@apievangelist.com
 include:
   - name: Workday Human Capital Management
-    url: 
-      https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/index.html
+    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/index.html
   - name: Workday Payroll
-    url: 
-      https://community.workday.com/sites/default/files/file-hosting/productionapi/Payroll/index.html
+    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Payroll/index.html
 common:
   - type: Developer Portal
     url: https://developer.workday.com/
@@ -108,10 +100,8 @@ common:
   - type: Security
     url: https://www.workday.com/en-us/why-workday/security-trust.html
   - type: Rate Limits
-    url: 
-      https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/Web_Service_Rate_Limiting
+    url: https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/Web_Service_Rate_Limiting
   - type: Sandbox Environment
-    url: 
-      https://doc.workday.com/r/en-us/workday-studio/workday-studio-user-guide/sandboxes
+    url: https://doc.workday.com/r/en-us/workday-studio/workday-studio-user-guide/sandboxes
   - type: SDKs
     url: https://github.com/Workday
