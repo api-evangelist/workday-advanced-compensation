@@ -1,0 +1,10 @@
+{
+  "id": "BP-AIP-2026",
+  "name": "Annual Incentive Plan 2026",
+  "compensationPlanId": "CP-002",
+  "effectiveDate": "2026-01-01",
+  "targetPercent": 15.0,
+  "maxPercent": 30.0,
+  "currency": "USD",
+  "status": "ACTIVE"
+}

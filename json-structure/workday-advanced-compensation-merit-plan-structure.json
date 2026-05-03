@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/workday-advanced-compensation/refs/heads/main/json-structure/workday-advanced-compensation-merit-plan-structure.json",
+  "title": "Merit Plan",
+  "description": "A Workday merit increase plan defining increase guidelines and matrices",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "Unique merit plan identifier",
+      "type": "string"
+    },
+    "name": {
+      "description": "Merit plan name",
+      "type": "string"
+    },
+    "compensationPlanId": {
+      "description": "Associated compensation plan ID",
+      "type": "string"
+    },
+    "effectiveDate": {
+      "description": "Plan effective date",
+      "type": "date"
+    },
+    "budgetPercent": {
+      "description": "Total budget as percent of salary",
+      "type": "double"
+    },
+    "minIncreasePercent": {
+      "description": "Minimum merit increase percentage",
+      "type": "double"
+    },
+    "maxIncreasePercent": {
+      "description": "Maximum merit increase percentage",
+      "type": "double"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "DRAFT"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "effectiveDate"
+  ]
+}

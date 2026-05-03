@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/workday-advanced-compensation/refs/heads/main/json-structure/workday-advanced-compensation-compensation-change-request-structure.json",
+  "title": "Compensation Change Request",
+  "description": "A request to change an employee's compensation",
+  "type": "object",
+  "properties": {
+    "employeeId": {
+      "description": "Employee identifier",
+      "type": "string"
+    },
+    "effectiveDate": {
+      "description": "Change effective date",
+      "type": "date"
+    },
+    "changeReason": {
+      "description": "Reason for the compensation change",
+      "type": "string"
+    },
+    "newBasePay": {
+      "description": "New base pay amount",
+      "type": "double"
+    },
+    "currency": {
+      "description": "Currency code",
+      "type": "string"
+    },
+    "payFrequency": {
+      "description": "Pay frequency",
+      "type": "string"
+    },
+    "compensationGradeId": {
+      "description": "New compensation grade",
+      "type": "string"
+    },
+    "comments": {
+      "description": "Additional comments",
+      "type": "string"
+    }
+  },
+  "required": [
+    "employeeId",
+    "effectiveDate",
+    "changeReason",
+    "newBasePay",
+    "currency"
+  ]
+}

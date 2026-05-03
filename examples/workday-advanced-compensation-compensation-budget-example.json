@@ -1,0 +1,11 @@
+{
+  "id": "CB-TECH-2026",
+  "name": "Technology Division Merit Budget 2026",
+  "compensationPlanId": "CP-001",
+  "organizationId": "ORG-TECH-001",
+  "budgetAmount": 2500000,
+  "allocatedAmount": 1875000,
+  "remainingAmount": 625000,
+  "currency": "USD",
+  "effectiveDate": "2026-01-01"
+}

@@ -1,0 +1,1139 @@
+openapi: 3.0.3
+info:
+  title: Workday Advanced Compensation API
+  description: >-
+    The Workday Advanced Compensation API provides RESTful access to compensation
+    management capabilities including compensation plans, merit increases, bonuses,
+    stock awards, compensation grades, budgets, and review processes. The API enables
+    organizations to programmatically manage their total compensation strategy,
+    administer compensation cycles, and integrate compensation data with other systems.
+  version: 'v41.1'
+  contact:
+    name: Workday Developer Support
+    url: https://community.workday.com/
+  x-generated-from: documentation
+servers:
+  - url: https://{tenant}.workday.com/api/compensation/v1
+    description: Workday tenant REST API endpoint
+    variables:
+      tenant:
+        default: wd2-impl-services1
+        description: Your Workday tenant hostname
+
+security:
+  - oauth2: []
+
+tags:
+  - name: Compensation Plans
+    description: Manage compensation plans and eligibility rules
+  - name: Compensation Grades
+    description: Manage compensation grade profiles and pay ranges
+  - name: Merit Plans
+    description: Manage merit increase plans and cycles
+  - name: Bonus Plans
+    description: Manage bonus and incentive plans
+  - name: Stock Plans
+    description: Manage equity and stock compensation plans
+  - name: Compensation Budgets
+    description: Manage compensation budgets and allocations
+  - name: Compensation Reviews
+    description: Manage compensation review processes and cycles
+  - name: Employee Compensation
+    description: Manage individual employee compensation packages
+
+paths:
+  /compensationPlans:
+    get:
+      operationId: listCompensationPlans
+      summary: Workday List Compensation Plans
+      description: Retrieves a collection of compensation plans including eligibility rules, effective dates, and plan types.
+      tags:
+        - Compensation Plans
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of records to return
+          schema:
+            type: integer
+            default: 100
+          example: 100
+        - name: offset
+          in: query
+          description: Number of records to skip
+          schema:
+            type: integer
+            default: 0
+          example: 0
+        - name: planType
+          in: query
+          description: Filter by compensation plan type
+          schema:
+            type: string
+          example: MERIT
+      responses:
+        '200':
+          description: A list of compensation plans
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompensationPlansResponse'
+              examples:
+                ListCompensationPlans200Example:
+                  summary: Default listCompensationPlans 200 response
+                  x-microcks-default: true
+                  value:
+                    total: 15
+                    data:
+                      - id: CP-001
+                        name: Annual Merit Plan 2026
+                        type: MERIT
+                        effectiveDate: '2026-01-01'
+                        status: ACTIVE
+                        currency: USD
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /compensationPlans/{planId}:
+    get:
+      operationId: getCompensationPlan
+      summary: Workday Get Compensation Plan
+      description: Retrieves details for a specific compensation plan including eligibility criteria, budget pools, and plan components.
+      tags:
+        - Compensation Plans
+      parameters:
+        - name: planId
+          in: path
+          required: true
+          description: Unique identifier for the compensation plan
+          schema:
+            type: string
+          example: CP-001
+      responses:
+        '200':
+          description: A compensation plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompensationPlan'
+              examples:
+                GetCompensationPlan200Example:
+                  summary: Default getCompensationPlan 200 response
+                  x-microcks-default: true
+                  value:
+                    id: CP-001
+                    name: Annual Merit Plan 2026
+                    type: MERIT
+                    effectiveDate: '2026-01-01'
+                    status: ACTIVE
+                    currency: USD
+                    budgetPool: 3.5
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /compensationGrades:
+    get:
+      operationId: listCompensationGrades
+      summary: Workday List Compensation Grades
+      description: Retrieves compensation grade profiles with pay ranges, midpoints, and band information.
+      tags:
+        - Compensation Grades
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of records to return
+          schema:
+            type: integer
+            default: 100
+          example: 100
+        - name: offset
+          in: query
+          description: Number of records to skip
+          schema:
+            type: integer
+            default: 0
+          example: 0
+      responses:
+        '200':
+          description: A list of compensation grades
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompensationGradesResponse'
+              examples:
+                ListCompensationGrades200Example:
+                  summary: Default listCompensationGrades 200 response
+                  x-microcks-default: true
+                  value:
+                    total: 12
+                    data:
+                      - id: CG-001
+                        name: Grade 5
+                        profile: Software Engineer
+                        minimumPay: 85000
+                        midpointPay: 105000
+                        maximumPay: 125000
+                        currency: USD
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /compensationGrades/{gradeId}:
+    get:
+      operationId: getCompensationGrade
+      summary: Workday Get Compensation Grade
+      description: Retrieves details for a specific compensation grade including pay ranges and eligibility criteria.
+      tags:
+        - Compensation Grades
+      parameters:
+        - name: gradeId
+          in: path
+          required: true
+          description: Unique identifier for the compensation grade
+          schema:
+            type: string
+          example: CG-001
+      responses:
+        '200':
+          description: A compensation grade
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompensationGrade'
+              examples:
+                GetCompensationGrade200Example:
+                  summary: Default getCompensationGrade 200 response
+                  x-microcks-default: true
+                  value:
+                    id: CG-001
+                    name: Grade 5
+                    profile: Software Engineer
+                    minimumPay: 85000
+                    midpointPay: 105000
+                    maximumPay: 125000
+                    currency: USD
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /meritPlans:
+    get:
+      operationId: listMeritPlans
+      summary: Workday List Merit Plans
+      description: Retrieves merit increase plans with guidelines, matrices, and budget allocations.
+      tags:
+        - Merit Plans
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of records to return
+          schema:
+            type: integer
+            default: 100
+          example: 100
+        - name: offset
+          in: query
+          description: Number of records to skip
+          schema:
+            type: integer
+            default: 0
+          example: 0
+      responses:
+        '200':
+          description: A list of merit plans
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeritPlansResponse'
+              examples:
+                ListMeritPlans200Example:
+                  summary: Default listMeritPlans 200 response
+                  x-microcks-default: true
+                  value:
+                    total: 3
+                    data:
+                      - id: MP-001
+                        name: 2026 Annual Merit Increase
+                        effectiveDate: '2026-04-01'
+                        budgetPercent: 3.5
+                        status: ACTIVE
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /bonusPlans:
+    get:
+      operationId: listBonusPlans
+      summary: Workday List Bonus Plans
+      description: Retrieves bonus and incentive plans including target percentages, performance multipliers, and eligibility rules.
+      tags:
+        - Bonus Plans
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of records to return
+          schema:
+            type: integer
+            default: 100
+          example: 100
+        - name: offset
+          in: query
+          description: Number of records to skip
+          schema:
+            type: integer
+            default: 0
+          example: 0
+      responses:
+        '200':
+          description: A list of bonus plans
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BonusPlansResponse'
+              examples:
+                ListBonusPlans200Example:
+                  summary: Default listBonusPlans 200 response
+                  x-microcks-default: true
+                  value:
+                    total: 5
+                    data:
+                      - id: BP-001
+                        name: Annual Performance Bonus
+                        targetPercent: 15
+                        currency: USD
+                        frequency: ANNUAL
+                        status: ACTIVE
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /stockPlans:
+    get:
+      operationId: listStockPlans
+      summary: Workday List Stock Plans
+      description: Retrieves stock and equity compensation plans including vesting schedules, grant types, and eligibility criteria.
+      tags:
+        - Stock Plans
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of records to return
+          schema:
+            type: integer
+            default: 100
+          example: 100
+        - name: offset
+          in: query
+          description: Number of records to skip
+          schema:
+            type: integer
+            default: 0
+          example: 0
+      responses:
+        '200':
+          description: A list of stock plans
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StockPlansResponse'
+              examples:
+                ListStockPlans200Example:
+                  summary: Default listStockPlans 200 response
+                  x-microcks-default: true
+                  value:
+                    total: 4
+                    data:
+                      - id: SP-001
+                        name: Employee Stock Option Plan 2026
+                        type: RSU
+                        vestingSchedule: FOUR_YEAR_CLIFF
+                        grantDateFairValue: 50.00
+                        currency: USD
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /compensationBudgets:
+    get:
+      operationId: listCompensationBudgets
+      summary: Workday List Compensation Budgets
+      description: Retrieves compensation budgets with allocation amounts, utilization rates, and organizational scope.
+      tags:
+        - Compensation Budgets
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of records to return
+          schema:
+            type: integer
+            default: 100
+          example: 100
+        - name: offset
+          in: query
+          description: Number of records to skip
+          schema:
+            type: integer
+            default: 0
+          example: 0
+        - name: year
+          in: query
+          description: Filter by budget year
+          schema:
+            type: integer
+          example: 2026
+      responses:
+        '200':
+          description: A list of compensation budgets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompensationBudgetsResponse'
+              examples:
+                ListCompensationBudgets200Example:
+                  summary: Default listCompensationBudgets 200 response
+                  x-microcks-default: true
+                  value:
+                    total: 8
+                    data:
+                      - id: CB-001
+                        name: Engineering Merit Budget 2026
+                        totalAmount: 2500000
+                        allocatedAmount: 1875000
+                        remainingAmount: 625000
+                        currency: USD
+                        year: 2026
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /compensationReviews:
+    get:
+      operationId: listCompensationReviews
+      summary: Workday List Compensation Reviews
+      description: Retrieves compensation review process instances including status, participants, and completion tracking.
+      tags:
+        - Compensation Reviews
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of records to return
+          schema:
+            type: integer
+            default: 100
+          example: 100
+        - name: offset
+          in: query
+          description: Number of records to skip
+          schema:
+            type: integer
+            default: 0
+          example: 0
+        - name: status
+          in: query
+          description: Filter by review status
+          schema:
+            type: string
+            enum: [IN_PROGRESS, COMPLETED, NOT_STARTED]
+          example: IN_PROGRESS
+      responses:
+        '200':
+          description: A list of compensation reviews
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompensationReviewsResponse'
+              examples:
+                ListCompensationReviews200Example:
+                  summary: Default listCompensationReviews 200 response
+                  x-microcks-default: true
+                  value:
+                    total: 2
+                    data:
+                      - id: CR-001
+                        name: 2026 Annual Compensation Review
+                        status: IN_PROGRESS
+                        startDate: '2026-03-01'
+                        endDate: '2026-04-30'
+                        completionPercent: 65
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /employees/{employeeId}/compensation:
+    get:
+      operationId: getEmployeeCompensation
+      summary: Workday Get Employee Compensation
+      description: Retrieves the current compensation package for a specific employee including base pay, bonuses, equity, and total compensation.
+      tags:
+        - Employee Compensation
+      parameters:
+        - name: employeeId
+          in: path
+          required: true
+          description: Workday employee identifier
+          schema:
+            type: string
+          example: EMP-12345
+      responses:
+        '200':
+          description: Employee compensation details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeCompensation'
+              examples:
+                GetEmployeeCompensation200Example:
+                  summary: Default getEmployeeCompensation 200 response
+                  x-microcks-default: true
+                  value:
+                    employeeId: EMP-12345
+                    employeeName: Jane Smith
+                    effectiveDate: '2026-01-01'
+                    basePay:
+                      amount: 110000
+                      currency: USD
+                      frequency: ANNUAL
+                    bonusTarget:
+                      amount: 16500
+                      currency: USD
+                      percent: 15
+                    stockGrant:
+                      shareCount: 200
+                      vestingSchedule: FOUR_YEAR_CLIFF
+                    totalCompensation: 155000
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+    post:
+      operationId: submitCompensationChange
+      summary: Workday Submit Compensation Change
+      description: Submits a compensation change request for an employee including base pay changes, bonus adjustments, and equity grants.
+      tags:
+        - Employee Compensation
+      parameters:
+        - name: employeeId
+          in: path
+          required: true
+          description: Workday employee identifier
+          schema:
+            type: string
+          example: EMP-12345
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompensationChangeRequest'
+            examples:
+              SubmitCompensationChangeRequestExample:
+                summary: Default submitCompensationChange request
+                x-microcks-default: true
+                value:
+                  effectiveDate: '2026-04-01'
+                  reason: MERIT_INCREASE
+                  basePay:
+                    amount: 115000
+                    currency: USD
+                    frequency: ANNUAL
+                  comment: Annual merit increase based on performance review
+      responses:
+        '201':
+          description: Compensation change submitted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompensationChangeResponse'
+              examples:
+                SubmitCompensationChange201Example:
+                  summary: Default submitCompensationChange 201 response
+                  x-microcks-default: true
+                  value:
+                    requestId: REQ-98765
+                    status: PENDING_APPROVAL
+                    employeeId: EMP-12345
+                    effectiveDate: '2026-04-01'
+                    submittedAt: '2026-03-15T10:30:00Z'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Workday OAuth 2.0 authentication
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            compensation.read: Read compensation data
+            compensation.write: Write compensation data
+
+  schemas:
+    CompensationPlan:
+      type: object
+      description: A Workday compensation plan defining structure and eligibility
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the compensation plan
+          example: CP-001
+        name:
+          type: string
+          description: Name of the compensation plan
+          example: Annual Merit Plan 2026
+        type:
+          type: string
+          description: Type of compensation plan
+          enum: [MERIT, BONUS, STOCK, SALARY, ALLOWANCE]
+          example: MERIT
+        effectiveDate:
+          type: string
+          format: date
+          description: Date when the plan becomes effective
+          example: '2026-01-01'
+        endDate:
+          type: string
+          format: date
+          description: Date when the plan expires
+          example: '2026-12-31'
+        status:
+          type: string
+          description: Current status of the plan
+          enum: [ACTIVE, INACTIVE, DRAFT, ARCHIVED]
+          example: ACTIVE
+        currency:
+          type: string
+          description: Currency code for monetary values
+          example: USD
+        budgetPool:
+          type: number
+          description: Total budget pool percentage for merit plans
+          example: 3.5
+        description:
+          type: string
+          description: Description of the compensation plan
+          example: Annual merit increase plan for all eligible employees
+
+    CompensationPlansResponse:
+      type: object
+      description: Paginated response containing compensation plans
+      properties:
+        total:
+          type: integer
+          description: Total number of compensation plans
+          example: 15
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompensationPlan'
+
+    CompensationGrade:
+      type: object
+      description: A compensation grade profile with pay range information
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the compensation grade
+          example: CG-001
+        name:
+          type: string
+          description: Grade name or level
+          example: Grade 5
+        profile:
+          type: string
+          description: Job profile or family associated with this grade
+          example: Software Engineer
+        minimumPay:
+          type: number
+          description: Minimum pay for this grade
+          example: 85000
+        midpointPay:
+          type: number
+          description: Midpoint pay for this grade
+          example: 105000
+        maximumPay:
+          type: number
+          description: Maximum pay for this grade
+          example: 125000
+        currency:
+          type: string
+          description: Currency code for monetary values
+          example: USD
+        effectiveDate:
+          type: string
+          format: date
+          description: Effective date for this grade
+          example: '2026-01-01'
+
+    CompensationGradesResponse:
+      type: object
+      description: Paginated response containing compensation grades
+      properties:
+        total:
+          type: integer
+          description: Total number of compensation grades
+          example: 12
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompensationGrade'
+
+    MeritPlan:
+      type: object
+      description: A merit increase plan with guidelines and budget
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the merit plan
+          example: MP-001
+        name:
+          type: string
+          description: Name of the merit plan
+          example: 2026 Annual Merit Increase
+        effectiveDate:
+          type: string
+          format: date
+          description: Date when merit increases take effect
+          example: '2026-04-01'
+        budgetPercent:
+          type: number
+          description: Budget as percentage of eligible payroll
+          example: 3.5
+        status:
+          type: string
+          description: Current status of the merit plan
+          enum: [ACTIVE, INACTIVE, DRAFT]
+          example: ACTIVE
+        guidelineMin:
+          type: number
+          description: Minimum guideline percentage for merit increases
+          example: 1.5
+        guidelineMax:
+          type: number
+          description: Maximum guideline percentage for merit increases
+          example: 6.0
+
+    MeritPlansResponse:
+      type: object
+      description: Paginated response containing merit plans
+      properties:
+        total:
+          type: integer
+          description: Total number of merit plans
+          example: 3
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MeritPlan'
+
+    BonusPlan:
+      type: object
+      description: A bonus or incentive compensation plan
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the bonus plan
+          example: BP-001
+        name:
+          type: string
+          description: Name of the bonus plan
+          example: Annual Performance Bonus
+        targetPercent:
+          type: number
+          description: Target bonus as percentage of base salary
+          example: 15
+        currency:
+          type: string
+          description: Currency code
+          example: USD
+        frequency:
+          type: string
+          description: Payment frequency
+          enum: [ANNUAL, SEMI_ANNUAL, QUARTERLY, MONTHLY]
+          example: ANNUAL
+        status:
+          type: string
+          description: Plan status
+          enum: [ACTIVE, INACTIVE, DRAFT]
+          example: ACTIVE
+
+    BonusPlansResponse:
+      type: object
+      description: Paginated response containing bonus plans
+      properties:
+        total:
+          type: integer
+          description: Total number of bonus plans
+          example: 5
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BonusPlan'
+
+    StockPlan:
+      type: object
+      description: An equity or stock compensation plan
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the stock plan
+          example: SP-001
+        name:
+          type: string
+          description: Name of the stock plan
+          example: Employee Stock Option Plan 2026
+        type:
+          type: string
+          description: Type of equity grant
+          enum: [RSU, STOCK_OPTION, ESPP, PERFORMANCE_SHARE]
+          example: RSU
+        vestingSchedule:
+          type: string
+          description: Vesting schedule for the grants
+          enum: [ONE_YEAR_CLIFF, TWO_YEAR_CLIFF, FOUR_YEAR_CLIFF, MONTHLY, QUARTERLY]
+          example: FOUR_YEAR_CLIFF
+        grantDateFairValue:
+          type: number
+          description: Fair market value at grant date
+          example: 50.00
+        currency:
+          type: string
+          description: Currency code
+          example: USD
+
+    StockPlansResponse:
+      type: object
+      description: Paginated response containing stock plans
+      properties:
+        total:
+          type: integer
+          description: Total number of stock plans
+          example: 4
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/StockPlan'
+
+    CompensationBudget:
+      type: object
+      description: A compensation budget with allocation and utilization data
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the budget
+          example: CB-001
+        name:
+          type: string
+          description: Name of the budget
+          example: Engineering Merit Budget 2026
+        totalAmount:
+          type: number
+          description: Total budget amount
+          example: 2500000
+        allocatedAmount:
+          type: number
+          description: Amount already allocated
+          example: 1875000
+        remainingAmount:
+          type: number
+          description: Remaining unallocated budget
+          example: 625000
+        currency:
+          type: string
+          description: Currency code
+          example: USD
+        year:
+          type: integer
+          description: Budget year
+          example: 2026
+
+    CompensationBudgetsResponse:
+      type: object
+      description: Paginated response containing compensation budgets
+      properties:
+        total:
+          type: integer
+          description: Total number of budgets
+          example: 8
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompensationBudget'
+
+    CompensationReview:
+      type: object
+      description: A compensation review process instance
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the review
+          example: CR-001
+        name:
+          type: string
+          description: Name of the compensation review
+          example: 2026 Annual Compensation Review
+        status:
+          type: string
+          description: Current status of the review
+          enum: [NOT_STARTED, IN_PROGRESS, COMPLETED, CANCELLED]
+          example: IN_PROGRESS
+        startDate:
+          type: string
+          format: date
+          description: Start date of the review period
+          example: '2026-03-01'
+        endDate:
+          type: string
+          format: date
+          description: End date of the review period
+          example: '2026-04-30'
+        completionPercent:
+          type: integer
+          description: Percentage of review tasks completed
+          example: 65
+
+    CompensationReviewsResponse:
+      type: object
+      description: Paginated response containing compensation reviews
+      properties:
+        total:
+          type: integer
+          description: Total number of reviews
+          example: 2
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompensationReview'
+
+    EmployeeCompensation:
+      type: object
+      description: Current compensation package for an employee
+      properties:
+        employeeId:
+          type: string
+          description: Workday employee identifier
+          example: EMP-12345
+        employeeName:
+          type: string
+          description: Employee full name
+          example: Jane Smith
+        effectiveDate:
+          type: string
+          format: date
+          description: Effective date of current compensation
+          example: '2026-01-01'
+        basePay:
+          $ref: '#/components/schemas/PayComponent'
+        bonusTarget:
+          $ref: '#/components/schemas/BonusComponent'
+        stockGrant:
+          $ref: '#/components/schemas/StockComponent'
+        totalCompensation:
+          type: number
+          description: Total target compensation value
+          example: 155000
+
+    PayComponent:
+      type: object
+      description: Base pay component
+      properties:
+        amount:
+          type: number
+          description: Pay amount
+          example: 110000
+        currency:
+          type: string
+          description: Currency code
+          example: USD
+        frequency:
+          type: string
+          description: Pay frequency
+          enum: [ANNUAL, MONTHLY, BIWEEKLY, WEEKLY, HOURLY]
+          example: ANNUAL
+
+    BonusComponent:
+      type: object
+      description: Bonus target component
+      properties:
+        amount:
+          type: number
+          description: Target bonus amount
+          example: 16500
+        currency:
+          type: string
+          description: Currency code
+          example: USD
+        percent:
+          type: number
+          description: Target bonus as percentage of base
+          example: 15
+
+    StockComponent:
+      type: object
+      description: Stock grant component
+      properties:
+        shareCount:
+          type: integer
+          description: Number of shares granted
+          example: 200
+        vestingSchedule:
+          type: string
+          description: Vesting schedule
+          example: FOUR_YEAR_CLIFF
+
+    CompensationChangeRequest:
+      type: object
+      description: Request to change employee compensation
+      required:
+        - effectiveDate
+        - reason
+      properties:
+        effectiveDate:
+          type: string
+          format: date
+          description: Date when the change takes effect
+          example: '2026-04-01'
+        reason:
+          type: string
+          description: Reason for the compensation change
+          enum: [MERIT_INCREASE, PROMOTION, MARKET_ADJUSTMENT, EQUITY_ADJUSTMENT, ROLE_CHANGE]
+          example: MERIT_INCREASE
+        basePay:
+          $ref: '#/components/schemas/PayComponent'
+        bonusTarget:
+          $ref: '#/components/schemas/BonusComponent'
+        comment:
+          type: string
+          description: Optional comment for the change request
+          example: Annual merit increase based on performance review
+
+    CompensationChangeResponse:
+      type: object
+      description: Response from a compensation change submission
+      properties:
+        requestId:
+          type: string
+          description: Unique identifier for the change request
+          example: REQ-98765
+        status:
+          type: string
+          description: Current status of the request
+          enum: [PENDING_APPROVAL, APPROVED, REJECTED, IN_PROGRESS]
+          example: PENDING_APPROVAL
+        employeeId:
+          type: string
+          description: Employee identifier
+          example: EMP-12345
+        effectiveDate:
+          type: string
+          format: date
+          description: Effective date of the change
+          example: '2026-04-01'
+        submittedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the request was submitted
+          example: '2026-03-15T10:30:00Z'
+
+    ErrorResponse:
+      type: object
+      description: Workday API error response
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: INVALID_REQUEST
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid compensation plan ID
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
+
+  responses:
+    BadRequest:
+      description: Invalid request parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            BadRequest400Example:
+              summary: Bad request example
+              x-microcks-default: true
+              value:
+                error: INVALID_REQUEST
+                message: Invalid request parameters
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Unauthorized401Example:
+              summary: Unauthorized example
+              x-microcks-default: true
+              value:
+                error: UNAUTHORIZED
+                message: Authentication required
+    Forbidden:
+      description: Insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Forbidden403Example:
+              summary: Forbidden example
+              x-microcks-default: true
+              value:
+                error: FORBIDDEN
+                message: Insufficient permissions to access this resource
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            NotFound404Example:
+              summary: Not found example
+              x-microcks-default: true
+              value:
+                error: NOT_FOUND
+                message: The requested resource was not found

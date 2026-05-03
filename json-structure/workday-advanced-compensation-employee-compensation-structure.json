@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/workday-advanced-compensation/refs/heads/main/json-structure/workday-advanced-compensation-employee-compensation-structure.json",
+  "title": "Employee Compensation",
+  "description": "A Workday employee compensation package including base pay, bonuses, and equity",
+  "type": "object",
+  "properties": {
+    "employeeId": {
+      "description": "Employee identifier",
+      "type": "string"
+    },
+    "employeeName": {
+      "description": "Employee full name",
+      "type": "string"
+    },
+    "effectiveDate": {
+      "description": "Compensation effective date",
+      "type": "date"
+    },
+    "compensationGradeId": {
+      "description": "Compensation grade identifier",
+      "type": "string"
+    },
+    "basePay": {
+      "description": "Base pay amount",
+      "type": "double"
+    },
+    "payFrequency": {
+      "description": "Pay frequency",
+      "type": "string"
+    },
+    "currency": {
+      "description": "Currency code",
+      "type": "string"
+    },
+    "totalCashCompensation": {
+      "description": "Total cash compensation",
+      "type": "double"
+    },
+    "payComponents": {
+      "description": "Individual pay components",
+      "type": "array",
+      "items": {
+        "$ref": "PayComponent"
+      }
+    }
+  },
+  "required": [
+    "employeeId",
+    "effectiveDate",
+    "basePay",
+    "currency"
+  ]
+}

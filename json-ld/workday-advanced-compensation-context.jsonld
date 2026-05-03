@@ -1,0 +1,116 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/",
+    "wdcomp": "https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/schema/",
+
+    "CompensationPlan": "wdcomp:CompensationPlan",
+    "CompensationGrade": "wdcomp:CompensationGrade",
+    "MeritPlan": "wdcomp:MeritPlan",
+    "BonusPlan": "wdcomp:BonusPlan",
+    "StockPlan": "wdcomp:StockPlan",
+    "CompensationBudget": "wdcomp:CompensationBudget",
+    "CompensationReview": "wdcomp:CompensationReview",
+    "EmployeeCompensation": "wdcomp:EmployeeCompensation",
+    "CompensationChangeRequest": "wdcomp:CompensationChangeRequest",
+
+    "id": "@id",
+    "name": "schema:name",
+    "description": "schema:description",
+    "status": "wdcomp:status",
+    "currency": "schema:currency",
+    "effectiveDate": {
+      "@id": "schema:validFrom",
+      "@type": "xsd:date"
+    },
+    "endDate": {
+      "@id": "schema:validThrough",
+      "@type": "xsd:date"
+    },
+    "startDate": {
+      "@id": "schema:startDate",
+      "@type": "xsd:date"
+    },
+    "type": "schema:additionalType",
+    "code": "schema:identifier",
+
+    "compensationPlanId": "wdcomp:compensationPlanId",
+    "budgetPercent": "wdcomp:budgetPercent",
+    "minIncreasePercent": "wdcomp:minIncreasePercent",
+    "maxIncreasePercent": "wdcomp:maxIncreasePercent",
+    "targetPercent": "wdcomp:targetPercent",
+    "maxPercent": "wdcomp:maxPercent",
+    "awardType": "wdcomp:awardType",
+    "vestingSchedule": "wdcomp:vestingSchedule",
+
+    "minimumPay": {
+      "@id": "schema:minValue",
+      "@type": "xsd:double"
+    },
+    "midpointPay": {
+      "@id": "wdcomp:midpointPay",
+      "@type": "xsd:double"
+    },
+    "maximumPay": {
+      "@id": "schema:maxValue",
+      "@type": "xsd:double"
+    },
+    "payFrequency": "wdcomp:payFrequency",
+    "compensationGradeId": "wdcomp:compensationGradeId",
+
+    "organizationId": "schema:memberOf",
+    "budgetAmount": {
+      "@id": "wdcomp:budgetAmount",
+      "@type": "xsd:double"
+    },
+    "allocatedAmount": {
+      "@id": "wdcomp:allocatedAmount",
+      "@type": "xsd:double"
+    },
+    "remainingAmount": {
+      "@id": "wdcomp:remainingAmount",
+      "@type": "xsd:double"
+    },
+
+    "reviewerCount": {
+      "@id": "wdcomp:reviewerCount",
+      "@type": "xsd:integer"
+    },
+    "employeeCount": {
+      "@id": "wdcomp:employeeCount",
+      "@type": "xsd:integer"
+    },
+
+    "employeeId": "schema:employee",
+    "employeeName": "schema:name",
+    "basePay": {
+      "@id": "schema:baseSalary",
+      "@type": "xsd:double"
+    },
+    "totalCashCompensation": {
+      "@id": "wdcomp:totalCashCompensation",
+      "@type": "xsd:double"
+    },
+    "payComponents": {
+      "@id": "wdcomp:payComponents",
+      "@container": "@list"
+    },
+
+    "changeReason": "wdcomp:changeReason",
+    "newBasePay": {
+      "@id": "wdcomp:newBasePay",
+      "@type": "xsd:double"
+    },
+    "comments": "schema:comment",
+
+    "total": {
+      "@id": "wdcomp:total",
+      "@type": "xsd:integer"
+    },
+    "data": {
+      "@id": "wdcomp:data",
+      "@container": "@list"
+    }
+  }
+}

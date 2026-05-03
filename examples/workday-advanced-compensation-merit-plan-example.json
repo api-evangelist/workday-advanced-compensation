@@ -1,0 +1,10 @@
+{
+  "id": "MP-2026",
+  "name": "2026 Annual Merit Plan",
+  "compensationPlanId": "CP-001",
+  "effectiveDate": "2026-01-01",
+  "budgetPercent": 3.5,
+  "minIncreasePercent": 0.0,
+  "maxIncreasePercent": 8.0,
+  "status": "ACTIVE"
+}

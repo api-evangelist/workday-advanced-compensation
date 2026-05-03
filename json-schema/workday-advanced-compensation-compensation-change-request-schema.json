@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/workday-advanced-compensation/refs/heads/main/json-schema/workday-advanced-compensation-compensation-change-request-schema.json",
+  "title": "Compensation Change Request",
+  "description": "A request to change an employee's compensation",
+  "type": "object",
+  "properties": {
+    "employeeId": {
+      "type": "string",
+      "description": "Employee identifier"
+    },
+    "effectiveDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Change effective date"
+    },
+    "changeReason": {
+      "type": "string",
+      "description": "Reason for the compensation change"
+    },
+    "newBasePay": {
+      "type": "number",
+      "description": "New base pay amount"
+    },
+    "currency": {
+      "type": "string",
+      "description": "Currency code"
+    },
+    "payFrequency": {
+      "type": "string",
+      "description": "Pay frequency"
+    },
+    "compensationGradeId": {
+      "type": "string",
+      "description": "New compensation grade"
+    },
+    "comments": {
+      "type": "string",
+      "description": "Additional comments"
+    }
+  },
+  "required": [
+    "employeeId",
+    "effectiveDate",
+    "changeReason",
+    "newBasePay",
+    "currency"
+  ]
+}

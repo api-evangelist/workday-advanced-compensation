@@ -1,0 +1,246 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Workday Advanced Compensation API"
+  description: "Shared capability definition for Workday Advanced Compensation API operations covering compensation plans, grades, merit, bonus, stock, budgets, reviews, and employee compensation management."
+  tags:
+    - Advanced Compensation
+    - Benefits
+    - Enterprise
+    - HCM
+    - HR
+    - Workday
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      WORKDAY_CLIENT_ID: WORKDAY_CLIENT_ID
+      WORKDAY_CLIENT_SECRET: WORKDAY_CLIENT_SECRET
+      WORKDAY_TENANT: WORKDAY_TENANT
+
+capability:
+  consumes:
+    - openapi: workday-advanced-compensation
+      location: ../../openapi/workday-advanced-compensation-openapi.yml
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: workday-advanced-compensation-api
+      description: "REST API for Workday Advanced Compensation operations."
+      resources:
+        - path: /v1/compensation-plans
+          name: compensation-plans
+          description: "Compensation plans management"
+          operations:
+            - method: GET
+              name: list-compensation-plans
+              description: "List compensation plans"
+              call: "workday-advanced-compensation.listCompensationPlans"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-compensation-plan
+              description: "Create a new compensation plan"
+              call: "workday-advanced-compensation.createCompensationPlan"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/compensation-plans/{planId}
+          name: compensation-plan-by-id
+          description: "Single compensation plan management"
+          operations:
+            - method: GET
+              name: get-compensation-plan
+              description: "Get a compensation plan by ID"
+              call: "workday-advanced-compensation.getCompensationPlan"
+              with:
+                planId: "rest.planId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/compensation-grades
+          name: compensation-grades
+          description: "Compensation grades management"
+          operations:
+            - method: GET
+              name: list-compensation-grades
+              description: "List compensation grades"
+              call: "workday-advanced-compensation.listCompensationGrades"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/merit-plans
+          name: merit-plans
+          description: "Merit plans management"
+          operations:
+            - method: GET
+              name: list-merit-plans
+              description: "List merit plans"
+              call: "workday-advanced-compensation.listMeritPlans"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/bonus-plans
+          name: bonus-plans
+          description: "Bonus plans management"
+          operations:
+            - method: GET
+              name: list-bonus-plans
+              description: "List bonus plans"
+              call: "workday-advanced-compensation.listBonusPlans"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/stock-plans
+          name: stock-plans
+          description: "Stock plans management"
+          operations:
+            - method: GET
+              name: list-stock-plans
+              description: "List stock plans"
+              call: "workday-advanced-compensation.listStockPlans"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/compensation-budgets
+          name: compensation-budgets
+          description: "Compensation budgets management"
+          operations:
+            - method: GET
+              name: list-compensation-budgets
+              description: "List compensation budgets"
+              call: "workday-advanced-compensation.listCompensationBudgets"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/compensation-reviews
+          name: compensation-reviews
+          description: "Compensation reviews management"
+          operations:
+            - method: GET
+              name: list-compensation-reviews
+              description: "List compensation reviews"
+              call: "workday-advanced-compensation.listCompensationReviews"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/employees/{employeeId}/compensation
+          name: employee-compensation
+          description: "Employee compensation management"
+          operations:
+            - method: GET
+              name: get-employee-compensation
+              description: "Get employee compensation details"
+              call: "workday-advanced-compensation.getEmployeeCompensation"
+              with:
+                employeeId: "rest.employeeId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PUT
+              name: update-employee-compensation
+              description: "Update employee compensation"
+              call: "workday-advanced-compensation.updateEmployeeCompensation"
+              with:
+                employeeId: "rest.employeeId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: workday-advanced-compensation-mcp
+      transport: http
+      description: "MCP server for Workday Advanced Compensation API operations."
+      tools:
+        - name: list-compensation-plans
+          description: "List Workday compensation plans with optional filtering"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "workday-advanced-compensation.listCompensationPlans"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-compensation-plan
+          description: "Get a specific Workday compensation plan by ID"
+          hints:
+            readOnly: true
+          call: "workday-advanced-compensation.getCompensationPlan"
+          with:
+            planId: "tools.planId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-compensation-grades
+          description: "List Workday compensation grades and pay ranges"
+          hints:
+            readOnly: true
+          call: "workday-advanced-compensation.listCompensationGrades"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-merit-plans
+          description: "List Workday merit increase plans"
+          hints:
+            readOnly: true
+          call: "workday-advanced-compensation.listMeritPlans"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-bonus-plans
+          description: "List Workday bonus and incentive plans"
+          hints:
+            readOnly: true
+          call: "workday-advanced-compensation.listBonusPlans"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-stock-plans
+          description: "List Workday equity and stock compensation plans"
+          hints:
+            readOnly: true
+          call: "workday-advanced-compensation.listStockPlans"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-compensation-budgets
+          description: "List Workday compensation budgets and allocations"
+          hints:
+            readOnly: true
+          call: "workday-advanced-compensation.listCompensationBudgets"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-compensation-reviews
+          description: "List Workday compensation review cycles"
+          hints:
+            readOnly: true
+          call: "workday-advanced-compensation.listCompensationReviews"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-employee-compensation
+          description: "Get a Workday employee's compensation package details"
+          hints:
+            readOnly: true
+          call: "workday-advanced-compensation.getEmployeeCompensation"
+          with:
+            employeeId: "tools.employeeId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: update-employee-compensation
+          description: "Update a Workday employee's compensation"
+          hints:
+            readOnly: false
+          call: "workday-advanced-compensation.updateEmployeeCompensation"
+          with:
+            employeeId: "tools.employeeId"
+          outputParameters:
+            - type: object
+              mapping: "$."

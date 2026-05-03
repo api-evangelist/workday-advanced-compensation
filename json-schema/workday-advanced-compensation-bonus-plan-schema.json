@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/workday-advanced-compensation/refs/heads/main/json-schema/workday-advanced-compensation-bonus-plan-schema.json",
+  "title": "Bonus Plan",
+  "description": "A Workday bonus and incentive plan",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique bonus plan identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Bonus plan name"
+    },
+    "compensationPlanId": {
+      "type": "string",
+      "description": "Associated compensation plan ID"
+    },
+    "effectiveDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Plan effective date"
+    },
+    "targetPercent": {
+      "type": "number",
+      "description": "Target bonus as percent of base salary"
+    },
+    "maxPercent": {
+      "type": "number",
+      "description": "Maximum bonus as percent of base salary"
+    },
+    "currency": {
+      "type": "string",
+      "description": "Currency code"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "DRAFT"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "effectiveDate"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "employeeId": "EMP-12345",
+  "effectiveDate": "2026-04-01",
+  "changeReason": "Merit increase based on performance review",
+  "newBasePay": 120000,
+  "currency": "USD",
+  "payFrequency": "ANNUAL",
+  "compensationGradeId": "CG-M4",
+  "comments": "Exceptional performance rating - top 10% performer"
+}

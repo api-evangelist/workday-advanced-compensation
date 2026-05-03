@@ -1,0 +1,10 @@
+{
+  "id": "CP-001",
+  "name": "Annual Merit Plan 2026",
+  "type": "MERIT",
+  "effectiveDate": "2026-01-01",
+  "endDate": "2026-12-31",
+  "status": "ACTIVE",
+  "currency": "USD",
+  "description": "Annual merit increase plan for salaried employees"
+}

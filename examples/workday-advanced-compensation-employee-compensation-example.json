@@ -1,0 +1,24 @@
+{
+  "employeeId": "EMP-12345",
+  "employeeName": "Jane Smith",
+  "effectiveDate": "2026-01-01",
+  "compensationGradeId": "CG-M4",
+  "basePay": 115000,
+  "payFrequency": "ANNUAL",
+  "currency": "USD",
+  "totalCashCompensation": 132250,
+  "payComponents": [
+    {
+      "type": "BASE_SALARY",
+      "amount": 115000,
+      "currency": "USD",
+      "frequency": "ANNUAL"
+    },
+    {
+      "type": "ANNUAL_BONUS",
+      "amount": 17250,
+      "currency": "USD",
+      "frequency": "ANNUAL"
+    }
+  ]
+}

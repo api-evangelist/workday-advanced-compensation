@@ -1,0 +1,11 @@
+{
+  "id": "CG-M4",
+  "name": "Manager Grade 4",
+  "code": "M4",
+  "currency": "USD",
+  "minimumPay": 90000,
+  "midpointPay": 110000,
+  "maximumPay": 130000,
+  "payFrequency": "ANNUAL",
+  "effectiveDate": "2026-01-01"
+}

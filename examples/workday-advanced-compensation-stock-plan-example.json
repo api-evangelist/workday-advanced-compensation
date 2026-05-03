@@ -1,0 +1,10 @@
+{
+  "id": "SP-RSU-2026",
+  "name": "2026 RSU Grant Plan",
+  "compensationPlanId": "CP-003",
+  "effectiveDate": "2026-01-01",
+  "awardType": "RSU",
+  "vestingSchedule": "4-year quarterly vesting with 1-year cliff",
+  "currency": "USD",
+  "status": "ACTIVE"
+}

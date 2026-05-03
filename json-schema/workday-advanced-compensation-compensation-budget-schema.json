@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/workday-advanced-compensation/refs/heads/main/json-schema/workday-advanced-compensation-compensation-budget-schema.json",
+  "title": "Compensation Budget",
+  "description": "A Workday compensation budget allocation for a review cycle",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique budget identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Budget name"
+    },
+    "compensationPlanId": {
+      "type": "string",
+      "description": "Associated compensation plan ID"
+    },
+    "organizationId": {
+      "type": "string",
+      "description": "Organization or cost center ID"
+    },
+    "budgetAmount": {
+      "type": "number",
+      "description": "Total budget amount"
+    },
+    "allocatedAmount": {
+      "type": "number",
+      "description": "Amount allocated so far"
+    },
+    "remainingAmount": {
+      "type": "number",
+      "description": "Remaining budget amount"
+    },
+    "currency": {
+      "type": "string",
+      "description": "Currency code"
+    },
+    "effectiveDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Budget effective date"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "compensationPlanId",
+    "budgetAmount"
+  ]
+}

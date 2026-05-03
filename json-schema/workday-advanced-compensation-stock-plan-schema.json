@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/workday-advanced-compensation/refs/heads/main/json-schema/workday-advanced-compensation-stock-plan-schema.json",
+  "title": "Stock Plan",
+  "description": "A Workday equity and stock compensation plan",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique stock plan identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Stock plan name"
+    },
+    "compensationPlanId": {
+      "type": "string",
+      "description": "Associated compensation plan ID"
+    },
+    "effectiveDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Plan effective date"
+    },
+    "awardType": {
+      "type": "string",
+      "enum": [
+        "RSU",
+        "OPTION",
+        "PSU",
+        "ESPP"
+      ],
+      "description": "Type of stock award"
+    },
+    "vestingSchedule": {
+      "type": "string",
+      "description": "Vesting schedule description"
+    },
+    "currency": {
+      "type": "string",
+      "description": "Currency code"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "DRAFT"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "effectiveDate"
+  ]
+}

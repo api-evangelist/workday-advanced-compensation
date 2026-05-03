@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/workday-advanced-compensation/refs/heads/main/json-schema/workday-advanced-compensation-employee-compensation-schema.json",
+  "title": "Employee Compensation",
+  "description": "A Workday employee compensation package including base pay, bonuses, and equity",
+  "type": "object",
+  "properties": {
+    "employeeId": {
+      "type": "string",
+      "description": "Employee identifier"
+    },
+    "employeeName": {
+      "type": "string",
+      "description": "Employee full name"
+    },
+    "effectiveDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Compensation effective date"
+    },
+    "compensationGradeId": {
+      "type": "string",
+      "description": "Compensation grade identifier"
+    },
+    "basePay": {
+      "type": "number",
+      "description": "Base pay amount"
+    },
+    "payFrequency": {
+      "type": "string",
+      "description": "Pay frequency"
+    },
+    "currency": {
+      "type": "string",
+      "description": "Currency code"
+    },
+    "totalCashCompensation": {
+      "type": "number",
+      "description": "Total cash compensation"
+    },
+    "payComponents": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PayComponent"
+      },
+      "description": "Individual pay components"
+    }
+  },
+  "required": [
+    "employeeId",
+    "effectiveDate",
+    "basePay",
+    "currency"
+  ],
+  "$defs": {
+    "PayComponent": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Pay component type"
+        },
+        "amount": {
+          "type": "number",
+          "description": "Component amount"
+        },
+        "currency": {
+          "type": "string",
+          "description": "Currency code"
+        },
+        "frequency": {
+          "type": "string",
+          "description": "Payment frequency"
+        }
+      },
+      "required": [
+        "type",
+        "amount"
+      ]
+    }
+  }
+}

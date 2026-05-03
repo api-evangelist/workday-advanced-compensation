@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/workday-advanced-compensation/refs/heads/main/json-schema/workday-advanced-compensation-compensation-grade-schema.json",
+  "title": "Compensation Grade",
+  "description": "A Workday compensation grade with pay range and midpoint information",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique compensation grade identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Grade name"
+    },
+    "code": {
+      "type": "string",
+      "description": "Grade code"
+    },
+    "currency": {
+      "type": "string",
+      "description": "Currency code"
+    },
+    "minimumPay": {
+      "type": "number",
+      "description": "Minimum pay for this grade"
+    },
+    "midpointPay": {
+      "type": "number",
+      "description": "Midpoint pay for this grade"
+    },
+    "maximumPay": {
+      "type": "number",
+      "description": "Maximum pay for this grade"
+    },
+    "payFrequency": {
+      "type": "string",
+      "description": "Pay frequency (ANNUAL, HOURLY, etc.)"
+    },
+    "effectiveDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Grade effective date"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "code"
+  ]
+}

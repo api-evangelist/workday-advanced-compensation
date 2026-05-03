@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/workday-advanced-compensation/refs/heads/main/json-structure/workday-advanced-compensation-compensation-review-structure.json",
+  "title": "Compensation Review",
+  "description": "A Workday compensation review process and cycle",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "Unique review identifier",
+      "type": "string"
+    },
+    "name": {
+      "description": "Review cycle name",
+      "type": "string"
+    },
+    "compensationPlanId": {
+      "description": "Associated compensation plan ID",
+      "type": "string"
+    },
+    "startDate": {
+      "description": "Review cycle start date",
+      "type": "date"
+    },
+    "endDate": {
+      "description": "Review cycle end date",
+      "type": "date"
+    },
+    "status": {
+      "description": "Review status",
+      "type": "string",
+      "enum": [
+        "OPEN",
+        "IN_PROGRESS",
+        "COMPLETE",
+        "CANCELLED"
+      ]
+    },
+    "reviewerCount": {
+      "description": "Number of reviewers",
+      "type": "int32"
+    },
+    "employeeCount": {
+      "description": "Number of employees in review",
+      "type": "int32"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "startDate",
+    "status"
+  ]
+}

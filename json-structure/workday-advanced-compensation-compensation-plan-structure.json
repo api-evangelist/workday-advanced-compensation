@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/workday-advanced-compensation/refs/heads/main/json-structure/workday-advanced-compensation-compensation-plan-structure.json",
+  "title": "Compensation Plan",
+  "description": "A Workday compensation plan including eligibility rules, effective dates, and plan types",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "Unique compensation plan identifier",
+      "type": "string"
+    },
+    "name": {
+      "description": "Compensation plan name",
+      "type": "string"
+    },
+    "type": {
+      "description": "Type of compensation plan",
+      "type": "string",
+      "enum": [
+        "MERIT",
+        "BONUS",
+        "STOCK",
+        "SALARY"
+      ]
+    },
+    "effectiveDate": {
+      "description": "Date the plan becomes effective",
+      "type": "date"
+    },
+    "endDate": {
+      "description": "Date the plan ends",
+      "type": "date"
+    },
+    "status": {
+      "description": "Plan status",
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "DRAFT"
+      ]
+    },
+    "currency": {
+      "description": "Currency code for the plan",
+      "type": "string"
+    },
+    "description": {
+      "description": "Plan description",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "type",
+    "effectiveDate",
+    "status"
+  ]
+}

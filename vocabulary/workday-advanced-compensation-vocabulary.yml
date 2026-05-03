@@ -1,0 +1,248 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Workday"
+  description: "Unified vocabulary mapping operational (OpenAPI) and capability (Naftiko) dimensions for the Workday Advanced Compensation API"
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+operational:
+  apis:
+    - name: Workday Advanced Compensation API
+      namespace: workday-advanced-compensation
+      version: v41.1
+      baseUrl: https://{tenant}.workday.com/api/compensation/v1
+      status: active
+
+  resources:
+    - name: compensation-plans
+      api: workday-advanced-compensation
+      actions: [list, get, create]
+      description: Compensation plans defining eligibility rules, effective dates, and plan types
+    - name: compensation-grades
+      api: workday-advanced-compensation
+      actions: [list, get]
+      description: Compensation grade profiles with pay ranges and midpoints
+    - name: merit-plans
+      api: workday-advanced-compensation
+      actions: [list]
+      description: Merit increase plans with budget percentages and increase guidelines
+    - name: bonus-plans
+      api: workday-advanced-compensation
+      actions: [list]
+      description: Bonus and incentive plans with target and maximum payout percentages
+    - name: stock-plans
+      api: workday-advanced-compensation
+      actions: [list]
+      description: Equity and stock compensation plans including RSU, options, and ESPP
+    - name: compensation-budgets
+      api: workday-advanced-compensation
+      actions: [list]
+      description: Compensation budget allocations by organization and review cycle
+    - name: compensation-reviews
+      api: workday-advanced-compensation
+      actions: [list]
+      description: Compensation review processes and cycles with status tracking
+    - name: employee-compensation
+      api: workday-advanced-compensation
+      actions: [get, update]
+      description: Individual employee compensation packages including base pay and components
+
+  actions:
+    - name: list
+      httpMethod: GET
+      pattern: read
+      description: Retrieve a paginated collection
+    - name: get
+      httpMethod: GET
+      pattern: read
+      description: Retrieve a single resource by identifier
+    - name: create
+      httpMethod: POST
+      pattern: write
+      description: Create a new resource
+    - name: update
+      httpMethod: PUT
+      pattern: write
+      description: Update an existing resource
+
+  schemas:
+    compensation:
+      - name: CompensationPlan
+        description: Compensation plan defining eligibility rules, effective dates, and plan type
+      - name: CompensationGrade
+        description: Grade profile with minimum, midpoint, and maximum pay ranges
+      - name: MeritPlan
+        description: Merit increase plan with budget and increase guidelines
+      - name: BonusPlan
+        description: Bonus and incentive plan with target and maximum payouts
+      - name: StockPlan
+        description: Equity compensation plan with award type and vesting schedule
+      - name: CompensationBudget
+        description: Budget allocation tracking for a compensation plan and organization
+      - name: CompensationReview
+        description: Compensation review cycle with participant counts and status
+      - name: EmployeeCompensation
+        description: Employee compensation package including all pay components
+      - name: CompensationChangeRequest
+        description: Request to change employee compensation with reason and effective date
+
+  parameters:
+    pagination:
+      - name: limit
+        type: integer
+        description: Maximum number of records to return
+      - name: offset
+        type: integer
+        description: Number of records to skip for pagination
+    identifiers:
+      - name: planId
+        type: string
+        description: Compensation plan identifier
+      - name: gradeId
+        type: string
+        description: Compensation grade identifier
+      - name: employeeId
+        type: string
+        description: Employee identifier
+    filtering:
+      - name: planType
+        type: string
+        description: Filter compensation plans by type (MERIT, BONUS, STOCK, SALARY)
+      - name: status
+        type: string
+        description: Filter resources by status
+
+  enums:
+    plan-types:
+      - MERIT
+      - BONUS
+      - STOCK
+      - SALARY
+    plan-statuses:
+      - ACTIVE
+      - INACTIVE
+      - DRAFT
+    review-statuses:
+      - OPEN
+      - IN_PROGRESS
+      - COMPLETE
+      - CANCELLED
+    award-types:
+      - RSU
+      - OPTION
+      - PSU
+      - ESPP
+
+  authentication:
+    schemes:
+      - name: OAuth2 Client Credentials
+        type: oauth2
+        description: OAuth2 client credentials flow for server-to-server authentication with Workday tenant
+        apis: [Workday Advanced Compensation API]
+
+capability:
+  workflows:
+    - name: Compensation Management
+      file: capabilities/compensation-management.yaml
+      description: Unified workflow for HR compensation teams managing Workday Advanced Compensation plans, budgets, reviews, and employee compensation
+      apisUsed: [Workday Advanced Compensation API]
+      toolCount: 12
+      personas: [Compensation Analyst, HR Manager, Total Rewards Manager]
+      domains: [Compensation Plans, Compensation Grades, Incentive Plans, Employee Compensation]
+
+  personas:
+    - id: compensation-analyst
+      name: Compensation Analyst
+      description: Analyzes compensation data, manages review cycles, and tracks budget allocations
+      workflows: [Compensation Management]
+    - id: hr-manager
+      name: HR Manager
+      description: Manages employee compensation packages, approves changes, and oversees review processes
+      workflows: [Compensation Management]
+    - id: total-rewards-manager
+      name: Total Rewards Manager
+      description: Designs and administers total compensation strategy including base, bonus, and equity programs
+      workflows: [Compensation Management]
+    - id: payroll-administrator
+      name: Payroll Administrator
+      description: Processes compensation changes and ensures accurate pay calculations
+      workflows: [Compensation Management]
+
+  domains:
+    - name: Compensation Plans
+      description: Design and management of compensation plan structures and eligibility
+      resources: [compensation-plans, compensation-grades]
+    - name: Incentive Plans
+      description: Merit increases, bonus programs, and equity compensation
+      resources: [merit-plans, bonus-plans, stock-plans]
+    - name: Budget Management
+      description: Compensation budget allocation and tracking
+      resources: [compensation-budgets]
+    - name: Review Cycles
+      description: Compensation review processes and cycle management
+      resources: [compensation-reviews]
+    - name: Employee Compensation
+      description: Individual employee compensation package management
+      resources: [employee-compensation]
+
+  namespaces:
+    consumed:
+      - name: workday-advanced-compensation
+        baseUri: https://{tenant}.workday.com/api/compensation/v1
+        description: Workday Advanced Compensation API
+    exposed-rest:
+      - name: workday-compensation-management-api
+        port: 8080
+      - name: workday-advanced-compensation-api
+        port: 8100
+    exposed-mcp:
+      - name: workday-compensation-management-mcp
+        port: 9080
+      - name: workday-advanced-compensation-mcp
+        port: 9100
+
+  binds:
+    - name: WORKDAY_CLIENT_ID
+      description: Workday OAuth2 client ID for authentication
+      workflows: [Compensation Management]
+    - name: WORKDAY_CLIENT_SECRET
+      description: Workday OAuth2 client secret for authentication
+      workflows: [Compensation Management]
+    - name: WORKDAY_TENANT
+      description: Workday tenant hostname
+      workflows: [Compensation Management]
+
+crossReference:
+  - resource: compensation-plans
+    operations: [listCompensationPlans, getCompensationPlan, createCompensationPlan]
+    workflows: [Compensation Management]
+    personas: [Compensation Analyst, Total Rewards Manager]
+  - resource: compensation-grades
+    operations: [listCompensationGrades, getCompensationGrade]
+    workflows: [Compensation Management]
+    personas: [Compensation Analyst, Total Rewards Manager]
+  - resource: merit-plans
+    operations: [listMeritPlans]
+    workflows: [Compensation Management]
+    personas: [Compensation Analyst, Total Rewards Manager]
+  - resource: bonus-plans
+    operations: [listBonusPlans]
+    workflows: [Compensation Management]
+    personas: [Compensation Analyst, Total Rewards Manager]
+  - resource: stock-plans
+    operations: [listStockPlans]
+    workflows: [Compensation Management]
+    personas: [Total Rewards Manager]
+  - resource: compensation-budgets
+    operations: [listCompensationBudgets]
+    workflows: [Compensation Management]
+    personas: [Compensation Analyst, HR Manager]
+  - resource: compensation-reviews
+    operations: [listCompensationReviews]
+    workflows: [Compensation Management]
+    personas: [Compensation Analyst, HR Manager]
+  - resource: employee-compensation
+    operations: [getEmployeeCompensation, updateEmployeeCompensation]
+    workflows: [Compensation Management]
+    personas: [HR Manager, Payroll Administrator]
