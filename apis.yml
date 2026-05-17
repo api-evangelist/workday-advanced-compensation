@@ -72,7 +72,7 @@ apis:
         url: json-structure/workday-advanced-compensation-employee-compensation-structure.json
       - type: JSONStructure
         url: json-structure/workday-advanced-compensation-compensation-change-request-structure.json
-      - type: JSONLd
+      - type: JSONLD
         url: json-ld/workday-advanced-compensation-context.jsonld
       - type: SpectralRules
         url: rules/workday-advanced-compensation-spectral-rules.yml
@@ -141,19 +141,19 @@ common:
     url: https://developer.workday.com/
   - type: API Status
     url: https://status.workday.com/
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.workday.com/en-us/legal.html
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.workday.com/en-us/privacy.html
   - type: Security
     url: https://www.workday.com/en-us/why-workday/security-trust.html
-  - type: Rate Limits
+  - type: RateLimits
     url: https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/Web_Service_Rate_Limiting
   - type: Sandbox Environment
     url: https://doc.workday.com/r/en-us/workday-studio/workday-studio-user-guide/sandboxes
   - type: SDKs
     url: https://github.com/Workday
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/workday-advanced-compensation-context.jsonld
   - type: SpectralRules
     url: rules/workday-advanced-compensation-spectral-rules.yml
