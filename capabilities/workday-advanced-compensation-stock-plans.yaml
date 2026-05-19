@@ -1,0 +1,85 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Workday Advanced Compensation API — Stock Plans
+  description: 'Workday Advanced Compensation API — Stock Plans. 1 operations. Lead operation: Workday List Stock Plans. Self-contained
+    Naftiko capability covering one Workday Advanced Compensation business surface.'
+  tags:
+  - Workday Advanced Compensation
+  - Stock Plans
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORKDAY_ADVANCED_COMPENSATION_API_KEY: WORKDAY_ADVANCED_COMPENSATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: workday-advanced-compensation-stock-plans
+    baseUri: https://{tenant}.workday.com/api/compensation/v1
+    description: Workday Advanced Compensation API — Stock Plans business capability. Self-contained, no shared references.
+    resources:
+    - name: stockPlans
+      path: /stockPlans
+      operations:
+      - name: liststockplans
+        method: GET
+        description: Workday List Stock Plans
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of records to return
+        - name: offset
+          in: query
+          type: integer
+          description: Number of records to skip
+    authentication:
+      type: bearer
+      token: '{{env.WORKDAY_ADVANCED_COMPENSATION_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: workday-advanced-compensation-stock-plans-rest
+    port: 8080
+    description: REST adapter for Workday Advanced Compensation API — Stock Plans. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/stockplans
+      name: stockplans
+      description: REST surface for stockPlans.
+      operations:
+      - method: GET
+        name: liststockplans
+        description: Workday List Stock Plans
+        call: workday-advanced-compensation-stock-plans.liststockplans
+        with:
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: workday-advanced-compensation-stock-plans-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Workday Advanced Compensation API — Stock Plans. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: workday-list-stock-plans
+      description: Workday List Stock Plans
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: workday-advanced-compensation-stock-plans.liststockplans
+      with:
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.

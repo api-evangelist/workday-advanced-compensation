@@ -1,0 +1,123 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Workday Advanced Compensation API — Employee Compensation
+  description: 'Workday Advanced Compensation API — Employee Compensation. 2 operations. Lead operation: Workday Get Employee
+    Compensation. Self-contained Naftiko capability covering one Workday Advanced Compensation business surface.'
+  tags:
+  - Workday Advanced Compensation
+  - Employee Compensation
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORKDAY_ADVANCED_COMPENSATION_API_KEY: WORKDAY_ADVANCED_COMPENSATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: workday-advanced-compensation-employee-compensation
+    baseUri: https://{tenant}.workday.com/api/compensation/v1
+    description: Workday Advanced Compensation API — Employee Compensation business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: employees-employeeId-compensation
+      path: /employees/{employeeId}/compensation
+      operations:
+      - name: getemployeecompensation
+        method: GET
+        description: Workday Get Employee Compensation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: employeeId
+          in: path
+          type: string
+          description: Workday employee identifier
+          required: true
+      - name: submitcompensationchange
+        method: POST
+        description: Workday Submit Compensation Change
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: employeeId
+          in: path
+          type: string
+          description: Workday employee identifier
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.WORKDAY_ADVANCED_COMPENSATION_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: workday-advanced-compensation-employee-compensation-rest
+    port: 8080
+    description: REST adapter for Workday Advanced Compensation API — Employee Compensation. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/employees/{employeeid}/compensation
+      name: employees-employeeid-compensation
+      description: REST surface for employees-employeeId-compensation.
+      operations:
+      - method: GET
+        name: getemployeecompensation
+        description: Workday Get Employee Compensation
+        call: workday-advanced-compensation-employee-compensation.getemployeecompensation
+        with:
+          employeeId: rest.employeeId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: submitcompensationchange
+        description: Workday Submit Compensation Change
+        call: workday-advanced-compensation-employee-compensation.submitcompensationchange
+        with:
+          employeeId: rest.employeeId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: workday-advanced-compensation-employee-compensation-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Workday Advanced Compensation API — Employee Compensation. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: workday-get-employee-compensation
+      description: Workday Get Employee Compensation
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: workday-advanced-compensation-employee-compensation.getemployeecompensation
+      with:
+        employeeId: tools.employeeId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: workday-submit-compensation-change
+      description: Workday Submit Compensation Change
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: workday-advanced-compensation-employee-compensation.submitcompensationchange
+      with:
+        employeeId: tools.employeeId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
