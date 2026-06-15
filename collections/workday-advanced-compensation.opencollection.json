@@ -1,0 +1,358 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Workday Advanced Compensation API",
+    "version": "v41.1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Compensation Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Workday List Compensation Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.workday.com/api/compensation/v1/compensationPlans",
+            "params": [
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to return"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Number of records to skip"
+              },
+              {
+                "name": "planType",
+                "value": "MERIT",
+                "type": "query",
+                "description": "Filter by compensation plan type"
+              }
+            ]
+          },
+          "docs": "Retrieves a collection of compensation plans including eligibility rules, effective dates, and plan types."
+        },
+        {
+          "info": {
+            "name": "Workday Get Compensation Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.workday.com/api/compensation/v1/compensationPlans/:planId",
+            "params": [
+              {
+                "name": "planId",
+                "value": "CP-001",
+                "type": "path",
+                "description": "Unique identifier for the compensation plan"
+              }
+            ]
+          },
+          "docs": "Retrieves details for a specific compensation plan including eligibility criteria, budget pools, and plan components."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Compensation Grades",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Workday List Compensation Grades",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.workday.com/api/compensation/v1/compensationGrades",
+            "params": [
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to return"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Number of records to skip"
+              }
+            ]
+          },
+          "docs": "Retrieves compensation grade profiles with pay ranges, midpoints, and band information."
+        },
+        {
+          "info": {
+            "name": "Workday Get Compensation Grade",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.workday.com/api/compensation/v1/compensationGrades/:gradeId",
+            "params": [
+              {
+                "name": "gradeId",
+                "value": "CG-001",
+                "type": "path",
+                "description": "Unique identifier for the compensation grade"
+              }
+            ]
+          },
+          "docs": "Retrieves details for a specific compensation grade including pay ranges and eligibility criteria."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Merit Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Workday List Merit Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.workday.com/api/compensation/v1/meritPlans",
+            "params": [
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to return"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Number of records to skip"
+              }
+            ]
+          },
+          "docs": "Retrieves merit increase plans with guidelines, matrices, and budget allocations."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Bonus Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Workday List Bonus Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.workday.com/api/compensation/v1/bonusPlans",
+            "params": [
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to return"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Number of records to skip"
+              }
+            ]
+          },
+          "docs": "Retrieves bonus and incentive plans including target percentages, performance multipliers, and eligibility rules."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Stock Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Workday List Stock Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.workday.com/api/compensation/v1/stockPlans",
+            "params": [
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to return"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Number of records to skip"
+              }
+            ]
+          },
+          "docs": "Retrieves stock and equity compensation plans including vesting schedules, grant types, and eligibility criteria."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Compensation Budgets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Workday List Compensation Budgets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.workday.com/api/compensation/v1/compensationBudgets",
+            "params": [
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to return"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Number of records to skip"
+              },
+              {
+                "name": "year",
+                "value": "2026",
+                "type": "query",
+                "description": "Filter by budget year"
+              }
+            ]
+          },
+          "docs": "Retrieves compensation budgets with allocation amounts, utilization rates, and organizational scope."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Compensation Reviews",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Workday List Compensation Reviews",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.workday.com/api/compensation/v1/compensationReviews",
+            "params": [
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to return"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Number of records to skip"
+              },
+              {
+                "name": "status",
+                "value": "IN_PROGRESS",
+                "type": "query",
+                "description": "Filter by review status"
+              }
+            ]
+          },
+          "docs": "Retrieves compensation review process instances including status, participants, and completion tracking."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Employee Compensation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Workday Get Employee Compensation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.workday.com/api/compensation/v1/employees/:employeeId/compensation",
+            "params": [
+              {
+                "name": "employeeId",
+                "value": "EMP-12345",
+                "type": "path",
+                "description": "Workday employee identifier"
+              }
+            ]
+          },
+          "docs": "Retrieves the current compensation package for a specific employee including base pay, bonuses, equity, and total compensation."
+        },
+        {
+          "info": {
+            "name": "Workday Submit Compensation Change",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.workday.com/api/compensation/v1/employees/:employeeId/compensation",
+            "params": [
+              {
+                "name": "employeeId",
+                "value": "EMP-12345",
+                "type": "path",
+                "description": "Workday employee identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a compensation change request for an employee including base pay changes, bonus adjustments, and equity grants."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
