@@ -76,9 +76,9 @@ apis:
         url: json-ld/workday-advanced-compensation-context.jsonld
       - type: SpectralRules
         url: rules/workday-advanced-compensation-spectral-rules.yml
-      - type: NaftikoCapability - Compensation Management
+      - type: X-NaftikoCapability-CompensationManagement
         url: capabilities/compensation-management.yaml
-      - type: NaftikoCapability - Advanced Compensation (Shared)
+      - type: X-NaftikoCapability-AdvancedCompensationShared
         url: capabilities/shared/advanced-compensation.yaml
       - type: Vocabulary
         url: vocabulary/workday-advanced-compensation-vocabulary.yml
@@ -137,7 +137,7 @@ include:
   - name: Workday Payroll
     url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Payroll/index.html
 common:
-  - type: Developer Portal
+  - type: DeveloperPortal
     url: https://developer.workday.com/
   - type: API Status
     url: https://status.workday.com/
@@ -149,7 +149,7 @@ common:
     url: https://www.workday.com/en-us/why-workday/security-trust.html
   - type: RateLimits
     url: https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/Web_Service_Rate_Limiting
-  - type: Sandbox Environment
+  - type: Sandbox
     url: https://doc.workday.com/r/en-us/workday-studio/workday-studio-user-guide/sandboxes
   - type: SDKs
     url: https://github.com/Workday
@@ -157,9 +157,9 @@ common:
     url: json-ld/workday-advanced-compensation-context.jsonld
   - type: SpectralRules
     url: rules/workday-advanced-compensation-spectral-rules.yml
-  - type: NaftikoCapability - Compensation Management
+  - type: X-NaftikoCapability-CompensationManagement
     url: capabilities/compensation-management.yaml
-  - type: NaftikoCapability - Advanced Compensation (Shared)
+  - type: X-NaftikoCapability-AdvancedCompensationShared
     url: capabilities/shared/advanced-compensation.yaml
   - type: Vocabulary
     url: vocabulary/workday-advanced-compensation-vocabulary.yml
