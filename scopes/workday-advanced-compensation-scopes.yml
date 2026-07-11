@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/workday-advanced-compensation-openapi.yml
+schemes:
+- name: oauth2
+  source: openapi/workday-advanced-compensation-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://{tenant}.workday.com/ccx/oauth2/{tenant}/token
+  description: Workday OAuth 2.0 authentication
+scopes:
+- scope: compensation.read
+  description: Read compensation data
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/workday-advanced-compensation-openapi.yml
+- scope: compensation.write
+  description: Write compensation data
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/workday-advanced-compensation-openapi.yml

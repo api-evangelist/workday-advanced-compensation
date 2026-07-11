@@ -137,6 +137,10 @@ include:
   - name: Workday Payroll
     url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Payroll/index.html
 common:
+  - type: Authentication
+    url: authentication/workday-advanced-compensation-authentication.yml
+  - type: OAuthScopes
+    url: scopes/workday-advanced-compensation-scopes.yml
   - type: DeveloperPortal
     url: https://developer.workday.com/
   - type: API Status
