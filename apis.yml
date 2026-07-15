@@ -137,6 +137,8 @@ include:
   - name: Workday Payroll
     url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Payroll/index.html
 common:
+  - type: AgenticAccess
+    url: agentic-access/workday-advanced-compensation-agentic-access.yml
   - type: Authentication
     url: authentication/workday-advanced-compensation-authentication.yml
   - type: OAuthScopes
