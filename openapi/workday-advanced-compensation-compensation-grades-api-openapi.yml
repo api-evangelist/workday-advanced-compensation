@@ -1,0 +1,214 @@
+openapi: 3.0.3
+info:
+  title: Workday Advanced Compensation Bonus Plans Compensation Grades API
+  description: The Workday Advanced Compensation API provides RESTful access to compensation management capabilities including compensation plans, merit increases, bonuses, stock awards, compensation grades, budgets, and review processes. The API enables organizations to programmatically manage their total compensation strategy, administer compensation cycles, and integrate compensation data with other systems.
+  version: v41.1
+  contact:
+    name: Workday Developer Support
+    url: https://community.workday.com/
+  x-generated-from: documentation
+servers:
+- url: https://{tenant}.workday.com/api/compensation/v1
+  description: Workday tenant REST API endpoint
+  variables:
+    tenant:
+      default: wd2-impl-services1
+      description: Your Workday tenant hostname
+security:
+- oauth2: []
+tags:
+- name: Compensation Grades
+  description: Manage compensation grade profiles and pay ranges
+paths:
+  /compensationGrades:
+    get:
+      operationId: listCompensationGrades
+      summary: Workday List Compensation Grades
+      description: Retrieves compensation grade profiles with pay ranges, midpoints, and band information.
+      tags:
+      - Compensation Grades
+      parameters:
+      - name: limit
+        in: query
+        description: Maximum number of records to return
+        schema:
+          type: integer
+          default: 100
+        example: 100
+      - name: offset
+        in: query
+        description: Number of records to skip
+        schema:
+          type: integer
+          default: 0
+        example: 0
+      responses:
+        '200':
+          description: A list of compensation grades
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompensationGradesResponse'
+              examples:
+                ListCompensationGrades200Example:
+                  summary: Default listCompensationGrades 200 response
+                  x-microcks-default: true
+                  value:
+                    total: 12
+                    data:
+                    - id: CG-001
+                      name: Grade 5
+                      profile: Software Engineer
+                      minimumPay: 85000
+                      midpointPay: 105000
+                      maximumPay: 125000
+                      currency: USD
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /compensationGrades/{gradeId}:
+    get:
+      operationId: getCompensationGrade
+      summary: Workday Get Compensation Grade
+      description: Retrieves details for a specific compensation grade including pay ranges and eligibility criteria.
+      tags:
+      - Compensation Grades
+      parameters:
+      - name: gradeId
+        in: path
+        required: true
+        description: Unique identifier for the compensation grade
+        schema:
+          type: string
+        example: CG-001
+      responses:
+        '200':
+          description: A compensation grade
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompensationGrade'
+              examples:
+                GetCompensationGrade200Example:
+                  summary: Default getCompensationGrade 200 response
+                  x-microcks-default: true
+                  value:
+                    id: CG-001
+                    name: Grade 5
+                    profile: Software Engineer
+                    minimumPay: 85000
+                    midpointPay: 105000
+                    maximumPay: 125000
+                    currency: USD
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    CompensationGradesResponse:
+      type: object
+      description: Paginated response containing compensation grades
+      properties:
+        total:
+          type: integer
+          description: Total number of compensation grades
+          example: 12
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompensationGrade'
+    CompensationGrade:
+      type: object
+      description: A compensation grade profile with pay range information
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the compensation grade
+          example: CG-001
+        name:
+          type: string
+          description: Grade name or level
+          example: Grade 5
+        profile:
+          type: string
+          description: Job profile or family associated with this grade
+          example: Software Engineer
+        minimumPay:
+          type: number
+          description: Minimum pay for this grade
+          example: 85000
+        midpointPay:
+          type: number
+          description: Midpoint pay for this grade
+          example: 105000
+        maximumPay:
+          type: number
+          description: Maximum pay for this grade
+          example: 125000
+        currency:
+          type: string
+          description: Currency code for monetary values
+          example: USD
+        effectiveDate:
+          type: string
+          format: date
+          description: Effective date for this grade
+          example: '2026-01-01'
+    ErrorResponse:
+      type: object
+      description: Workday API error response
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: INVALID_REQUEST
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid compensation plan ID
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Unauthorized401Example:
+              summary: Unauthorized example
+              x-microcks-default: true
+              value:
+                error: UNAUTHORIZED
+                message: Authentication required
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            NotFound404Example:
+              summary: Not found example
+              x-microcks-default: true
+              value:
+                error: NOT_FOUND
+                message: The requested resource was not found
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Workday OAuth 2.0 authentication
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            compensation.read: Read compensation data
+            compensation.write: Write compensation data

@@ -1,0 +1,334 @@
+openapi: 3.0.3
+info:
+  title: Workday Advanced Compensation Bonus Plans Employee Compensation API
+  description: The Workday Advanced Compensation API provides RESTful access to compensation management capabilities including compensation plans, merit increases, bonuses, stock awards, compensation grades, budgets, and review processes. The API enables organizations to programmatically manage their total compensation strategy, administer compensation cycles, and integrate compensation data with other systems.
+  version: v41.1
+  contact:
+    name: Workday Developer Support
+    url: https://community.workday.com/
+  x-generated-from: documentation
+servers:
+- url: https://{tenant}.workday.com/api/compensation/v1
+  description: Workday tenant REST API endpoint
+  variables:
+    tenant:
+      default: wd2-impl-services1
+      description: Your Workday tenant hostname
+security:
+- oauth2: []
+tags:
+- name: Employee Compensation
+  description: Manage individual employee compensation packages
+paths:
+  /employees/{employeeId}/compensation:
+    get:
+      operationId: getEmployeeCompensation
+      summary: Workday Get Employee Compensation
+      description: Retrieves the current compensation package for a specific employee including base pay, bonuses, equity, and total compensation.
+      tags:
+      - Employee Compensation
+      parameters:
+      - name: employeeId
+        in: path
+        required: true
+        description: Workday employee identifier
+        schema:
+          type: string
+        example: EMP-12345
+      responses:
+        '200':
+          description: Employee compensation details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeCompensation'
+              examples:
+                GetEmployeeCompensation200Example:
+                  summary: Default getEmployeeCompensation 200 response
+                  x-microcks-default: true
+                  value:
+                    employeeId: EMP-12345
+                    employeeName: Jane Smith
+                    effectiveDate: '2026-01-01'
+                    basePay:
+                      amount: 110000
+                      currency: USD
+                      frequency: ANNUAL
+                    bonusTarget:
+                      amount: 16500
+                      currency: USD
+                      percent: 15
+                    stockGrant:
+                      shareCount: 200
+                      vestingSchedule: FOUR_YEAR_CLIFF
+                    totalCompensation: 155000
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: submitCompensationChange
+      summary: Workday Submit Compensation Change
+      description: Submits a compensation change request for an employee including base pay changes, bonus adjustments, and equity grants.
+      tags:
+      - Employee Compensation
+      parameters:
+      - name: employeeId
+        in: path
+        required: true
+        description: Workday employee identifier
+        schema:
+          type: string
+        example: EMP-12345
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompensationChangeRequest'
+            examples:
+              SubmitCompensationChangeRequestExample:
+                summary: Default submitCompensationChange request
+                x-microcks-default: true
+                value:
+                  effectiveDate: '2026-04-01'
+                  reason: MERIT_INCREASE
+                  basePay:
+                    amount: 115000
+                    currency: USD
+                    frequency: ANNUAL
+                  comment: Annual merit increase based on performance review
+      responses:
+        '201':
+          description: Compensation change submitted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompensationChangeResponse'
+              examples:
+                SubmitCompensationChange201Example:
+                  summary: Default submitCompensationChange 201 response
+                  x-microcks-default: true
+                  value:
+                    requestId: REQ-98765
+                    status: PENDING_APPROVAL
+                    employeeId: EMP-12345
+                    effectiveDate: '2026-04-01'
+                    submittedAt: '2026-03-15T10:30:00Z'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  responses:
+    Forbidden:
+      description: Insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Forbidden403Example:
+              summary: Forbidden example
+              x-microcks-default: true
+              value:
+                error: FORBIDDEN
+                message: Insufficient permissions to access this resource
+    BadRequest:
+      description: Invalid request parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            BadRequest400Example:
+              summary: Bad request example
+              x-microcks-default: true
+              value:
+                error: INVALID_REQUEST
+                message: Invalid request parameters
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            NotFound404Example:
+              summary: Not found example
+              x-microcks-default: true
+              value:
+                error: NOT_FOUND
+                message: The requested resource was not found
+  schemas:
+    CompensationChangeRequest:
+      type: object
+      description: Request to change employee compensation
+      required:
+      - effectiveDate
+      - reason
+      properties:
+        effectiveDate:
+          type: string
+          format: date
+          description: Date when the change takes effect
+          example: '2026-04-01'
+        reason:
+          type: string
+          description: Reason for the compensation change
+          enum:
+          - MERIT_INCREASE
+          - PROMOTION
+          - MARKET_ADJUSTMENT
+          - EQUITY_ADJUSTMENT
+          - ROLE_CHANGE
+          example: MERIT_INCREASE
+        basePay:
+          $ref: '#/components/schemas/PayComponent'
+        bonusTarget:
+          $ref: '#/components/schemas/BonusComponent'
+        comment:
+          type: string
+          description: Optional comment for the change request
+          example: Annual merit increase based on performance review
+    PayComponent:
+      type: object
+      description: Base pay component
+      properties:
+        amount:
+          type: number
+          description: Pay amount
+          example: 110000
+        currency:
+          type: string
+          description: Currency code
+          example: USD
+        frequency:
+          type: string
+          description: Pay frequency
+          enum:
+          - ANNUAL
+          - MONTHLY
+          - BIWEEKLY
+          - WEEKLY
+          - HOURLY
+          example: ANNUAL
+    EmployeeCompensation:
+      type: object
+      description: Current compensation package for an employee
+      properties:
+        employeeId:
+          type: string
+          description: Workday employee identifier
+          example: EMP-12345
+        employeeName:
+          type: string
+          description: Employee full name
+          example: Jane Smith
+        effectiveDate:
+          type: string
+          format: date
+          description: Effective date of current compensation
+          example: '2026-01-01'
+        basePay:
+          $ref: '#/components/schemas/PayComponent'
+        bonusTarget:
+          $ref: '#/components/schemas/BonusComponent'
+        stockGrant:
+          $ref: '#/components/schemas/StockComponent'
+        totalCompensation:
+          type: number
+          description: Total target compensation value
+          example: 155000
+    BonusComponent:
+      type: object
+      description: Bonus target component
+      properties:
+        amount:
+          type: number
+          description: Target bonus amount
+          example: 16500
+        currency:
+          type: string
+          description: Currency code
+          example: USD
+        percent:
+          type: number
+          description: Target bonus as percentage of base
+          example: 15
+    CompensationChangeResponse:
+      type: object
+      description: Response from a compensation change submission
+      properties:
+        requestId:
+          type: string
+          description: Unique identifier for the change request
+          example: REQ-98765
+        status:
+          type: string
+          description: Current status of the request
+          enum:
+          - PENDING_APPROVAL
+          - APPROVED
+          - REJECTED
+          - IN_PROGRESS
+          example: PENDING_APPROVAL
+        employeeId:
+          type: string
+          description: Employee identifier
+          example: EMP-12345
+        effectiveDate:
+          type: string
+          format: date
+          description: Effective date of the change
+          example: '2026-04-01'
+        submittedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the request was submitted
+          example: '2026-03-15T10:30:00Z'
+    StockComponent:
+      type: object
+      description: Stock grant component
+      properties:
+        shareCount:
+          type: integer
+          description: Number of shares granted
+          example: 200
+        vestingSchedule:
+          type: string
+          description: Vesting schedule
+          example: FOUR_YEAR_CLIFF
+    ErrorResponse:
+      type: object
+      description: Workday API error response
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: INVALID_REQUEST
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid compensation plan ID
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Workday OAuth 2.0 authentication
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            compensation.read: Read compensation data
+            compensation.write: Write compensation data

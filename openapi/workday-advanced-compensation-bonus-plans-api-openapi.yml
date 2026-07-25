@@ -1,0 +1,161 @@
+openapi: 3.0.3
+info:
+  title: Workday Advanced Compensation Bonus Plans API
+  description: The Workday Advanced Compensation API provides RESTful access to compensation management capabilities including compensation plans, merit increases, bonuses, stock awards, compensation grades, budgets, and review processes. The API enables organizations to programmatically manage their total compensation strategy, administer compensation cycles, and integrate compensation data with other systems.
+  version: v41.1
+  contact:
+    name: Workday Developer Support
+    url: https://community.workday.com/
+  x-generated-from: documentation
+servers:
+- url: https://{tenant}.workday.com/api/compensation/v1
+  description: Workday tenant REST API endpoint
+  variables:
+    tenant:
+      default: wd2-impl-services1
+      description: Your Workday tenant hostname
+security:
+- oauth2: []
+tags:
+- name: Bonus Plans
+  description: Manage bonus and incentive plans
+paths:
+  /bonusPlans:
+    get:
+      operationId: listBonusPlans
+      summary: Workday List Bonus Plans
+      description: Retrieves bonus and incentive plans including target percentages, performance multipliers, and eligibility rules.
+      tags:
+      - Bonus Plans
+      parameters:
+      - name: limit
+        in: query
+        description: Maximum number of records to return
+        schema:
+          type: integer
+          default: 100
+        example: 100
+      - name: offset
+        in: query
+        description: Number of records to skip
+        schema:
+          type: integer
+          default: 0
+        example: 0
+      responses:
+        '200':
+          description: A list of bonus plans
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BonusPlansResponse'
+              examples:
+                ListBonusPlans200Example:
+                  summary: Default listBonusPlans 200 response
+                  x-microcks-default: true
+                  value:
+                    total: 5
+                    data:
+                    - id: BP-001
+                      name: Annual Performance Bonus
+                      targetPercent: 15
+                      currency: USD
+                      frequency: ANNUAL
+                      status: ACTIVE
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Unauthorized401Example:
+              summary: Unauthorized example
+              x-microcks-default: true
+              value:
+                error: UNAUTHORIZED
+                message: Authentication required
+  schemas:
+    BonusPlan:
+      type: object
+      description: A bonus or incentive compensation plan
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the bonus plan
+          example: BP-001
+        name:
+          type: string
+          description: Name of the bonus plan
+          example: Annual Performance Bonus
+        targetPercent:
+          type: number
+          description: Target bonus as percentage of base salary
+          example: 15
+        currency:
+          type: string
+          description: Currency code
+          example: USD
+        frequency:
+          type: string
+          description: Payment frequency
+          enum:
+          - ANNUAL
+          - SEMI_ANNUAL
+          - QUARTERLY
+          - MONTHLY
+          example: ANNUAL
+        status:
+          type: string
+          description: Plan status
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - DRAFT
+          example: ACTIVE
+    ErrorResponse:
+      type: object
+      description: Workday API error response
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: INVALID_REQUEST
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid compensation plan ID
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
+    BonusPlansResponse:
+      type: object
+      description: Paginated response containing bonus plans
+      properties:
+        total:
+          type: integer
+          description: Total number of bonus plans
+          example: 5
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BonusPlan'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Workday OAuth 2.0 authentication
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            compensation.read: Read compensation data
+            compensation.write: Write compensation data

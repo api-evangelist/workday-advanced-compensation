@@ -1,0 +1,160 @@
+openapi: 3.0.3
+info:
+  title: Workday Advanced Compensation Bonus Plans Merit Plans API
+  description: The Workday Advanced Compensation API provides RESTful access to compensation management capabilities including compensation plans, merit increases, bonuses, stock awards, compensation grades, budgets, and review processes. The API enables organizations to programmatically manage their total compensation strategy, administer compensation cycles, and integrate compensation data with other systems.
+  version: v41.1
+  contact:
+    name: Workday Developer Support
+    url: https://community.workday.com/
+  x-generated-from: documentation
+servers:
+- url: https://{tenant}.workday.com/api/compensation/v1
+  description: Workday tenant REST API endpoint
+  variables:
+    tenant:
+      default: wd2-impl-services1
+      description: Your Workday tenant hostname
+security:
+- oauth2: []
+tags:
+- name: Merit Plans
+  description: Manage merit increase plans and cycles
+paths:
+  /meritPlans:
+    get:
+      operationId: listMeritPlans
+      summary: Workday List Merit Plans
+      description: Retrieves merit increase plans with guidelines, matrices, and budget allocations.
+      tags:
+      - Merit Plans
+      parameters:
+      - name: limit
+        in: query
+        description: Maximum number of records to return
+        schema:
+          type: integer
+          default: 100
+        example: 100
+      - name: offset
+        in: query
+        description: Number of records to skip
+        schema:
+          type: integer
+          default: 0
+        example: 0
+      responses:
+        '200':
+          description: A list of merit plans
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeritPlansResponse'
+              examples:
+                ListMeritPlans200Example:
+                  summary: Default listMeritPlans 200 response
+                  x-microcks-default: true
+                  value:
+                    total: 3
+                    data:
+                    - id: MP-001
+                      name: 2026 Annual Merit Increase
+                      effectiveDate: '2026-04-01'
+                      budgetPercent: 3.5
+                      status: ACTIVE
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    MeritPlansResponse:
+      type: object
+      description: Paginated response containing merit plans
+      properties:
+        total:
+          type: integer
+          description: Total number of merit plans
+          example: 3
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MeritPlan'
+    MeritPlan:
+      type: object
+      description: A merit increase plan with guidelines and budget
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the merit plan
+          example: MP-001
+        name:
+          type: string
+          description: Name of the merit plan
+          example: 2026 Annual Merit Increase
+        effectiveDate:
+          type: string
+          format: date
+          description: Date when merit increases take effect
+          example: '2026-04-01'
+        budgetPercent:
+          type: number
+          description: Budget as percentage of eligible payroll
+          example: 3.5
+        status:
+          type: string
+          description: Current status of the merit plan
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - DRAFT
+          example: ACTIVE
+        guidelineMin:
+          type: number
+          description: Minimum guideline percentage for merit increases
+          example: 1.5
+        guidelineMax:
+          type: number
+          description: Maximum guideline percentage for merit increases
+          example: 6.0
+    ErrorResponse:
+      type: object
+      description: Workday API error response
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: INVALID_REQUEST
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid compensation plan ID
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Unauthorized401Example:
+              summary: Unauthorized example
+              x-microcks-default: true
+              value:
+                error: UNAUTHORIZED
+                message: Authentication required
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Workday OAuth 2.0 authentication
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            compensation.read: Read compensation data
+            compensation.write: Write compensation data
