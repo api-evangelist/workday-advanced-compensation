@@ -1,133 +1,529 @@
 aid: workday-advanced-compensation
 name: Workday Advanced Compensation
 description: API for managing compensation plans, budgets, allocations, and related processes in Workday.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/workday-advanced-compensation.png
 url: https://raw.githubusercontent.com/api-evangelist/workday-advanced-compensation/refs/heads/main/apis.yml
 created: '2024-01-15'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - name: Workday Advanced Compensation API
-    description: >-
-      RESTful and SOAP APIs for managing compensation plans, merit increases, bonuses, stock awards, and compensation
-      budgets.
-    image: https://www.workday.com/content/dam/web/images/logo.png
-    humanUrl: https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
-    baseUrl: https://wd2-impl-services1.workday.com/ccx/service
-    tags:
-      - Bonuses
-      - Compensation
-      - HR
-      - Merit
-      - Payroll
-      - Salary Planning
-      - Stock Awards
-    properties:
-      - type: Documentation
-        url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
-      - type: OpenAPI
-        url: >-
-          https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/Compensation.yaml
-      - type: Authentication
-        url: >-
-          https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
-      - type: Versioning
-        url: >-
-          https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
-      - type: OpenAPI
-        url: openapi/workday-advanced-compensation-openapi.yml
-      - type: JSONSchema
-        url: json-schema/workday-advanced-compensation-compensation-plan-schema.json
-      - type: JSONSchema
-        url: json-schema/workday-advanced-compensation-compensation-grade-schema.json
-      - type: JSONSchema
-        url: json-schema/workday-advanced-compensation-merit-plan-schema.json
-      - type: JSONSchema
-        url: json-schema/workday-advanced-compensation-bonus-plan-schema.json
-      - type: JSONSchema
-        url: json-schema/workday-advanced-compensation-stock-plan-schema.json
-      - type: JSONSchema
-        url: json-schema/workday-advanced-compensation-compensation-budget-schema.json
-      - type: JSONSchema
-        url: json-schema/workday-advanced-compensation-compensation-review-schema.json
-      - type: JSONSchema
-        url: json-schema/workday-advanced-compensation-employee-compensation-schema.json
-      - type: JSONSchema
-        url: json-schema/workday-advanced-compensation-compensation-change-request-schema.json
-      - type: JSONStructure
-        url: json-structure/workday-advanced-compensation-compensation-plan-structure.json
-      - type: JSONStructure
-        url: json-structure/workday-advanced-compensation-compensation-grade-structure.json
-      - type: JSONStructure
-        url: json-structure/workday-advanced-compensation-merit-plan-structure.json
-      - type: JSONStructure
-        url: json-structure/workday-advanced-compensation-bonus-plan-structure.json
-      - type: JSONStructure
-        url: json-structure/workday-advanced-compensation-stock-plan-structure.json
-      - type: JSONStructure
-        url: json-structure/workday-advanced-compensation-compensation-budget-structure.json
-      - type: JSONStructure
-        url: json-structure/workday-advanced-compensation-compensation-review-structure.json
-      - type: JSONStructure
-        url: json-structure/workday-advanced-compensation-employee-compensation-structure.json
-      - type: JSONStructure
-        url: json-structure/workday-advanced-compensation-compensation-change-request-structure.json
-      - type: JSONLD
-        url: json-ld/workday-advanced-compensation-context.jsonld
-      - type: SpectralRules
-        url: rules/workday-advanced-compensation-spectral-rules.yml
-      - type: X-NaftikoCapability-CompensationManagement
-        url: capabilities/compensation-management.yaml
-      - type: X-NaftikoCapability-AdvancedCompensationShared
-        url: capabilities/shared/advanced-compensation.yaml
-      - type: Vocabulary
-        url: vocabulary/workday-advanced-compensation-vocabulary.yml
-    contact:
-      - type: Support
-        url: https://www.workday.com/en-us/customer-experience/support.html
-      - type: Community
-        url: https://community.workday.com/
-    operations:
-      - name: Get Compensation Plans
-        description: Retrieve compensation plan details including eligibility rules and budget pools
-        method: GET
-        path: /Compensation_Plan
-      - name: Submit Compensation Changes
-        description: Submit compensation change requests for employees
-        method: POST
-        path: /Submit_Compensation_Change_Request
-      - name: Get Compensation Budgets
-        description: Retrieve compensation budget information and allocations
-        method: GET
-        path: /Compensation_Budget
-      - name: Get Merit Plans
-        description: Retrieve merit increase plan configurations
-        method: GET
-        path: /Merit_Plan
-      - name: Get Bonus Plans
-        description: Retrieve bonus plan details and award criteria
-        method: GET
-        path: /Bonus_Plan
-      - name: Get Stock Plans
-        description: Retrieve stock and equity compensation plan information
-        method: GET
-        path: /Stock_Plan
-      - name: Get Compensation Grades
-        description: Retrieve compensation grade profiles and ranges
-        method: GET
-        path: /Compensation_Grade_Profile
-      - name: Get Salary Survey Data
-        description: Retrieve market survey data and benchmarking information
-        method: GET
-        path: /Salary_Survey_Data
-      - name: Get Compensation Review Process
-        description: Retrieve compensation review process status and workflow
-        method: GET
-        path: /Compensation_Review_Process
-      - name: Update Compensation Package
-        description: Update employee compensation package details
-        method: PUT
-        path: /Compensation_Package
+- aid: workday-advanced-compensation:workday-advanced-compensation-bonus-plans-api
+  name: Workday Advanced Compensation Bonus Plans API
+  description: Manage bonus and incentive plans
+  tags:
+  - Bonus Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-advanced-compensation-bonus-plans-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
+  - type: Authentication
+    url: >-
+      https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
+  - type: Versioning
+    url: >-
+      https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-grade-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-merit-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-bonus-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-stock-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-budget-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-review-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-employee-compensation-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-change-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-grade-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-merit-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-bonus-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-stock-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-budget-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-review-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-employee-compensation-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-change-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-advanced-compensation-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-advanced-compensation-spectral-rules.yml
+  - type: X-NaftikoCapability-CompensationManagement
+    url: capabilities/compensation-management.yaml
+  - type: X-NaftikoCapability-AdvancedCompensationShared
+    url: capabilities/shared/advanced-compensation.yaml
+  - type: Vocabulary
+    url: vocabulary/workday-advanced-compensation-vocabulary.yml
+- aid: workday-advanced-compensation:workday-advanced-compensation-compensation-budgets-api
+  name: Workday Advanced Compensation Compensation Budgets API
+  description: Manage compensation budgets and allocations
+  tags:
+  - Compensation Budgets
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-advanced-compensation-compensation-budgets-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
+  - type: Authentication
+    url: >-
+      https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
+  - type: Versioning
+    url: >-
+      https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-grade-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-merit-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-bonus-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-stock-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-budget-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-review-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-employee-compensation-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-change-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-grade-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-merit-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-bonus-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-stock-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-budget-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-review-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-employee-compensation-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-change-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-advanced-compensation-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-advanced-compensation-spectral-rules.yml
+  - type: X-NaftikoCapability-CompensationManagement
+    url: capabilities/compensation-management.yaml
+  - type: X-NaftikoCapability-AdvancedCompensationShared
+    url: capabilities/shared/advanced-compensation.yaml
+  - type: Vocabulary
+    url: vocabulary/workday-advanced-compensation-vocabulary.yml
+- aid: workday-advanced-compensation:workday-advanced-compensation-compensation-grades-api
+  name: Workday Advanced Compensation Compensation Grades API
+  description: Manage compensation grade profiles and pay ranges
+  tags:
+  - Compensation Grades
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-advanced-compensation-compensation-grades-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
+  - type: Authentication
+    url: >-
+      https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
+  - type: Versioning
+    url: >-
+      https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-grade-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-merit-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-bonus-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-stock-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-budget-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-review-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-employee-compensation-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-change-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-grade-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-merit-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-bonus-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-stock-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-budget-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-review-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-employee-compensation-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-change-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-advanced-compensation-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-advanced-compensation-spectral-rules.yml
+  - type: X-NaftikoCapability-CompensationManagement
+    url: capabilities/compensation-management.yaml
+  - type: X-NaftikoCapability-AdvancedCompensationShared
+    url: capabilities/shared/advanced-compensation.yaml
+  - type: Vocabulary
+    url: vocabulary/workday-advanced-compensation-vocabulary.yml
+- aid: workday-advanced-compensation:workday-advanced-compensation-compensation-plans-api
+  name: Workday Advanced Compensation Compensation Plans API
+  description: Manage compensation plans and eligibility rules
+  tags:
+  - Compensation Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-advanced-compensation-compensation-plans-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
+  - type: Authentication
+    url: >-
+      https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
+  - type: Versioning
+    url: >-
+      https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-grade-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-merit-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-bonus-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-stock-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-budget-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-review-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-employee-compensation-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-change-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-grade-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-merit-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-bonus-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-stock-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-budget-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-review-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-employee-compensation-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-change-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-advanced-compensation-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-advanced-compensation-spectral-rules.yml
+  - type: X-NaftikoCapability-CompensationManagement
+    url: capabilities/compensation-management.yaml
+  - type: X-NaftikoCapability-AdvancedCompensationShared
+    url: capabilities/shared/advanced-compensation.yaml
+  - type: Vocabulary
+    url: vocabulary/workday-advanced-compensation-vocabulary.yml
+- aid: workday-advanced-compensation:workday-advanced-compensation-compensation-reviews-api
+  name: Workday Advanced Compensation Compensation Reviews API
+  description: Manage compensation review processes and cycles
+  tags:
+  - Compensation Reviews
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-advanced-compensation-compensation-reviews-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
+  - type: Authentication
+    url: >-
+      https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
+  - type: Versioning
+    url: >-
+      https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-grade-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-merit-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-bonus-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-stock-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-budget-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-review-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-employee-compensation-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-change-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-grade-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-merit-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-bonus-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-stock-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-budget-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-review-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-employee-compensation-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-change-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-advanced-compensation-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-advanced-compensation-spectral-rules.yml
+  - type: X-NaftikoCapability-CompensationManagement
+    url: capabilities/compensation-management.yaml
+  - type: X-NaftikoCapability-AdvancedCompensationShared
+    url: capabilities/shared/advanced-compensation.yaml
+  - type: Vocabulary
+    url: vocabulary/workday-advanced-compensation-vocabulary.yml
+- aid: workday-advanced-compensation:workday-advanced-compensation-employee-compensation-api
+  name: Workday Advanced Compensation Employee Compensation API
+  description: Manage individual employee compensation packages
+  tags:
+  - Employee Compensation
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-advanced-compensation-employee-compensation-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
+  - type: Authentication
+    url: >-
+      https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
+  - type: Versioning
+    url: >-
+      https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-grade-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-merit-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-bonus-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-stock-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-budget-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-review-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-employee-compensation-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-change-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-grade-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-merit-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-bonus-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-stock-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-budget-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-review-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-employee-compensation-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-change-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-advanced-compensation-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-advanced-compensation-spectral-rules.yml
+  - type: X-NaftikoCapability-CompensationManagement
+    url: capabilities/compensation-management.yaml
+  - type: X-NaftikoCapability-AdvancedCompensationShared
+    url: capabilities/shared/advanced-compensation.yaml
+  - type: Vocabulary
+    url: vocabulary/workday-advanced-compensation-vocabulary.yml
+- aid: workday-advanced-compensation:workday-advanced-compensation-merit-plans-api
+  name: Workday Advanced Compensation Merit Plans API
+  description: Manage merit increase plans and cycles
+  tags:
+  - Merit Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-advanced-compensation-merit-plans-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
+  - type: Authentication
+    url: >-
+      https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
+  - type: Versioning
+    url: >-
+      https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-grade-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-merit-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-bonus-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-stock-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-budget-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-review-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-employee-compensation-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-change-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-grade-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-merit-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-bonus-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-stock-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-budget-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-review-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-employee-compensation-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-change-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-advanced-compensation-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-advanced-compensation-spectral-rules.yml
+  - type: X-NaftikoCapability-CompensationManagement
+    url: capabilities/compensation-management.yaml
+  - type: X-NaftikoCapability-AdvancedCompensationShared
+    url: capabilities/shared/advanced-compensation.yaml
+  - type: Vocabulary
+    url: vocabulary/workday-advanced-compensation-vocabulary.yml
+- aid: workday-advanced-compensation:workday-advanced-compensation-stock-plans-api
+  name: Workday Advanced Compensation Stock Plans API
+  description: Manage equity and stock compensation plans
+  tags:
+  - Stock Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-advanced-compensation-stock-plans-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
+  - type: Authentication
+    url: >-
+      https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
+  - type: Versioning
+    url: >-
+      https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-grade-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-merit-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-bonus-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-stock-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-budget-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-review-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-employee-compensation-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-advanced-compensation-compensation-change-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-grade-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-merit-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-bonus-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-stock-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-budget-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-review-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-employee-compensation-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-advanced-compensation-compensation-change-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-advanced-compensation-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-advanced-compensation-spectral-rules.yml
+  - type: X-NaftikoCapability-CompensationManagement
+    url: capabilities/compensation-management.yaml
+  - type: X-NaftikoCapability-AdvancedCompensationShared
+    url: capabilities/shared/advanced-compensation.yaml
+  - type: Vocabulary
+    url: vocabulary/workday-advanced-compensation-vocabulary.yml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
