@@ -1,0 +1,28 @@
+{
+  "provider": "workday-advanced-compensation",
+  "sources": [
+    "workday-advanced-compensation-bonus-plans-api-openapi.yml",
+    "workday-advanced-compensation-compensation-budgets-api-openapi.yml",
+    "workday-advanced-compensation-compensation-grades-api-openapi.yml",
+    "workday-advanced-compensation-compensation-plans-api-openapi.yml",
+    "workday-advanced-compensation-compensation-reviews-api-openapi.yml",
+    "workday-advanced-compensation-employee-compensation-api-openapi.yml",
+    "workday-advanced-compensation-merit-plans-api-openapi.yml",
+    "workday-advanced-compensation-stock-plans-api-openapi.yml"
+  ],
+  "outputs": [
+    "workday-advanced-compensation-bonus-plans-api-openapi.yml",
+    "workday-advanced-compensation-compensation-budgets-api-openapi.yml",
+    "workday-advanced-compensation-compensation-grades-api-openapi.yml",
+    "workday-advanced-compensation-compensation-plans-api-openapi.yml",
+    "workday-advanced-compensation-compensation-reviews-api-openapi.yml",
+    "workday-advanced-compensation-employee-compensation-api-openapi.yml",
+    "workday-advanced-compensation-merit-plans-api-openapi.yml",
+    "workday-advanced-compensation-stock-plans-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
