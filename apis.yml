@@ -77,10 +77,6 @@ apis:
     url: json-ld/workday-advanced-compensation-context.jsonld
   - type: SpectralRules
     url: rules/workday-advanced-compensation-spectral-rules.yml
-  - type: X-NaftikoCapability-CompensationManagement
-    url: capabilities/compensation-management.yaml
-  - type: X-NaftikoCapability-AdvancedCompensationShared
-    url: capabilities/shared/advanced-compensation.yaml
   - type: Vocabulary
     url: vocabulary/workday-advanced-compensation-vocabulary.yml
 - aid: workday-advanced-compensation:workday-advanced-compensation-compensation-budgets-api
@@ -140,10 +136,6 @@ apis:
     url: json-ld/workday-advanced-compensation-context.jsonld
   - type: SpectralRules
     url: rules/workday-advanced-compensation-spectral-rules.yml
-  - type: X-NaftikoCapability-CompensationManagement
-    url: capabilities/compensation-management.yaml
-  - type: X-NaftikoCapability-AdvancedCompensationShared
-    url: capabilities/shared/advanced-compensation.yaml
   - type: Vocabulary
     url: vocabulary/workday-advanced-compensation-vocabulary.yml
 - aid: workday-advanced-compensation:workday-advanced-compensation-compensation-grades-api
@@ -203,10 +195,6 @@ apis:
     url: json-ld/workday-advanced-compensation-context.jsonld
   - type: SpectralRules
     url: rules/workday-advanced-compensation-spectral-rules.yml
-  - type: X-NaftikoCapability-CompensationManagement
-    url: capabilities/compensation-management.yaml
-  - type: X-NaftikoCapability-AdvancedCompensationShared
-    url: capabilities/shared/advanced-compensation.yaml
   - type: Vocabulary
     url: vocabulary/workday-advanced-compensation-vocabulary.yml
 - aid: workday-advanced-compensation:workday-advanced-compensation-compensation-plans-api
@@ -266,10 +254,6 @@ apis:
     url: json-ld/workday-advanced-compensation-context.jsonld
   - type: SpectralRules
     url: rules/workday-advanced-compensation-spectral-rules.yml
-  - type: X-NaftikoCapability-CompensationManagement
-    url: capabilities/compensation-management.yaml
-  - type: X-NaftikoCapability-AdvancedCompensationShared
-    url: capabilities/shared/advanced-compensation.yaml
   - type: Vocabulary
     url: vocabulary/workday-advanced-compensation-vocabulary.yml
 - aid: workday-advanced-compensation:workday-advanced-compensation-compensation-reviews-api
@@ -329,10 +313,6 @@ apis:
     url: json-ld/workday-advanced-compensation-context.jsonld
   - type: SpectralRules
     url: rules/workday-advanced-compensation-spectral-rules.yml
-  - type: X-NaftikoCapability-CompensationManagement
-    url: capabilities/compensation-management.yaml
-  - type: X-NaftikoCapability-AdvancedCompensationShared
-    url: capabilities/shared/advanced-compensation.yaml
   - type: Vocabulary
     url: vocabulary/workday-advanced-compensation-vocabulary.yml
 - aid: workday-advanced-compensation:workday-advanced-compensation-employee-compensation-api
@@ -392,10 +372,6 @@ apis:
     url: json-ld/workday-advanced-compensation-context.jsonld
   - type: SpectralRules
     url: rules/workday-advanced-compensation-spectral-rules.yml
-  - type: X-NaftikoCapability-CompensationManagement
-    url: capabilities/compensation-management.yaml
-  - type: X-NaftikoCapability-AdvancedCompensationShared
-    url: capabilities/shared/advanced-compensation.yaml
   - type: Vocabulary
     url: vocabulary/workday-advanced-compensation-vocabulary.yml
 - aid: workday-advanced-compensation:workday-advanced-compensation-merit-plans-api
@@ -455,10 +431,6 @@ apis:
     url: json-ld/workday-advanced-compensation-context.jsonld
   - type: SpectralRules
     url: rules/workday-advanced-compensation-spectral-rules.yml
-  - type: X-NaftikoCapability-CompensationManagement
-    url: capabilities/compensation-management.yaml
-  - type: X-NaftikoCapability-AdvancedCompensationShared
-    url: capabilities/shared/advanced-compensation.yaml
   - type: Vocabulary
     url: vocabulary/workday-advanced-compensation-vocabulary.yml
 - aid: workday-advanced-compensation:workday-advanced-compensation-stock-plans-api
@@ -518,10 +490,6 @@ apis:
     url: json-ld/workday-advanced-compensation-context.jsonld
   - type: SpectralRules
     url: rules/workday-advanced-compensation-spectral-rules.yml
-  - type: X-NaftikoCapability-CompensationManagement
-    url: capabilities/compensation-management.yaml
-  - type: X-NaftikoCapability-AdvancedCompensationShared
-    url: capabilities/shared/advanced-compensation.yaml
   - type: Vocabulary
     url: vocabulary/workday-advanced-compensation-vocabulary.yml
 maintainers:
@@ -559,9 +527,5 @@ common:
     url: json-ld/workday-advanced-compensation-context.jsonld
   - type: SpectralRules
     url: rules/workday-advanced-compensation-spectral-rules.yml
-  - type: X-NaftikoCapability-CompensationManagement
-    url: capabilities/compensation-management.yaml
-  - type: X-NaftikoCapability-AdvancedCompensationShared
-    url: capabilities/shared/advanced-compensation.yaml
   - type: Vocabulary
     url: vocabulary/workday-advanced-compensation-vocabulary.yml
