@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Workday Advanced Compensation Bonus Plans Employee Compensation API",
+    "version": "v41.1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Employee Compensation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Workday Get Employee Compensation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.workday.com/api/compensation/v1/employees/:employeeId/compensation",
+            "params": [
+              {
+                "name": "employeeId",
+                "value": "EMP-12345",
+                "type": "path",
+                "description": "Workday employee identifier"
+              }
+            ]
+          },
+          "docs": "Retrieves the current compensation package for a specific employee including base pay, bonuses, equity, and total compensation."
+        },
+        {
+          "info": {
+            "name": "Workday Submit Compensation Change",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.workday.com/api/compensation/v1/employees/:employeeId/compensation",
+            "params": [
+              {
+                "name": "employeeId",
+                "value": "EMP-12345",
+                "type": "path",
+                "description": "Workday employee identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a compensation change request for an employee including base pay changes, bonus adjustments, and equity grants."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
