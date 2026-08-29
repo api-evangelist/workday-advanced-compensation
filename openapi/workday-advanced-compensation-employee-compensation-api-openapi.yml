@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Workday Advanced Compensation Bonus Plans Employee Compensation API
   description: The Workday Advanced Compensation API provides RESTful access to compensation management capabilities including compensation plans, merit increases, bonuses, stock awards, compensation grades, budgets, and review processes. The API enables organizations to programmatically manage their total compensation strategy, administer compensation cycles, and integrate compensation data with other systems.
@@ -127,6 +127,19 @@ paths:
         dispatcher: FALLBACK
 components:
   responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            NotFound404Example:
+              summary: Not found example
+              x-microcks-default: true
+              value:
+                error: NOT_FOUND
+                message: The requested resource was not found
     Forbidden:
       description: Insufficient permissions
       content:
@@ -153,72 +166,7 @@ components:
               value:
                 error: INVALID_REQUEST
                 message: Invalid request parameters
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            NotFound404Example:
-              summary: Not found example
-              x-microcks-default: true
-              value:
-                error: NOT_FOUND
-                message: The requested resource was not found
   schemas:
-    CompensationChangeRequest:
-      type: object
-      description: Request to change employee compensation
-      required:
-      - effectiveDate
-      - reason
-      properties:
-        effectiveDate:
-          type: string
-          format: date
-          description: Date when the change takes effect
-          example: '2026-04-01'
-        reason:
-          type: string
-          description: Reason for the compensation change
-          enum:
-          - MERIT_INCREASE
-          - PROMOTION
-          - MARKET_ADJUSTMENT
-          - EQUITY_ADJUSTMENT
-          - ROLE_CHANGE
-          example: MERIT_INCREASE
-        basePay:
-          $ref: '#/components/schemas/PayComponent'
-        bonusTarget:
-          $ref: '#/components/schemas/BonusComponent'
-        comment:
-          type: string
-          description: Optional comment for the change request
-          example: Annual merit increase based on performance review
-    PayComponent:
-      type: object
-      description: Base pay component
-      properties:
-        amount:
-          type: number
-          description: Pay amount
-          example: 110000
-        currency:
-          type: string
-          description: Currency code
-          example: USD
-        frequency:
-          type: string
-          description: Pay frequency
-          enum:
-          - ANNUAL
-          - MONTHLY
-          - BIWEEKLY
-          - WEEKLY
-          - HOURLY
-          example: ANNUAL
     EmployeeCompensation:
       type: object
       description: Current compensation package for an employee
@@ -246,6 +194,28 @@ components:
           type: number
           description: Total target compensation value
           example: 155000
+    PayComponent:
+      type: object
+      description: Base pay component
+      properties:
+        amount:
+          type: number
+          description: Pay amount
+          example: 110000
+        currency:
+          type: string
+          description: Currency code
+          example: USD
+        frequency:
+          type: string
+          description: Pay frequency
+          enum:
+          - ANNUAL
+          - MONTHLY
+          - BIWEEKLY
+          - WEEKLY
+          - HOURLY
+          example: ANNUAL
     BonusComponent:
       type: object
       description: Bonus target component
@@ -293,6 +263,36 @@ components:
           format: date-time
           description: Timestamp when the request was submitted
           example: '2026-03-15T10:30:00Z'
+    CompensationChangeRequest:
+      type: object
+      description: Request to change employee compensation
+      required:
+      - effectiveDate
+      - reason
+      properties:
+        effectiveDate:
+          type: string
+          format: date
+          description: Date when the change takes effect
+          example: '2026-04-01'
+        reason:
+          type: string
+          description: Reason for the compensation change
+          enum:
+          - MERIT_INCREASE
+          - PROMOTION
+          - MARKET_ADJUSTMENT
+          - EQUITY_ADJUSTMENT
+          - ROLE_CHANGE
+          example: MERIT_INCREASE
+        basePay:
+          $ref: '#/components/schemas/PayComponent'
+        bonusTarget:
+          $ref: '#/components/schemas/BonusComponent'
+        comment:
+          type: string
+          description: Optional comment for the change request
+          example: Annual merit increase based on performance review
     StockComponent:
       type: object
       description: Stock grant component

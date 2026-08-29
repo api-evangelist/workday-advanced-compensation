@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Workday Advanced Compensation Bonus Plans Compensation Budgets API
   description: The Workday Advanced Compensation API provides RESTful access to compensation management capabilities including compensation plans, merit increases, bonuses, stock awards, compensation grades, budgets, and review processes. The API enables organizations to programmatically manage their total compensation strategy, administer compensation cycles, and integrate compensation data with other systems.
@@ -76,6 +76,18 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    CompensationBudgetsResponse:
+      type: object
+      description: Paginated response containing compensation budgets
+      properties:
+        total:
+          type: integer
+          description: Total number of budgets
+          example: 8
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompensationBudget'
     CompensationBudget:
       type: object
       description: A compensation budget with allocation and utilization data
@@ -108,18 +120,6 @@ components:
           type: integer
           description: Budget year
           example: 2026
-    CompensationBudgetsResponse:
-      type: object
-      description: Paginated response containing compensation budgets
-      properties:
-        total:
-          type: integer
-          description: Total number of budgets
-          example: 8
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CompensationBudget'
     ErrorResponse:
       type: object
       description: Workday API error response

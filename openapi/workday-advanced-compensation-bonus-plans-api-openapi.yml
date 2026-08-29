@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Workday Advanced Compensation Bonus Plans API
   description: The Workday Advanced Compensation API provides RESTful access to compensation management capabilities including compensation plans, merit increases, bonuses, stock awards, compensation grades, budgets, and review processes. The API enables organizations to programmatically manage their total compensation strategy, administer compensation cycles, and integrate compensation data with other systems.
@@ -68,20 +68,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  responses:
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Unauthorized401Example:
-              summary: Unauthorized example
-              x-microcks-default: true
-              value:
-                error: UNAUTHORIZED
-                message: Authentication required
   schemas:
     BonusPlan:
       type: object
@@ -120,6 +106,18 @@ components:
           - INACTIVE
           - DRAFT
           example: ACTIVE
+    BonusPlansResponse:
+      type: object
+      description: Paginated response containing bonus plans
+      properties:
+        total:
+          type: integer
+          description: Total number of bonus plans
+          example: 5
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BonusPlan'
     ErrorResponse:
       type: object
       description: Workday API error response
@@ -137,18 +135,20 @@ components:
           items:
             type: string
           description: Additional error details
-    BonusPlansResponse:
-      type: object
-      description: Paginated response containing bonus plans
-      properties:
-        total:
-          type: integer
-          description: Total number of bonus plans
-          example: 5
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/BonusPlan'
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Unauthorized401Example:
+              summary: Unauthorized example
+              x-microcks-default: true
+              value:
+                error: UNAUTHORIZED
+                message: Authentication required
   securitySchemes:
     oauth2:
       type: oauth2

@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Workday Advanced Compensation Bonus Plans Compensation Grades API
   description: The Workday Advanced Compensation API provides RESTful access to compensation management capabilities including compensation plans, merit increases, bonuses, stock awards, compensation grades, budgets, and review processes. The API enables organizations to programmatically manage their total compensation strategy, administer compensation cycles, and integrate compensation data with other systems.
@@ -108,6 +108,33 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            NotFound404Example:
+              summary: Not found example
+              x-microcks-default: true
+              value:
+                error: NOT_FOUND
+                message: The requested resource was not found
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Unauthorized401Example:
+              summary: Unauthorized example
+              x-microcks-default: true
+              value:
+                error: UNAUTHORIZED
+                message: Authentication required
   schemas:
     CompensationGradesResponse:
       type: object
@@ -121,6 +148,23 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CompensationGrade'
+    ErrorResponse:
+      type: object
+      description: Workday API error response
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: INVALID_REQUEST
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid compensation plan ID
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
     CompensationGrade:
       type: object
       description: A compensation grade profile with pay range information
@@ -158,50 +202,6 @@ components:
           format: date
           description: Effective date for this grade
           example: '2026-01-01'
-    ErrorResponse:
-      type: object
-      description: Workday API error response
-      properties:
-        error:
-          type: string
-          description: Error code
-          example: INVALID_REQUEST
-        message:
-          type: string
-          description: Human-readable error message
-          example: Invalid compensation plan ID
-        details:
-          type: array
-          items:
-            type: string
-          description: Additional error details
-  responses:
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Unauthorized401Example:
-              summary: Unauthorized example
-              x-microcks-default: true
-              value:
-                error: UNAUTHORIZED
-                message: Authentication required
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            NotFound404Example:
-              summary: Not found example
-              x-microcks-default: true
-              value:
-                error: NOT_FOUND
-                message: The requested resource was not found
   securitySchemes:
     oauth2:
       type: oauth2
