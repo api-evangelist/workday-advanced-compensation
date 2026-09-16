@@ -29,7 +29,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/workday-advanced-compensation.png
 url: https://raw.githubusercontent.com/api-evangelist/workday-advanced-compensation/refs/heads/main/apis.yml
 created: '2024-01-15'
-modified: '2026-05-19'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 apis:
 - aid: workday-advanced-compensation:workday-advanced-compensation-bonus-plans-api
@@ -41,14 +41,11 @@ apis:
   - type: OpenAPI
     url: openapi/workday-advanced-compensation-bonus-plans-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
+    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
   - type: Authentication
-    url: >-
-      https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
+    url: https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
   - type: Versioning
-    url: >-
-      https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
+    url: https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
   - type: JSONSchema
     url: json-schema/workday-advanced-compensation-compensation-plan-schema.json
   - type: JSONSchema
@@ -92,7 +89,7 @@ apis:
   - type: Vocabulary
     url: vocabulary/workday-advanced-compensation-vocabulary.yml
 - aid: workday-advanced-compensation:workday-advanced-compensation-compensation-budgets-api
-  name: Workday Advanced Compensation Compensation Budgets API
+  name: Workday Advanced Compensation Budgets API
   description: Manage compensation budgets and allocations
   tags:
   - Compensation Budgets
@@ -100,14 +97,11 @@ apis:
   - type: OpenAPI
     url: openapi/workday-advanced-compensation-compensation-budgets-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
+    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
   - type: Authentication
-    url: >-
-      https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
+    url: https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
   - type: Versioning
-    url: >-
-      https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
+    url: https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
   - type: JSONSchema
     url: json-schema/workday-advanced-compensation-compensation-plan-schema.json
   - type: JSONSchema
@@ -151,7 +145,7 @@ apis:
   - type: Vocabulary
     url: vocabulary/workday-advanced-compensation-vocabulary.yml
 - aid: workday-advanced-compensation:workday-advanced-compensation-compensation-grades-api
-  name: Workday Advanced Compensation Compensation Grades API
+  name: Workday Advanced Compensation Grades API
   description: Manage compensation grade profiles and pay ranges
   tags:
   - Compensation Grades
@@ -159,14 +153,11 @@ apis:
   - type: OpenAPI
     url: openapi/workday-advanced-compensation-compensation-grades-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
+    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
   - type: Authentication
-    url: >-
-      https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
+    url: https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
   - type: Versioning
-    url: >-
-      https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
+    url: https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
   - type: JSONSchema
     url: json-schema/workday-advanced-compensation-compensation-plan-schema.json
   - type: JSONSchema
@@ -210,7 +201,7 @@ apis:
   - type: Vocabulary
     url: vocabulary/workday-advanced-compensation-vocabulary.yml
 - aid: workday-advanced-compensation:workday-advanced-compensation-compensation-plans-api
-  name: Workday Advanced Compensation Compensation Plans API
+  name: Workday Advanced Compensation Plans API
   description: Manage compensation plans and eligibility rules
   tags:
   - Compensation Plans
@@ -218,14 +209,11 @@ apis:
   - type: OpenAPI
     url: openapi/workday-advanced-compensation-compensation-plans-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
+    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
   - type: Authentication
-    url: >-
-      https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
+    url: https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
   - type: Versioning
-    url: >-
-      https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
+    url: https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
   - type: JSONSchema
     url: json-schema/workday-advanced-compensation-compensation-plan-schema.json
   - type: JSONSchema
@@ -269,7 +257,7 @@ apis:
   - type: Vocabulary
     url: vocabulary/workday-advanced-compensation-vocabulary.yml
 - aid: workday-advanced-compensation:workday-advanced-compensation-compensation-reviews-api
-  name: Workday Advanced Compensation Compensation Reviews API
+  name: Workday Advanced Compensation Reviews API
   description: Manage compensation review processes and cycles
   tags:
   - Compensation Reviews
@@ -277,14 +265,11 @@ apis:
   - type: OpenAPI
     url: openapi/workday-advanced-compensation-compensation-reviews-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
+    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
   - type: Authentication
-    url: >-
-      https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
+    url: https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
   - type: Versioning
-    url: >-
-      https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
+    url: https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
   - type: JSONSchema
     url: json-schema/workday-advanced-compensation-compensation-plan-schema.json
   - type: JSONSchema
@@ -336,14 +321,11 @@ apis:
   - type: OpenAPI
     url: openapi/workday-advanced-compensation-employee-compensation-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
+    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
   - type: Authentication
-    url: >-
-      https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
+    url: https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
   - type: Versioning
-    url: >-
-      https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
+    url: https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
   - type: JSONSchema
     url: json-schema/workday-advanced-compensation-compensation-plan-schema.json
   - type: JSONSchema
@@ -395,14 +377,11 @@ apis:
   - type: OpenAPI
     url: openapi/workday-advanced-compensation-merit-plans-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
+    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
   - type: Authentication
-    url: >-
-      https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
+    url: https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
   - type: Versioning
-    url: >-
-      https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
+    url: https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
   - type: JSONSchema
     url: json-schema/workday-advanced-compensation-compensation-plan-schema.json
   - type: JSONSchema
@@ -454,14 +433,11 @@ apis:
   - type: OpenAPI
     url: openapi/workday-advanced-compensation-stock-plans-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
+    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Compensation/v41.1/index.html
   - type: Authentication
-    url: >-
-      https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
+    url: https://doc.workday.com/admin-guide/en-us/integration-security/securing-workday-web-services/authentication-types.html
   - type: Versioning
-    url: >-
-      https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
+    url: https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/About_Workday_Web_Services_Versioning
   - type: JSONSchema
     url: json-schema/workday-advanced-compensation-compensation-plan-schema.json
   - type: JSONSchema
@@ -505,41 +481,41 @@ apis:
   - type: Vocabulary
     url: vocabulary/workday-advanced-compensation-vocabulary.yml
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
 include:
-  - name: Workday Human Capital Management
-    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/index.html
-  - name: Workday Payroll
-    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Payroll/index.html
+- name: Workday Human Capital Management
+  url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/index.html
+- name: Workday Payroll
+  url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Payroll/index.html
 common:
-  - type: Website
-    url: https://www.workday.com/
-  - type: AgenticAccess
-    url: agentic-access/workday-advanced-compensation-agentic-access.yml
-  - type: Authentication
-    url: authentication/workday-advanced-compensation-authentication.yml
-  - type: OAuthScopes
-    url: scopes/workday-advanced-compensation-scopes.yml
-  - type: DeveloperPortal
-    url: https://developer.workday.com/
-  - type: API Status
-    url: https://status.workday.com/
-  - type: TermsOfService
-    url: https://www.workday.com/en-us/legal.html
-  - type: PrivacyPolicy
-    url: https://www.workday.com/en-us/privacy.html
-  - type: Security
-    url: https://www.workday.com/en-us/why-workday/security-trust.html
-  - type: RateLimits
-    url: https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/Web_Service_Rate_Limiting
-  - type: Sandbox
-    url: https://doc.workday.com/r/en-us/workday-studio/workday-studio-user-guide/sandboxes
-  - type: SDKs
-    url: https://github.com/Workday
-  - type: JSONLD
-    url: json-ld/workday-advanced-compensation-context.jsonld
-  - type: SpectralRules
-    url: rules/workday-advanced-compensation-spectral-rules.yml
-  - type: Vocabulary
-    url: vocabulary/workday-advanced-compensation-vocabulary.yml
+- type: Website
+  url: https://www.workday.com/
+- type: AgenticAccess
+  url: agentic-access/workday-advanced-compensation-agentic-access.yml
+- type: Authentication
+  url: authentication/workday-advanced-compensation-authentication.yml
+- type: OAuthScopes
+  url: scopes/workday-advanced-compensation-scopes.yml
+- type: DeveloperPortal
+  url: https://developer.workday.com/
+- type: API Status
+  url: https://status.workday.com/
+- type: TermsOfService
+  url: https://www.workday.com/en-us/legal.html
+- type: PrivacyPolicy
+  url: https://www.workday.com/en-us/privacy.html
+- type: Security
+  url: https://www.workday.com/en-us/why-workday/security-trust.html
+- type: RateLimits
+  url: https://doc.workday.com/r/Workday_Web_Services/Workday_Web_Services_Directory/Web_Service_Rate_Limiting
+- type: Sandbox
+  url: https://doc.workday.com/r/en-us/workday-studio/workday-studio-user-guide/sandboxes
+- type: SDKs
+  url: https://github.com/Workday
+- type: JSONLD
+  url: json-ld/workday-advanced-compensation-context.jsonld
+- type: SpectralRules
+  url: rules/workday-advanced-compensation-spectral-rules.yml
+- type: Vocabulary
+  url: vocabulary/workday-advanced-compensation-vocabulary.yml
