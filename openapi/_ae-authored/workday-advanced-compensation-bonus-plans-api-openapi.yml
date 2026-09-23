@@ -106,18 +106,6 @@ components:
           - INACTIVE
           - DRAFT
           example: ACTIVE
-    BonusPlansResponse:
-      type: object
-      description: Paginated response containing bonus plans
-      properties:
-        total:
-          type: integer
-          description: Total number of bonus plans
-          example: 5
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/BonusPlan'
     ErrorResponse:
       type: object
       description: Workday API error response
@@ -135,6 +123,18 @@ components:
           items:
             type: string
           description: Additional error details
+    BonusPlansResponse:
+      type: object
+      description: Paginated response containing bonus plans
+      properties:
+        total:
+          type: integer
+          description: Total number of bonus plans
+          example: 5
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BonusPlan'
   responses:
     Unauthorized:
       description: Authentication required

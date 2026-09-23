@@ -1,0 +1,27 @@
+generated: '2026-09-17'
+method: searched
+source: https://github.com/Workday/canvas-kit
+note: >-
+  Workday's only published client-side component surface is Canvas Kit, the design system behind
+  the Workday UI. It is NOT a compensation-API embed: there are no hosted or prebuilt compensation
+  widgets, no embedded compensation dashboard, and no drop-in element that talks to the
+  compensation service. Recorded because the components exist and are first-party, with that
+  distinction stated rather than implied.
+families:
+- name: Canvas Kit
+  kind: design-system
+  description: React component library implementing the Workday Canvas Design System.
+  repository: https://github.com/Workday/canvas-kit
+  loaders:
+  - '@workday/canvas-kit-react'
+  - '@workday/canvas-kit-preview-react'
+  - '@workday/canvas-tokens-web'
+  talks_to_compensation_api: false
+- name: Workday Extend UI components
+  kind: platform-ui
+  description: >-
+    Model and presentation components available to Workday Extend apps, with published component
+    limits.
+  docs: https://developer.workday.com/doc/c58fce8e-198e-402e-9846-e1be8a429bad.md
+  talks_to_compensation_api: false
+embedded_compensation_widgets: 0

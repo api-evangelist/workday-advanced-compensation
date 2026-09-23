@@ -1,0 +1,140 @@
+generated: '2026-09-17'
+method: derived
+source: >-
+  openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json +
+  https://developer.workday.com/bundles/graphql-changelog/public/static/schema/schema.txt
+note: >-
+  Workday ships no MCP server today, so this crosswalk binds the GRAPHQL surface to the REST
+  surface — the two projections of the compensation core that a consumer must actually choose
+  between. The MCP column is the derived candidate tool set in
+  mcp/workday-advanced-compensation-mcp.yml, kept so the same rows carry forward when Workday's
+  roadmapped compensation MCP tools ship. Workday's published REST specs declare NO operationIds,
+  so the `rest` column carries method+path, which is the only stable identifier the contract gives.
+surfaces:
+  openapi:
+    file: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json
+    base_path: /compensation/v3
+    operations: 14
+    gated: false
+    note: Published anonymously by Workday; the runtime is tenant-hosted and OAuth-gated.
+  graphql:
+    endpoint: https://<tenantHostname>/api/graphql/v1/<tenant>
+    schema: https://developer.workday.com/bundles/graphql-changelog/public/static/schema/schema.txt
+    introspection: gated
+    note: >-
+      The full SDL is published anonymously (3.5 MB, Workday-wide). Live introspection against a
+      tenant requires OAuth. The compensation slice is mapped below; the SDL itself is not copied
+      into this product repo because it describes the whole Workday estate, not this service.
+  soap:
+    files:
+    - wsdl/workday-advanced-compensation-compensation.wsdl
+    - wsdl/workday-advanced-compensation-compensation-review.wsdl
+    operations: 89
+    gated: false
+  mcp:
+    url: null
+    gated: null
+    note: No server published. See mcp/workday-advanced-compensation-mcp.yml.
+crosswalk:
+- tool: create_scorecard
+  category: scorecards
+  graphql: createCompensationScorecard
+  rest:
+  - POST /scorecards
+  soap:
+  - Put_Compensation_Scorecard
+  binding: rest
+  confidence: high
+- tool: create_scorecard_result
+  category: scorecards
+  graphql: createCompensationScorecardResult
+  rest:
+  - POST /scorecardResults
+  soap:
+  - Put_Compensation_Scorecard_Result
+  binding: rest
+  confidence: high
+- tool: update_scorecard_result_score
+  category: scorecards
+  graphql: updateCompensationScorecardResultScore
+  rest:
+  - PATCH /scorecardResults/{ID}/scores/{subresourceID}
+  binding: rest
+  confidence: high
+- tool: delete_scorecard
+  category: scorecards
+  graphql: deleteScorecard
+  rest:
+  - DELETE /scorecards/{ID}
+  binding: rest
+  confidence: high
+- tool: delete_scorecard_result
+  category: scorecards
+  graphql: deleteScorecardResult
+  rest:
+  - DELETE /scorecardResults/{ID}
+  binding: rest
+  confidence: high
+- tool: request_one_time_payment
+  category: payments
+  graphql: requestOneTimePayment
+  rest:
+  - POST /workers/{ID}/requestOneTimePayment
+  soap:
+  - Request_One-Time_Payment
+  - Import_Request_One_Time_Payment
+  binding: rest
+  confidence: high
+  note: Submits a Workday business process; approvals and audit apply.
+graphql_only:
+- field: compensationPlan
+  reason: >-
+    Compensation plan read is exposed on GraphQL and on SOAP (Get_Compensation_Plans) but has no
+    REST operation in compensation v3.
+- field: compensationGrade
+  reason: >-
+    Compensation grade read is exposed on GraphQL and on SOAP (Get_Compensation_Grades) but has no
+    REST operation in compensation v3.
+- field: employeeCompensationEvent
+  reason: No REST operation; the SOAP equivalent is Request_Compensation_Change.
+- field: oneTimePaymentEvent
+  reason: Event read has no REST counterpart; REST only submits the request.
+rest_only:
+- operations:
+  - GET /scorecards
+  - GET /scorecards/{ID}
+  - GET /scorecardResults
+  - GET /scorecardResults/{ID}
+  capability: scorecard reads
+  note: GraphQL exposes scorecard mutations but no matching top-level scorecard query field.
+- operations:
+  - GET /workers
+  - GET /workers/{ID}
+  capability: worker reads scoped to Staffing
+- operations:
+  - GET /values/oneTimePaymentPlanGroup/oneTimePaymentPlan/
+  capability: prompt values
+soap_only:
+  count: 83
+  capability_groups:
+  - Compensation plans, grades, grade hierarchies and eligibility rules (Get_/Put_)
+  - Compensation matrices, benchmark jobs and survey job matching
+  - 'Merit, bonus and stock: Request_Employee_Merit_Adjustment, Request_Bonus_Payment,
+    Add_Stock_Grant, Update_Stock_Grant'
+  - Severance worksheets and enhanced severance matrices
+  - Period activity pay, locality pay areas, pay rate determinants
+  - Compensation review templates, budget pools, employee awards, deferred bonus calculation
+    (the Compensation_Review service)
+  note: >-
+    This is the headline finding of the crosswalk. The Advanced Compensation capability set lives
+    almost entirely on SOAP: 89 SOAP operations against 14 REST operations and 6 GraphQL
+    compensation mutations. An integrator who assumes REST parity will not find compensation
+    plans, grades, merit cycles, stock grants or review budget pools there.
+coverage:
+  rest_operations: 14
+  graphql_compensation_fields: 10
+  soap_operations: 89
+  bound_rows: 6
+  graphql_only: 4
+  rest_only: 7
+  mcp_tools_published: 0

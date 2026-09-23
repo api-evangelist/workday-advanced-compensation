@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Workday Advanced Compensation Bonus Plans Employee Compensation API
+  title: Workday Advanced Compensation Employee Compensation API
   description: The Workday Advanced Compensation API provides RESTful access to compensation management capabilities including compensation plans, merit increases, bonuses, stock awards, compensation grades, budgets, and review processes. The API enables organizations to programmatically manage their total compensation strategy, administer compensation cycles, and integrate compensation data with other systems.
   version: v41.1
   contact:
@@ -126,112 +126,7 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            NotFound404Example:
-              summary: Not found example
-              x-microcks-default: true
-              value:
-                error: NOT_FOUND
-                message: The requested resource was not found
-    Forbidden:
-      description: Insufficient permissions
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Forbidden403Example:
-              summary: Forbidden example
-              x-microcks-default: true
-              value:
-                error: FORBIDDEN
-                message: Insufficient permissions to access this resource
-    BadRequest:
-      description: Invalid request parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            BadRequest400Example:
-              summary: Bad request example
-              x-microcks-default: true
-              value:
-                error: INVALID_REQUEST
-                message: Invalid request parameters
   schemas:
-    EmployeeCompensation:
-      type: object
-      description: Current compensation package for an employee
-      properties:
-        employeeId:
-          type: string
-          description: Workday employee identifier
-          example: EMP-12345
-        employeeName:
-          type: string
-          description: Employee full name
-          example: Jane Smith
-        effectiveDate:
-          type: string
-          format: date
-          description: Effective date of current compensation
-          example: '2026-01-01'
-        basePay:
-          $ref: '#/components/schemas/PayComponent'
-        bonusTarget:
-          $ref: '#/components/schemas/BonusComponent'
-        stockGrant:
-          $ref: '#/components/schemas/StockComponent'
-        totalCompensation:
-          type: number
-          description: Total target compensation value
-          example: 155000
-    PayComponent:
-      type: object
-      description: Base pay component
-      properties:
-        amount:
-          type: number
-          description: Pay amount
-          example: 110000
-        currency:
-          type: string
-          description: Currency code
-          example: USD
-        frequency:
-          type: string
-          description: Pay frequency
-          enum:
-          - ANNUAL
-          - MONTHLY
-          - BIWEEKLY
-          - WEEKLY
-          - HOURLY
-          example: ANNUAL
-    BonusComponent:
-      type: object
-      description: Bonus target component
-      properties:
-        amount:
-          type: number
-          description: Target bonus amount
-          example: 16500
-        currency:
-          type: string
-          description: Currency code
-          example: USD
-        percent:
-          type: number
-          description: Target bonus as percentage of base
-          example: 15
     CompensationChangeResponse:
       type: object
       description: Response from a compensation change submission
@@ -263,6 +158,73 @@ components:
           format: date-time
           description: Timestamp when the request was submitted
           example: '2026-03-15T10:30:00Z'
+    PayComponent:
+      type: object
+      description: Base pay component
+      properties:
+        amount:
+          type: number
+          description: Pay amount
+          example: 110000
+        currency:
+          type: string
+          description: Currency code
+          example: USD
+        frequency:
+          type: string
+          description: Pay frequency
+          enum:
+          - ANNUAL
+          - MONTHLY
+          - BIWEEKLY
+          - WEEKLY
+          - HOURLY
+          example: ANNUAL
+    StockComponent:
+      type: object
+      description: Stock grant component
+      properties:
+        shareCount:
+          type: integer
+          description: Number of shares granted
+          example: 200
+        vestingSchedule:
+          type: string
+          description: Vesting schedule
+          example: FOUR_YEAR_CLIFF
+    ErrorResponse:
+      type: object
+      description: Workday API error response
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: INVALID_REQUEST
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid compensation plan ID
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
+    BonusComponent:
+      type: object
+      description: Bonus target component
+      properties:
+        amount:
+          type: number
+          description: Target bonus amount
+          example: 16500
+        currency:
+          type: string
+          description: Currency code
+          example: USD
+        percent:
+          type: number
+          description: Target bonus as percentage of base
+          example: 15
     CompensationChangeRequest:
       type: object
       description: Request to change employee compensation
@@ -293,35 +255,73 @@ components:
           type: string
           description: Optional comment for the change request
           example: Annual merit increase based on performance review
-    StockComponent:
+    EmployeeCompensation:
       type: object
-      description: Stock grant component
+      description: Current compensation package for an employee
       properties:
-        shareCount:
-          type: integer
-          description: Number of shares granted
-          example: 200
-        vestingSchedule:
+        employeeId:
           type: string
-          description: Vesting schedule
-          example: FOUR_YEAR_CLIFF
-    ErrorResponse:
-      type: object
-      description: Workday API error response
-      properties:
-        error:
+          description: Workday employee identifier
+          example: EMP-12345
+        employeeName:
           type: string
-          description: Error code
-          example: INVALID_REQUEST
-        message:
+          description: Employee full name
+          example: Jane Smith
+        effectiveDate:
           type: string
-          description: Human-readable error message
-          example: Invalid compensation plan ID
-        details:
-          type: array
-          items:
-            type: string
-          description: Additional error details
+          format: date
+          description: Effective date of current compensation
+          example: '2026-01-01'
+        basePay:
+          $ref: '#/components/schemas/PayComponent'
+        bonusTarget:
+          $ref: '#/components/schemas/BonusComponent'
+        stockGrant:
+          $ref: '#/components/schemas/StockComponent'
+        totalCompensation:
+          type: number
+          description: Total target compensation value
+          example: 155000
+  responses:
+    Forbidden:
+      description: Insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Forbidden403Example:
+              summary: Forbidden example
+              x-microcks-default: true
+              value:
+                error: FORBIDDEN
+                message: Insufficient permissions to access this resource
+    BadRequest:
+      description: Invalid request parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            BadRequest400Example:
+              summary: Bad request example
+              x-microcks-default: true
+              value:
+                error: INVALID_REQUEST
+                message: Invalid request parameters
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            NotFound404Example:
+              summary: Not found example
+              x-microcks-default: true
+              value:
+                error: NOT_FOUND
+                message: The requested resource was not found
   securitySchemes:
     oauth2:
       type: oauth2

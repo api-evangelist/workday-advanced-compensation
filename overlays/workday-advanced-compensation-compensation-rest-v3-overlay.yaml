@@ -1,0 +1,73 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Workday Compensation REST v3
+  version: 1.0.0
+x-generated: '2026-09-17'
+x-method: generated
+x-source: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json
+x-note: >-
+  Captures API Evangelist annotations over Workday's verbatim published compensation v3 document.
+  The original is never mutated. The operationId actions below are the material ones: Workday
+  publishes no operationId on any of the 14 operations, which is why every derived artifact in
+  this repo has to address them by method+path. These are OUR proposed ids, marked as such.
+extends: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: workday-advanced-compensation
+    x-apievangelist-reviewed: '2026-09-17'
+    x-apievangelist-surface: >-
+      REST projection of Workday Advanced Compensation. 14 operations against 89 SOAP operations
+      on the same domain; see mcp/workday-advanced-compensation-tool-crosswalk.yml.
+    x-apievangelist-idempotency: none
+    x-apievangelist-reversibility: documented
+- target: $.paths['/scorecards'].get
+  update:
+    x-apievangelist-operationId: listCompensationScorecards
+- target: $.paths['/scorecards'].post
+  update:
+    x-apievangelist-operationId: createCompensationScorecard
+    x-apievangelist-write: true
+- target: $.paths['/scorecards/{ID}'].get
+  update:
+    x-apievangelist-operationId: getCompensationScorecard
+- target: $.paths['/scorecards/{ID}'].put
+  update:
+    x-apievangelist-operationId: updateCompensationScorecard
+    x-apievangelist-write: true
+- target: $.paths['/scorecards/{ID}'].delete
+  update:
+    x-apievangelist-operationId: deleteCompensationScorecard
+    x-apievangelist-write: true
+- target: $.paths['/scorecardResults'].get
+  update:
+    x-apievangelist-operationId: listCompensationScorecardResults
+- target: $.paths['/scorecardResults'].post
+  update:
+    x-apievangelist-operationId: createCompensationScorecardResult
+    x-apievangelist-write: true
+- target: $.paths['/scorecardResults/{ID}'].get
+  update:
+    x-apievangelist-operationId: getCompensationScorecardResult
+- target: $.paths['/scorecardResults/{ID}'].delete
+  update:
+    x-apievangelist-operationId: deleteCompensationScorecardResult
+    x-apievangelist-write: true
+- target: $.paths['/scorecardResults/{ID}/scores/{subresourceID}'].patch
+  update:
+    x-apievangelist-operationId: updateCompensationScorecardResultScore
+    x-apievangelist-write: true
+- target: $.paths['/workers'].get
+  update:
+    x-apievangelist-operationId: listWorkers
+- target: $.paths['/workers/{ID}'].get
+  update:
+    x-apievangelist-operationId: getWorker
+- target: $.paths['/workers/{ID}/requestOneTimePayment'].post
+  update:
+    x-apievangelist-operationId: requestOneTimePayment
+    x-apievangelist-write: true
+    x-apievangelist-consequence: physical
+    x-apievangelist-note: >-
+      Submits a Workday business process that can result in a payment to a person. No REST
+      operation reverses it and no idempotency key protects a retry.

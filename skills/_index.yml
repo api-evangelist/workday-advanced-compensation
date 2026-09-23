@@ -1,0 +1,30 @@
+generated: '2026-09-17'
+method: generated
+source: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json
+note: >-
+  Skills are grounded in the operations of Workday's own published compensation v3 OpenAPI.
+  Workday declares no operationIds, so every step names the method and path the contract declares.
+  No provider-published AGENTS.md or skill file was found on any Workday host.
+skills:
+- file: workday-advanced-compensation-request-one-time-payment.md
+  name: Request a one-time payment for a Workday worker
+  api: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json
+  operations:
+  - GET /workers
+  - GET /workers/{ID}
+  - GET /values/oneTimePaymentPlanGroup/oneTimePaymentPlan/
+  - POST /workers/{ID}/requestOneTimePayment
+- file: workday-advanced-compensation-manage-compensation-scorecards.md
+  name: Build and score a Workday compensation scorecard
+  api: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json
+  operations:
+  - GET /scorecards
+  - POST /scorecards
+  - GET /scorecards/{ID}
+  - PUT /scorecards/{ID}
+  - DELETE /scorecards/{ID}
+  - GET /scorecardResults
+  - POST /scorecardResults
+  - GET /scorecardResults/{ID}
+  - PATCH /scorecardResults/{ID}/scores/{subresourceID}
+  - DELETE /scorecardResults/{ID}

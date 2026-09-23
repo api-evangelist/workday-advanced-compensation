@@ -1,0 +1,67 @@
+generated: '2026-09-17'
+method: searched
+source: https://developer.workday.com/bundles/rest-directory-ui/public/static/services_oas3.json
+versioning:
+  scheme: uri-path
+  current: v3
+  rest_versions:
+  - version: v3
+    base_path: /compensation/v3
+    confidence_level: Production
+    status: current
+  - version: v2
+    base_path: /compensation/v2
+    confidence_level: ''
+    status: archived
+  - version: v1
+    base_path: /compensation/v1
+    confidence_level: ''
+    status: archived
+  soap:
+    scheme: vNN.N
+    current: v47.0
+    note: >-
+      Workday Web Services versions carry a published release-to-production date each; the
+      machine-readable version list is at
+      https://developer.workday.com/bundles/soap-api-explorer/soap_versions.json
+  docs: https://developer.workday.com/
+deprecation:
+  policy_url: null
+  sunset_header: false
+  mechanism: confidence-level
+  detail: >-
+    Workday does not publish a dated deprecation/sunset policy for the compensation REST service
+    and sends no RFC 8594 Sunset or Deprecation header. What it DOES publish, machine-readably, is
+    a confidence level per service version in its own REST directory index: v3 is "Production" and
+    v1/v2 are listed under `archivedServices`. That is a real, readable retirement signal, but it
+    carries no date, so a consumer on v2 cannot tell how long they have.
+  archived_versions:
+  - v1
+  - v2
+  evidence: https://developer.workday.com/bundles/rest-directory-ui/public/static/services_oas3.json
+release_cadence:
+  scheme: weekly
+  identifier_format: vYYYY.WW
+  latest: v2026.33
+  latest_date: '2026-08-17'
+  artifact: changelog/workday-advanced-compensation-changelog.yml
+status_page:
+  url: https://status.workday.com/
+  public: false
+  note: >-
+    status.workday.com resolves (HTTP 200) but redirects to a Workday Community SSO login
+    (signin.resourcecenter.workday.com), so the operational status of the compensation service is
+    visible to authenticated customers only. Recorded as gated, not as a public status page; no
+    canonical StatusPage pointer is emitted on a surface an anonymous consumer cannot read.
+  probed: '2026-09-17'
+  http_status: 200
+sla:
+  url: null
+  uptime_target: null
+  note: No public SLA document was found for the compensation API surface.
+service_limits:
+  url: https://developer.workday.com/doc/dan1370797408285.md
+  note: >-
+    Workday publishes an "Integrations, EIB, and Web Service Limits" reference covering throttling
+    behaviour, paged-request cache retention and processing ceilings.
+deprecated_operations: []

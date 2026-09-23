@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Workday Advanced Compensation Bonus Plans Compensation Plans API
+  title: Workday Advanced Compensation Compensation Plans API
   description: The Workday Advanced Compensation API provides RESTful access to compensation management capabilities including compensation plans, merit increases, bonuses, stock awards, compensation grades, budgets, and review processes. The API enables organizations to programmatically manage their total compensation strategy, administer compensation cycles, and integrate compensation data with other systems.
   version: v41.1
   contact:
@@ -156,6 +156,23 @@ components:
                 error: UNAUTHORIZED
                 message: Authentication required
   schemas:
+    ErrorResponse:
+      type: object
+      description: Workday API error response
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: INVALID_REQUEST
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid compensation plan ID
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
     CompensationPlansResponse:
       type: object
       description: Paginated response containing compensation plans
@@ -221,23 +238,6 @@ components:
           type: string
           description: Description of the compensation plan
           example: Annual merit increase plan for all eligible employees
-    ErrorResponse:
-      type: object
-      description: Workday API error response
-      properties:
-        error:
-          type: string
-          description: Error code
-          example: INVALID_REQUEST
-        message:
-          type: string
-          description: Human-readable error message
-          example: Invalid compensation plan ID
-        details:
-          type: array
-          items:
-            type: string
-          description: Additional error details
   securitySchemes:
     oauth2:
       type: oauth2

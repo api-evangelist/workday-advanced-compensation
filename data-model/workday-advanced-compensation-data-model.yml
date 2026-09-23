@@ -1,0 +1,186 @@
+generated: '2026-09-17'
+method: derived
+source: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json
+note: >-
+  Derived from the 63 component schemas and their $ref graph in Workday's published compensation
+  v3 OpenAPI. Workday suffixes most schema names with a 32-hex Workday container id
+  (e.g. scorecard_e8cffc5e0fe810000b26ce3a5d2200f4); the suffix is stripped here and recorded as
+  id_shape, because it is an instance identifier of Workday's own metadata, not part of the entity
+  name a consumer codes against.
+id_shape:
+  primary: WorkdayId
+  format: 32-character hexadecimal Workday ID (WID)
+  reference_envelope: WorkdayReferenceId_<resource>
+  path_value: ResourceIdPathValue_<resource>
+  alias: 'me'
+  note: >-
+    Every resource is addressed by its Workday ID. The literal "me" is accepted on /workers/{ID}
+    to mean the authenticated worker. There are no type-prefixed ids (no `sc_`-style prefixes);
+    a WID is opaque and not self-describing, so an agent cannot tell from an id what it points at.
+entities:
+- name: worker
+  description: A Workday worker; the subject of a compensation action.
+  operations:
+  - GET /workers
+  - GET /workers/{ID}
+  schemas:
+  - workerSummary
+  - workerProfile
+  - NamedEntry_workers
+- name: scorecard
+  description: A compensation scorecard definition — goals, profiles and eligibility rules.
+  operations:
+  - GET /scorecards
+  - POST /scorecards
+  - GET /scorecards/{ID}
+  - PUT /scorecards/{ID}
+  - DELETE /scorecards/{ID}
+  schemas:
+  - scorecard
+  - createScorecard
+  - editScorecards
+  - defaultScorecard
+- name: scorecardResult
+  description: A scored instance of a scorecard for an eligible population.
+  operations:
+  - GET /scorecardResults
+  - POST /scorecardResults
+  - GET /scorecardResults/{ID}
+  - DELETE /scorecardResults/{ID}
+  schemas:
+  - createScorecardResults
+  - defaultScorecardGoalsResult
+  - profileScorecardGoalsResult
+- name: scoreset
+  description: The container of scores attached to a scorecard result.
+  schemas:
+  - scoreset
+  - scoresetContainer
+  - scoresetScore
+- name: score
+  description: One score against one goal on a scorecard result.
+  operations:
+  - PATCH /scorecardResults/{ID}/scores/{subresourceID}
+  schemas:
+  - scoreInput
+  - scoreGoal
+  - performanceScores
+- name: scorecardProfile
+  description: A profile grouping goals and eligibility rules within a scorecard.
+  schemas:
+  - scorecardProfile
+  - scorecardProfiles
+  - createScorecardProfiles
+- name: scorecardGoal
+  description: A measurable goal carried by a scorecard profile.
+  schemas:
+  - scorecardGoals
+  - scorecardGoalSummary
+  - profileScorecardGoals
+  - defaultScorecardGoals
+  - createGoals
+  - goalID
+- name: eligibilityRule
+  description: The rule deciding which workers a scorecard profile applies to.
+  schemas:
+  - eligibilityRule
+  - eligibiltyRule
+  note: Workday ships both spellings in its own schema names; recorded as published.
+- name: oneTimePayment
+  description: A one-time payment request against a worker.
+  operations:
+  - POST /workers/{ID}/requestOneTimePayment
+  schemas:
+  - oneTimePaymentPlanEventInput
+  - oneTimePaymentInput
+  - oneTimePayments
+- name: oneTimePaymentPlan
+  description: The plan a one-time payment is requested under.
+  operations:
+  - GET /values/oneTimePaymentPlanGroup/oneTimePaymentPlan/
+  schemas:
+  - oneTimePaymentPlan
+- name: position
+  description: The worker position a compensation action is booked against.
+  schemas:
+  - position
+- name: supervisoryOrganization
+  schemas:
+  - primarySupervisoryOrganization
+- name: location
+  schemas:
+  - location
+- name: payrollWorktag
+  description: Costing worktags carried on a payment.
+  schemas:
+  - payrollWorktags
+- name: currency
+  schemas:
+  - paymentCurrency
+relationships:
+- from: scorecard
+  to: scorecardProfile
+  type: has_many
+  via: scorecardProfiles
+- from: scorecardProfile
+  to: scorecardGoal
+  type: has_many
+  via: profileScorecardGoals
+- from: scorecardProfile
+  to: eligibilityRule
+  type: has_one
+  via: eligibilityRule
+- from: scorecardResult
+  to: scorecard
+  type: belongs_to
+  via: scorecardID
+- from: scorecardResult
+  to: scoreset
+  type: has_many
+  via: scoresetContainer
+- from: scoreset
+  to: score
+  type: has_many
+  via: scoresetScore
+- from: score
+  to: scorecardGoal
+  type: belongs_to
+  via: goalID
+- from: oneTimePayment
+  to: worker
+  type: belongs_to
+  via: 'path parameter {ID}'
+- from: oneTimePayment
+  to: oneTimePaymentPlan
+  type: belongs_to
+  via: oneTimePaymentPlan
+- from: oneTimePayment
+  to: position
+  type: belongs_to
+  via: position
+- from: oneTimePayment
+  to: currency
+  type: has_one
+  via: paymentCurrency
+- from: oneTimePayment
+  to: payrollWorktag
+  type: has_many
+  via: payrollWorktags
+- from: worker
+  to: position
+  type: has_many
+  via: position
+- from: worker
+  to: supervisoryOrganization
+  type: belongs_to
+  via: primarySupervisoryOrganization
+- from: worker
+  to: location
+  type: belongs_to
+  via: location
+coverage_note: >-
+  This is the REST projection only. The Advanced Compensation domain model on the SOAP surface is
+  far larger — compensation plans, grades, grade hierarchies, matrices, merit and bonus cycles,
+  stock grants, severance worksheets, review templates and budget pools — and is described by
+  wsdl/workday-advanced-compensation-compensation.wsdl and
+  wsdl/workday-advanced-compensation-compensation-review.wsdl.

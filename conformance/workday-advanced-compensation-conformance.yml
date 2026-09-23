@@ -1,0 +1,99 @@
+generated: '2026-09-17'
+method: searched
+source: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json
+standards:
+- id: oauth2
+  conforms: true
+  evidence: >-
+    components.securitySchemes.OAuth2 type oauth2 in the published compensation v1/v2/v3 OpenAPI;
+    Authorization Code and Client Credentials grants documented at
+    https://developer.workday.com/doc/axp1537909839739.md
+- id: openapi-3.0
+  conforms: true
+  evidence: 'openapi: 3.0.1 in all three published compensation documents'
+- id: soap-1.1-wsdl-1.1
+  conforms: true
+  evidence: >-
+    wsdl/workday-advanced-compensation-compensation.wsdl — WSDL 1.1 with soapbind, namespace
+    urn:com.workday/bsvc/Compensation, 68 operations; plus Compensation_Review with 21
+- id: graphql
+  conforms: true
+  evidence: >-
+    Workday publishes a full GraphQL SDL at
+    https://developer.workday.com/bundles/graphql-changelog/public/static/schema/schema.txt
+    carrying a Compensation_* type namespace, 4 compensation query fields and 6 compensation
+    mutations
+- id: llms-txt
+  conforms: true
+  evidence: https://developer.workday.com/llms.txt served as text/plain, 133,707 bytes
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: >-
+    Error responses are application/json shaped by ERROR_MODEL_REFERENCE /
+    VALIDATION_ERROR_MODEL_REFERENCE, not application/problem+json
+- id: pagination
+  conforms: true
+  evidence: limit/offset query parameters with a total+data envelope on every collection operation
+- id: idempotency
+  conforms: false
+  evidence: no idempotency key or replay-protection contract on any mutating operation
+- id: rfc8594-sunset
+  conforms: false
+  evidence: no Sunset or Deprecation header documented; retirement is signalled by an untimed
+    "archived" confidence level in Workday's REST directory index
+- id: oidc
+  conforms: false
+  evidence: no /.well-known/openid-configuration served on any Workday host probed 2026-09-17
+- id: well-known-discovery
+  conforms: false
+  evidence: >-
+    every named /.well-known path 404s or returns an SPA shell across six Workday hosts; see
+    well-known/workday-advanced-compensation-well-known.yml
+- id: scim
+  conforms: false
+  evidence: >-
+    no urn:ietf:params:scim:schemas URN appears in the compensation contracts. Workday does
+    operate SCIM elsewhere in its platform, but not on this service's published surface, so it is
+    not claimed here
+- id: odata
+  conforms: false
+  evidence: no $metadata surface on the compensation service
+domain_standards:
+  note: >-
+    REWARD-ONLY check. The compensation/total-rewards market has no dominant machine-readable
+    interchange standard that this contract declares. Workday's published compensation contracts
+    declare only Workday's OWN vocabulary — Workday IDs (WID), Workday security domains, and the
+    urn:com.workday/bsvc namespace — which is a proprietary domain model, not an industry
+    standard. HR-XML/HR Open Standards, ISO 30414 human-capital reporting and payroll interchange
+    formats appear nowhere in the specs. Recorded as "none declared" rather than invented.
+  declared: []
+  probed_for:
+  - hr-open-standards
+  - iso-30414
+  - scim
+  - oai-pmh
+  - odata
+compliance_program:
+  published: true
+  url: https://www.workday.com/en-us/why-workday/trust/compliance.html
+  trust_center: https://security.workday.com/
+  certifications:
+  - SOC 1
+  - SOC 2 Type II
+  - SOC 3
+  - ISO 27001
+  - ISO/IEC 27018
+  - ISO/IEC 27701
+  - ISO 42001
+  - FedRAMP
+  - HIPAA
+  - GDPR
+  - CSA STAR
+  - IRAP
+  - C5
+  - TISAX
+  evidence:
+  - url: https://www.workday.com/en-us/why-workday/trust/compliance.html
+    status: 200
+  - url: https://security.workday.com/
+    status: 200

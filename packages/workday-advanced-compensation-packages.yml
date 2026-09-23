@@ -1,0 +1,97 @@
+generated: '2026-09-17'
+method: searched
+source: >-
+  npm registry, PyPI, and the github.com/Workday organization (55 public repositories, listed
+  2026-09-17)
+headline: >-
+  Workday ships NO first-party client library for the Compensation REST, SOAP or GraphQL surface.
+  Nothing on npm, PyPI, Maven Central, NuGet, pkg.go.dev, RubyGems, Packagist or crates.io wraps
+  it. The official packages below are real Workday libraries for OTHER Workday surfaces (Prism
+  analytics, Reports-as-a-Service, Extend plugins) or for its design system; they are recorded so
+  the absence is legible, not so the count looks better.
+compensation_client_libraries: 0
+packages:
+- language: javascript
+  registry: npm
+  name: '@workday/canvas-kit-react'
+  url: https://www.npmjs.com/package/@workday/canvas-kit-react
+  install: npm install @workday/canvas-kit-react
+  official: true
+  version: 16.1.1
+  published: '2026-09-15'
+  wraps_compensation_api: false
+  note: Workday Canvas design-system React components. UI, not an API client.
+- language: javascript
+  registry: npm
+  name: '@workday/canvas-tokens-web'
+  url: https://www.npmjs.com/package/@workday/canvas-tokens-web
+  install: npm install @workday/canvas-tokens-web
+  official: true
+  version: 4.5.0
+  published: '2026-09-11'
+  wraps_compensation_api: false
+- language: python
+  registry: github
+  name: prism-python
+  url: https://github.com/Workday/prism-python
+  install: pip install git+https://github.com/Workday/prism-python.git
+  official: true
+  version: null
+  published: null
+  wraps_compensation_api: false
+  note: >-
+    Workday's own Python client for the Prism Analytics API. Not published to PyPI under any
+    Workday-owned name (workday-prism, prism-python and workday-raas all return 404 on PyPI), so
+    there is no registry metadata endpoint to read a version or release date from — recorded null
+    with this note rather than guessed. A consumer installs from git and cannot tell from a
+    registry what they are getting.
+- language: python
+  registry: github
+  name: raas-python
+  url: https://github.com/Workday/raas-python
+  install: pip install git+https://github.com/Workday/raas-python.git
+  official: true
+  version: null
+  published: null
+  wraps_compensation_api: false
+  note: >-
+    Workday Reports-as-a-Service Python client. Same situation as prism-python — GitHub only, no
+    registry entry, so version and date are unavailable rather than unchecked.
+- language: typescript
+  registry: github
+  name: everywhere
+  url: https://github.com/Workday/everywhere
+  official: true
+  version: null
+  published: null
+  wraps_compensation_api: false
+  note: SDK for building Workday Everywhere plugins.
+community_packages:
+- language: python
+  registry: pypi
+  name: workday
+  url: https://pypi.org/project/workday/
+  official: false
+  version: 0.4.0
+  published: null
+  author: Anthony Shaw
+  note: >-
+    Third-party Python client for Workday tenants. Not Workday-published; recorded so the only
+    PyPI package named "workday" is not mistaken for a first-party SDK.
+registries_checked:
+- registry: npm
+  result: Workday publishes only Canvas design-system packages; no API client.
+- registry: pypi
+  result: no Workday-owned package; "prism" and "workday" are both third-party.
+- registry: maven-central
+  result: no first-party Workday API client found.
+- registry: nuget
+  result: no first-party Workday API client found.
+- registry: pkg.go.dev
+  result: no first-party Workday API client found.
+- registry: rubygems
+  result: no first-party Workday API client found.
+- registry: packagist
+  result: no first-party Workday API client found.
+- registry: crates.io
+  result: no first-party Workday API client found.

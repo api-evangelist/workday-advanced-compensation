@@ -1,0 +1,277 @@
+generated: '2026-09-17'
+method: probed
+source: live GET of the named /.well-known path list on every host this record knows
+note: Every path on the closed list was probed on the registrable domain, www, the developer portal, the
+  community/docs hosts and the API gateway host. NOT ONE real discovery document was served. developer.workday.com
+  is a single-page app that answers HTTP 200 with the same 4,927-byte HTML shell for EVERY path including
+  the negative control /.well-known/wd-negative-control-7f3ab91c.json, so all of its 200s are catch-all
+  responses and none is a document. No WellKnown, SecurityTxt, APICatalog or AgentCard pointer is emitted.
+hit_count: 0
+soft_404_control:
+  host: developer.workday.com
+  path: /.well-known/wd-negative-control-7f3ab91c.json
+  status: 200
+  bytes: 4927
+  content_type: text/html
+  verdict: catch-all — every 200 on this host is the SPA shell
+path_echo_control: failed (developer.workday.com)
+hosts:
+- host: https://workday.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+  - path: /.well-known/apis.json
+    status: 404
+    file: null
+  - path: /apis.json
+    status: 404
+    file: null
+  - path: /apis.yml
+    status: 404
+    file: null
+  - path: /.well-known/aauth-resource.json
+    status: 404
+    file: null
+  - path: /.well-known/wd-negative-control-7f3ab91c.json
+    status: 404
+    file: null
+- host: https://www.workday.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+  - path: /.well-known/apis.json
+    status: 404
+    file: null
+  - path: /apis.json
+    status: 404
+    file: null
+  - path: /apis.yml
+    status: 404
+    file: null
+  - path: /.well-known/aauth-resource.json
+    status: 404
+    file: null
+  - path: /.well-known/wd-negative-control-7f3ab91c.json
+    status: 404
+    file: null
+- host: https://developer.workday.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: null
+    note: HTML shell, not a document
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: null
+    note: HTML shell, not a document
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: null
+    note: HTML shell, not a document
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    file: null
+    note: HTML shell, not a document
+  - path: /.well-known/api-catalog
+    status: 200
+    file: null
+    note: HTML shell, not a document
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: null
+    note: HTML shell, not a document
+  - path: /.well-known/agent-card.json
+    status: 200
+    file: null
+    note: HTML shell, not a document
+  - path: /.well-known/agent.json
+    status: 200
+    file: null
+    note: HTML shell, not a document
+  - path: /.well-known/apis.json
+    status: 200
+    file: null
+    note: HTML shell, not a document
+  - path: /apis.json
+    status: 200
+    file: null
+    note: HTML shell, not a document
+  - path: /apis.yml
+    status: 200
+    file: null
+    note: HTML shell, not a document
+  - path: /.well-known/aauth-resource.json
+    status: 200
+    file: null
+    note: HTML shell, not a document
+  - path: /.well-known/wd-negative-control-7f3ab91c.json
+    status: 200
+    file: null
+    note: HTML shell, not a document
+- host: https://community.workday.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+  - path: /.well-known/apis.json
+    status: 404
+    file: null
+  - path: /apis.json
+    status: 404
+    file: null
+  - path: /apis.yml
+    status: 403
+    file: null
+  - path: /.well-known/aauth-resource.json
+    status: 404
+    file: null
+  - path: /.well-known/wd-negative-control-7f3ab91c.json
+    status: 404
+    file: null
+- host: https://api.workday.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+  - path: /.well-known/apis.json
+    status: 404
+    file: null
+  - path: /apis.json
+    status: 404
+    file: null
+  - path: /apis.yml
+    status: 404
+    file: null
+  - path: /.well-known/aauth-resource.json
+    status: 404
+    file: null
+  - path: /.well-known/wd-negative-control-7f3ab91c.json
+    status: 404
+    file: null
+- host: https://doc.workday.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+  - path: /.well-known/apis.json
+    status: 404
+    file: null
+  - path: /apis.json
+    status: 404
+    file: null
+  - path: /apis.yml
+    status: 404
+    file: null
+  - path: /.well-known/aauth-resource.json
+    status: 404
+    file: null
+  - path: /.well-known/wd-negative-control-7f3ab91c.json
+    status: 404
+    file: null

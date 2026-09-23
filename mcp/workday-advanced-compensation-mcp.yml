@@ -1,0 +1,91 @@
+generated: '2026-09-17'
+method: searched
+status: candidate
+source: https://developer.workday.com/doc/GUID-7ac8632c-1c99-44cd-b939-44c675ea6198.md
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+  note: >-
+    Workday publishes an "Agent-Ready MCP Tools Roadmap 2026" naming real tool identifiers, but it
+    ships NO MCP endpoint, package or install command an agent or a human could use today, and
+    every compensation capability on it sits in the "Later" (October-March) column rather than the
+    "Next" (September) one. There is nothing to POST to, so mode is `none`. No endpoint was
+    guessed: a URL that happened to answer 200 would read as a verified agent surface that does
+    not exist.
+provider_roadmap:
+  url: https://developer.workday.com/doc/GUID-7ac8632c-1c99-44cd-b939-44c675ea6198.md
+  probed: '2026-09-17'
+  http_status: 200
+  shipped_stage: Next (September 2026)
+  planned_stage: Later (October 2026 - March 2027)
+  compensation_capabilities_planned:
+  - capability: Propose Compensation Change
+    type: WRITE
+    stage: Later
+  - capability: Request One-Time Payment
+    type: WRITE
+    stage: Later
+  - capability: View Bonus and One-Time Payments
+    type: READ
+    stage: Later
+  - capability: View Compensation Assignments (Current and Historical)
+    type: READ
+    stage: Later
+  - capability: View Compensation Plans
+    type: READ
+    stage: Later
+  note: >-
+    Workday tags every roadmap item READ or WRITE and states that write tools run through the same
+    business process controls, approvals, delegation and audit trail as a person making the change.
+    Timing and scope are explicitly not a commitment.
+tools:
+- name: list_scorecards
+  description: Retrieve compensation scorecard information.
+  source_operation: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json#GET /scorecards
+- name: get_scorecard
+  description: Retrieve one compensation scorecard by Workday ID.
+  source_operation: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json#GET /scorecards/{ID}
+- name: create_scorecard
+  description: Create a compensation scorecard.
+  source_operation: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json#POST /scorecards
+- name: update_scorecard
+  description: Update a compensation scorecard.
+  source_operation: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json#PUT /scorecards/{ID}
+- name: delete_scorecard
+  description: Delete a compensation scorecard by Workday ID.
+  source_operation: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json#DELETE /scorecards/{ID}
+- name: list_scorecard_results
+  description: Retrieve scorecard results and their scores.
+  source_operation: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json#GET /scorecardResults
+- name: get_scorecard_result
+  description: Retrieve one scorecard result by Workday ID.
+  source_operation: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json#GET /scorecardResults/{ID}
+- name: create_scorecard_result
+  description: Create a scorecard result.
+  source_operation: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json#POST /scorecardResults
+- name: update_scorecard_result_score
+  description: Update a score on a scorecard result.
+  source_operation: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json#PATCH /scorecardResults/{ID}/scores/{subresourceID}
+- name: delete_scorecard_result
+  description: Delete a scorecard result by Workday ID.
+  source_operation: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json#DELETE /scorecardResults/{ID}
+- name: list_workers
+  description: Retrieve a collection of workers.
+  source_operation: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json#GET /workers
+- name: get_worker
+  description: Retrieve a worker instance.
+  source_operation: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json#GET /workers/{ID}
+- name: request_one_time_payment
+  description: Request a one-time payment for a worker. Submits a Workday business process.
+  source_operation: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json#POST /workers/{ID}/requestOneTimePayment
+- name: list_one_time_payment_plan_values
+  description: Retrieve prompt values for one-time payment plans.
+  source_operation: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json#GET /values/oneTimePaymentPlanGroup/oneTimePaymentPlan/
+tools_note: >-
+  DERIVED candidates, one per operation in Workday's published compensation v3 OpenAPI. Workday's
+  published specs declare NO operationIds, so each tool is bound to its method+path instead. These
+  are not tools Workday ships.

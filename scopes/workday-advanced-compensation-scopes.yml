@@ -1,23 +1,48 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/workday-advanced-compensation-openapi.yml
+generated: '2026-09-17'
+method: searched
+source: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json
+docs: https://developer.workday.com/doc/axp1537909839739.md
+note: >-
+  Workday REST authorization is scoped by named FUNCTIONAL AREAS (Workday calls them "Scopes")
+  combined with a security DOMAIN that the Integration System User or API Client must be granted.
+  Every operation description in Workday's published compensation OpenAPI names both, e.g.
+  "Secured By Domain: Set Up: Merit and Bonus" / "Scope: Advanced Compensation". These are the
+  real scope strings an API Client is registered with in Workday; they are NOT OAuth scope tokens
+  in the flows[].scopes map, which Workday publishes empty.
 schemes:
-- name: oauth2
-  source: openapi/workday-advanced-compensation-openapi.yml
+- name: OAuth2
+  source: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json
   flows:
-  - flow: clientCredentials
-    tokenUrl: https://{tenant}.workday.com/ccx/oauth2/{tenant}/token
-  description: Workday OAuth 2.0 authentication
+  - flow: implicit
+    authorizationUrl: https://<tenantAuthorizationHostname>
+  description: >-
+    Workday OAuth 2.0. The published specs declare the implicit flow with a templated tenant
+    authorization host; Workday's own docs document Authorization Code and Client Credentials
+    (Integration System User) grants for server-to-server integrations.
+  docs:
+  - https://developer.workday.com/doc/jzx1537909761291.md
+  - https://developer.workday.com/doc/axp1537909839739.md
 scopes:
-- scope: compensation.read
-  description: Read compensation data
-  flows:
-  - clientCredentials
+- scope: Advanced Compensation
+  description: >-
+    Workday functional-area scope covering compensation scorecards, scorecard results and
+    merit/bonus setup. Named on 20 of the 26 operations in the published compensation v1-v3 specs.
+  secured_by_domain: 'Set Up: Merit and Bonus'
+  operations: 20
   sources:
-  - openapi/workday-advanced-compensation-openapi.yml
-- scope: compensation.write
-  description: Write compensation data
-  flows:
-  - clientCredentials
+  - openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json
+- scope: Core Compensation
+  description: >-
+    Workday functional-area scope covering one-time payment requests against a worker.
+  operations: 3
   sources:
-  - openapi/workday-advanced-compensation-openapi.yml
+  - openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json
+- scope: Staffing
+  description: >-
+    Workday functional-area scope covering the worker read surface the compensation service
+    exposes (/workers, /workers/{ID}).
+  secured_by_domain: >-
+    FLW Service, Self-Service: Current Staffing Information, Worker Data: Public Worker Reports
+  operations: 6
+  sources:
+  - openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json

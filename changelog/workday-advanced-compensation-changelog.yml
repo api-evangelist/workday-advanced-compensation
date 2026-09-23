@@ -1,0 +1,84 @@
+generated: '2026-09-17'
+method: searched
+source: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/compensation_v3_changeLog.json
+docs: https://developer.workday.com/
+note: >-
+  Workday publishes a machine-readable changelog PER REST SERVICE VERSION, shaped as an OpenAPI
+  document whose tags are the release dates and whose paths are the changed endpoints. Captured
+  here from the compensation v1/v2/v3 changelog documents. Entries are Workday weekly-release
+  identifiers (vYYYY.WW); the "version" of the API itself stays v3.
+scheme: workday-weekly-release
+current_version: v3
+current_release: v2026.33
+release_cadence: weekly
+machine_readable: true
+changelog_endpoints:
+- version: v3
+  url: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/compensation_v3_changeLog.json
+- version: v2
+  url: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/compensation_v2_changeLog.json
+- version: v1
+  url: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/compensation_v1_changeLog.json
+entries:
+- release: v2026.33
+  date: '2026-08-17'
+  api_version: v3
+  changed_operations: 5
+  breaking: false
+  highlights:
+  - Existing endpoints modified across the scorecards and scorecardResults surface.
+- release: v2026.26
+  date: '2026-06-30'
+  api_version: v3
+  changed_operations: 8
+  breaking: false
+  highlights:
+  - Descriptions changed across the compensation v3 operation set.
+- release: v2026.24
+  date: '2026-06-15'
+  api_version: v3
+  changed_operations: 9
+  breaking: false
+  highlights:
+  - Descriptions changed on every compensation v3 operation.
+- release: v2026.16
+  date: '2026-04-18'
+  api_version: v3
+  changed_operations: 2
+  breaking: false
+  highlights:
+  - Parameters modified on the worker read operations.
+- release: v2025.50
+  date: '2025-12-15'
+  api_version: v2
+  changed_operations: 8
+  breaking: false
+  highlights:
+  - Parameters modified across the v2 surface.
+- release: v2025.24
+  date: '2025-06-14'
+  api_version: v2
+  changed_operations: 2
+  breaking: false
+- release: v2024.24
+  date: '2024-06-15'
+  api_version: v2
+  changed_operations: 8
+  breaking: false
+- release: v2023.50
+  date: '2023-12-16'
+  api_version: v2
+  changed_operations: 1
+  breaking: false
+  highlights:
+  - Parameters added.
+- release: v2023.21
+  date: '2023-05-27'
+  api_version: v2
+  changed_operations: 2
+  breaking: false
+- release: v2022.38
+  date: '2022-09-19'
+  api_version: v2
+  changed_operations: 1
+  breaking: false

@@ -1,14 +1,7 @@
 {
   "provider": "workday-advanced-compensation",
   "sources": [
-    "workday-advanced-compensation-bonus-plans-api-openapi.yml",
-    "workday-advanced-compensation-compensation-budgets-api-openapi.yml",
-    "workday-advanced-compensation-compensation-grades-api-openapi.yml",
-    "workday-advanced-compensation-compensation-plans-api-openapi.yml",
-    "workday-advanced-compensation-compensation-reviews-api-openapi.yml",
-    "workday-advanced-compensation-employee-compensation-api-openapi.yml",
-    "workday-advanced-compensation-merit-plans-api-openapi.yml",
-    "workday-advanced-compensation-stock-plans-api-openapi.yml"
+    "_ae-authored/workday-advanced-compensation-openapi.yml"
   ],
   "outputs": [
     "workday-advanced-compensation-bonus-plans-api-openapi.yml",
@@ -24,15 +17,18 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "workday-advanced-compensation-bonus-plans-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "workday-advanced-compensation-compensation-budgets-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "workday-advanced-compensation-compensation-grades-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "workday-advanced-compensation-compensation-plans-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "workday-advanced-compensation-compensation-reviews-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "workday-advanced-compensation-employee-compensation-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "workday-advanced-compensation-merit-plans-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "workday-advanced-compensation-stock-plans-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "workday-advanced-compensation-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "workday-advanced-compensation-bonus-plans-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "workday-advanced-compensation-compensation-budgets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "workday-advanced-compensation-compensation-grades-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "workday-advanced-compensation-compensation-plans-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "workday-advanced-compensation-compensation-reviews-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "workday-advanced-compensation-employee-compensation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "workday-advanced-compensation-merit-plans-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "workday-advanced-compensation-stock-plans-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

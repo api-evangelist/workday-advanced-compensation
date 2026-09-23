@@ -1,0 +1,128 @@
+generated: '2026-09-17'
+method: searched
+source: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json
+docs:
+- https://developer.workday.com/doc/dan1370797408285.md
+- https://community.workday.com/rest/error-messages
+authentication:
+  style: oauth2
+  detail: >-
+    OAuth 2.0 bearer token obtained via Authorization Code (user context) or Client Credentials
+    bound to an Integration System User. Each operation additionally requires the named Workday
+    security domain (e.g. "Set Up: Merit and Bonus") on the calling account.
+  artifact: authentication/workday-advanced-compensation-authentication.yml
+idempotency:
+  supported: false
+  coverage: none
+  mechanism: null
+  header: null
+  retention: null
+  note: >-
+    Workday publishes no idempotency key, request-fingerprint or replay-protection contract on the
+    compensation REST write surface. Six mutating operations (POST /scorecards,
+    POST /scorecardResults, PUT /scorecards/{ID}, PATCH /scorecardResults/{ID}/scores/{subresourceID},
+    DELETE /scorecards/{ID}, DELETE /scorecardResults/{ID}, POST /workers/{ID}/requestOneTimePayment)
+    carry no idempotency parameter or header in the published v1-v3 specs, and the documented
+    guidance on 429/500 is an exponential back-off retry, which without a key is a replay risk.
+    Recorded as absent, not unknown: the contract was read.
+  evidence: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json
+reversibility:
+  grade: documented
+  coverage: partial
+  note: >-
+    The SOAP Compensation service publishes an explicit correction operation; the REST surface
+    publishes deletes but no reversal of a submitted business-process event. No published document
+    states a window for either, so this grades `documented`, not `verified`.
+  operations:
+  - write: Request_Compensation_Change
+    reversal: Correct_Compensation_Change
+    surface: soap
+    window: null
+    window_source: null
+    source: wsdl/workday-advanced-compensation-compensation.wsdl
+  - write: POST /scorecards
+    reversal: DELETE /scorecards/{ID}
+    surface: rest
+    window: null
+    note: A delete, not a reversal of a downstream compensation event.
+    source: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json
+  - write: POST /scorecardResults
+    reversal: DELETE /scorecardResults/{ID}
+    surface: rest
+    window: null
+    source: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json
+  - write: POST /workers/{ID}/requestOneTimePayment
+    reversal: null
+    surface: rest
+    window: null
+    note: >-
+      Submits a Workday business process. No REST operation rescinds or cancels it; Workday does
+      not publish a reversal path for this operation in the contract, so an agent cannot take it
+      back through the API it used to fire it.
+dry_run_mode:
+  supported: false
+  note: No validate-only / preview mode is declared on any compensation operation.
+pagination:
+  style: offset
+  params:
+  - name: limit
+    in: query
+    default: 20
+    maximum: 100
+  - name: offset
+    in: query
+    default: 0
+    description: Zero-based index of the first object in the response collection.
+  response_fields:
+  - total
+  - data
+  source: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json
+filtering:
+  params:
+  - name: search
+    in: query
+    applies: /workers
+  - name: effectiveDate
+    in: query
+  - name: includeTerminatedWorkers
+    in: query
+field_expansion:
+  supported: false
+metadata:
+  supported: false
+request_tracing:
+  header: null
+  note: No request-id or correlation header is documented on the REST surface.
+versioning:
+  scheme: uri-path
+  rest_current: v3
+  rest_archived:
+  - v1
+  - v2
+  soap_current: v47.0
+  detail: >-
+    REST versions are pinned in the path (/compensation/v3) and Workday marks superseded versions
+    "archived" in its own REST directory index. SOAP Workday Web Services are versioned vNN.N with
+    a published release-to-production date per version.
+  artifact: lifecycle/workday-advanced-compensation-lifecycle.yml
+error_envelope:
+  format: workday-error-model
+  rfc9457: false
+  media_type: application/json
+  schemas:
+  - ERROR_MODEL_REFERENCE
+  - VALIDATION_ERROR_MODEL_REFERENCE
+  reference: https://community.workday.com/rest/error-messages
+  artifact: errors/workday-advanced-compensation-problem-types.yml
+rate_limit_signaling:
+  headers: []
+  status_codes:
+  - 429
+  - 500
+  note: >-
+    Workday documents 429 Too Many Requests for REST/RaaS and 500 Internal Service Error for
+    SOAP/RaaS under overload, and recommends exponential back-off plus caching. No RateLimit-*
+    or X-RateLimit-* response headers are published, so an agent gets no budget signal before
+    exhaustion — only the rejection.
+  artifact: rate-limits/workday-advanced-compensation-rate-limits.yml
+  source: https://developer.workday.com/doc/dan1370797408285.md

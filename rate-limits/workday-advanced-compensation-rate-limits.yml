@@ -3,85 +3,72 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
 provider: Workday Advanced Compensation
 providerId: workday-advanced-compensation
+generated: '2026-09-17'
+method: searched
+source: https://developer.workday.com/doc/dan1370797408285.md
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
+modified: '2026-09-17'
 tags:
-  - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Workday Advanced Compensation API surface.
-  Captures per-tier quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold
-  values to be replaced with published provider limits.
+- Rate Limiting
+- Throttling
+description: >-
+  Rate-limit posture for the Workday compensation REST and SOAP surfaces, read from Workday's own
+  "Reference: Integrations, EIB, and Web Service Limits". This file REPLACES a 2026-05-04 scaffold
+  that asserted a free tier with 10 requests/minute and X-RateLimit-* headers; Workday publishes
+  neither. Recording the honest shape matters here: an agent gets no pre-exhaustion budget signal
+  from this API at all.
+limit_count: 0
+limits: []
 headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  limit: null
+  remaining: null
+  reset: null
+  retryAfter: null
+  policy: null
+  note: >-
+    No RateLimit-* or X-RateLimit-* response headers are documented for the Workday REST API.
+    Retry-After is not documented either. The only runtime signal is the rejection status.
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
-limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Workday Advanced Compensation API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Workday Advanced Compensation API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Workday Advanced Compensation API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Workday Advanced Compensation API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Workday Advanced Compensation API
-policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+  soapThrottled: 500
+  note: >-
+    Workday documents 429 Too Many Requests for the REST and RaaS APIs and 500 Internal Service
+    Error for the SOAP and RaaS APIs, and states that a 500 can itself be caused by too many
+    requests.
+policy:
+  model: discretionary-throttling
+  detail: >-
+    Workday states that on reaching or exceeding integration or web-service request limits it may,
+    at its sole discretion, throttle use or suspend access, and that it rejects API requests when
+    other requests overload tenant resources. No numeric per-key, per-tenant or per-endpoint limit
+    is published for the compensation REST service or for Workday Web Services.
+  guidance:
+  - Implement an exponential back-off retry mechanism on the request generator.
+  - Cache responses.
+  - Avoid a strict HTTP timeout on page-1 requests; Workday builds the result cache on that call.
+  - System guardrails temporarily rate-limit (429) traffic generating an excessive volume of
+    invalid requests.
+  source: https://developer.workday.com/doc/dan1370797408285.md
+paging_cache_retention:
+- window: 2 hours
+  applies: between paged requests
+- window: 30 minutes
+  applies: after the last page is requested
+related_published_limits:
+- surface: Reports-as-a-Service (RaaS) API extract interfaces
+  note: >-
+    Not the compensation REST service, recorded for completeness because Workday publishes real
+    numbers only here. Caps are by customer size across all extract interfaces.
+  tiers:
+  - customer_size: fewer than 3,500 workers
+    per_24h: 75000
+    per_60m: 15000
+  - customer_size: fewer than 10,000 workers
+    per_24h: 100000
+    per_60m: 30000
+  - customer_size: fewer than 100,000 workers
+    per_24h: 250000
+    per_60m: 75000
+  - customer_size: more than 100,000 workers
+    per_24h: 350000
+    per_60m: 100000

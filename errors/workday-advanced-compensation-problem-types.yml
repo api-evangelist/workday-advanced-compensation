@@ -1,0 +1,65 @@
+generated: '2026-09-17'
+method: derived
+source: openapi/_original/workday-advanced-compensation-compensation-v3-openapi.json
+docs: https://community.workday.com/rest/error-messages
+format: workday-error-model
+rfc9457: false
+note: >-
+  Derived from the 4xx/default responses declared on all 14 operations of Workday's published
+  compensation v3 OpenAPI. Workday does NOT use RFC 9457 application/problem+json; it returns
+  application/json shaped by two named schemas, and every error response description carries the
+  same public error-message reference URL. The per-code error catalogue behind that URL is a
+  Workday Community troubleshooting page.
+envelope:
+  media_type: application/json
+  schemas:
+  - name: VALIDATION_ERROR_MODEL_REFERENCE
+    used_by: [400, 401, 403, 404]
+  - name: ERROR_MODEL_REFERENCE
+    used_by: [default]
+problems:
+- status: 400
+  title: Invalid request
+  schema: VALIDATION_ERROR_MODEL_REFERENCE
+  reference: https://community.workday.com/rest/error-messages
+  operations: all
+- status: 401
+  title: 'Unauthorized: missing or invalid credentials'
+  schema: VALIDATION_ERROR_MODEL_REFERENCE
+  reference: https://community.workday.com/rest/error-messages
+  operations: all
+  remediation: >-
+    Re-acquire an OAuth 2.0 token for the tenant; Workday access tokens are tenant-scoped and the
+    authorization host is tenant-specific.
+- status: 403
+  title: User has insufficient permissions
+  schema: VALIDATION_ERROR_MODEL_REFERENCE
+  reference: https://community.workday.com/rest/error-messages
+  operations: all
+  remediation: >-
+    The calling Integration System User needs the security domain the operation names (for the
+    Advanced Compensation surface, "Set Up: Merit and Bonus").
+- status: 404
+  title: Resource not found
+  schema: VALIDATION_ERROR_MODEL_REFERENCE
+  reference: https://community.workday.com/rest/error-messages
+  operations: all
+- status: 429
+  title: Too Many Requests
+  schema: null
+  source: https://developer.workday.com/doc/dan1370797408285.md
+  note: >-
+    Not declared in the OpenAPI. Documented in Workday's service-limits reference as the code
+    returned when requests are throttled under tenant load; remediate with exponential back-off.
+- status: 500
+  title: Internal Service Error
+  schema: ERROR_MODEL_REFERENCE
+  source: https://developer.workday.com/doc/dan1370797408285.md
+  note: >-
+    Workday documents that a 500 on the SOAP and RaaS surfaces can itself be an overload signal
+    and should be retried after a pause.
+gaps:
+- The published specs declare no machine-readable error CODE enumeration, only HTTP status plus a
+  free-text message schema; the code list lives on a human troubleshooting page.
+- No operationIds are declared in Workday's published compensation specs, so an error cannot be
+  bound to a stable operation identifier from the contract alone.

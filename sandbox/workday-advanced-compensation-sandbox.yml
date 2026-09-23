@@ -1,0 +1,46 @@
+generated: '2026-09-17'
+method: searched
+source: https://developer.workday.com/bundles/rest-directory-ui/public/static/services_oas3.json
+summary: >-
+  There is no public sandbox for the Workday compensation API. No test keys, no anonymous test
+  tenant, no published magic identifiers, no test clock. Everything runs against a real Workday
+  tenant the caller's employer already pays for. What Workday DOES publish is a per-operation
+  "try it" flag in its own REST directory index, and it is enabled for READS ONLY.
+public_sandbox: false
+test_credentials_published: false
+magic_test_values: []
+test_clock: false
+key_prefixes: []
+console:
+  name: Workday REST API directory "Try it"
+  url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  auth: tenant OAuth — the caller supplies their own Workday tenant and token
+  machine_readable_flag: tryEnabled
+  source: https://developer.workday.com/bundles/rest-directory-ui/public/static/services_oas3.json
+  compensation_v3:
+    try_enabled:
+    - GET /scorecards
+    - GET /scorecards/{ID}
+    - GET /scorecardResults
+    - GET /scorecardResults/{ID}
+    - GET /workers
+    - GET /workers/{ID}
+    try_disabled:
+    - POST /scorecards
+    - PUT /scorecards/{ID}
+    - DELETE /scorecards/{ID}
+    - POST /scorecardResults
+    - PATCH /scorecardResults/{ID}/scores/{subresourceID}
+    - DELETE /scorecardResults/{ID}
+    - POST /workers/{ID}/requestOneTimePayment
+    - GET /values/oneTimePaymentPlanGroup/oneTimePaymentPlan/
+    note: >-
+      6 of 14 operations are callable from the console. Every write — including the one that
+      submits a real compensation business process — is not. An integrator cannot rehearse a
+      compensation write anywhere Workday publishes.
+tenant_model:
+  note: >-
+    Workday's non-production environments are customer tenants provisioned under a subscription,
+    not a self-serve developer sandbox. Workday publishes implementation guidance for them; it
+    does not publish a way to obtain one without a contract.
+  reference: https://developer.workday.com/doc/GUID-37fbee1b-c1c6-4c98-bfbf-e70a5d2b6e4c.md
