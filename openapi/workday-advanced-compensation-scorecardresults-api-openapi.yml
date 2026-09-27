@@ -1,0 +1,702 @@
+openapi: 3.2.0
+info:
+  title: Workday Advanced Compensation Scorecard Results API
+  version: v3
+  x-workday-confidence-level: Production
+  x-workday-internal-protected-usage-enabled: false
+  x-workday-internal-routing: Public
+  x-workday-internal-service-container-id: 2d8b79dba7251000105e1cc54b0a13e1
+  x-workday-internal-source: xo
+  description: 'Operations tagged scorecardResults across 2 of this provider''s published API definitions: workday-advanced-compensation-compensation-v3-openapi.json, workday-advanced-compensation-compensation-rest-v3-openapi.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://<tenantHostname>/compensation/v3
+tags:
+- name: scorecardResults
+  description: Provides the ability to set up and retrieve Scores on Scorecard Results.
+paths:
+  /scorecardResults:
+    get:
+      tags:
+      - scorecardResults
+      summary: Provides the ability to set up and retrieve Scores on Scorecard Results
+      description: 'Retrieves the Scorecard Results.
+
+
+        Secured By Domain: Set Up: Merit and Bonus
+
+
+        Scope: Advanced Compensation'
+      parameters:
+      - name: limit
+        in: query
+        description: The maximum number of objects in a single response. The default is 20. The maximum is 100.
+        schema:
+          type: integer
+          format: int64
+      - name: offset
+        in: query
+        description: 'The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.'
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Successful response. A successful response can return no matched data.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                    format: int32
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/scoresetContainer_9417ca9c97d910000b2cd7813b5b00fc'
+        '400':
+          description: Invalid request. (https://community.workday.com/rest/error-messages)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '401':
+          description: 'Unauthorized: Missing or invalid credentials. (https://community.workday.com/rest/error-messages)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '403':
+          description: User has insufficient permissions. (https://community.workday.com/rest/error-messages)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '404':
+          description: Resource not found. (https://community.workday.com/rest/error-messages)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        default:
+          description: An error occurred.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
+      x-workday-internal-try-enabled: 'true'
+      x-workday-operation-id: 9417ca9c97d910000b4e27fc474400ff
+      x-workday-secured-by-domains:
+      - 'Set Up: Merit and Bonus'
+      operationId: getScorecardResults
+      x-operation-id-source: derived
+    post:
+      tags:
+      - scorecardResults
+      summary: Creates a new Scorecard Result
+      description: 'In the request body, specify these required fields:
+
+
+        * compensationScorecard - The Workday ID of a Compensation Scorecard. You can use a returned id from the GET /scorecards method.
+
+        * evaluationDate - The date when the Scorecard Result is evaluated. Use the yyyy-mm-dd format.
+
+
+        Secured By Domain: Set Up: Merit and Bonus
+
+
+        Scope: Advanced Compensation'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createScorecardResults_788fbbd8885d100009973168b6ea015e'
+      responses:
+        '201':
+          description: Resource created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createScorecardResults_788fbbd8885d100009973168b6ea015e'
+        '400':
+          description: 'Invalid request. (https://community.workday.com/rest/error-messages)
+
+
+            Change the Evaluation Date to a date that is on or after the Effective Date of the selected Scorecard. The specified Evaluation Date is before the earliest Effective Date of the selected Scorecard.
+
+
+            Either specify a different Evaluation Date or edit the existing Scores. The Scorecard Result for the specified Scorecard and Evaluation Date already exists:([scores])'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '401':
+          description: 'Unauthorized: Missing or invalid credentials. (https://community.workday.com/rest/error-messages)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '403':
+          description: User has insufficient permissions. (https://community.workday.com/rest/error-messages)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '404':
+          description: Resource not found. (https://community.workday.com/rest/error-messages)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        default:
+          description: An error occurred.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
+      x-workday-internal-try-enabled: 'false'
+      x-workday-operation-id: 788fbbd8885d1000099999c29d8d0162
+      x-workday-secured-by-domains:
+      - 'Set Up: Merit and Bonus'
+      operationId: postScorecardResults
+      x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/compensation/v3
+  /scorecardResults/{ID}/scores/{subresourceID}:
+    patch:
+      tags:
+      - scorecardResults
+      summary: Updates the Score for the specified Scorecard Result
+      description: 'Sets the achievement value for the specified Score in the specified Scorecard Result.
+
+        Specify the required achievement value as a percentage (1-100%).
+
+
+        Secured By Domain: Set Up: Merit and Bonus
+
+
+        Scope: Advanced Compensation'
+      parameters:
+      - name: ID
+        in: path
+        description: 'The Workday ID of the resource.
+
+
+          Accepts:
+
+          - **Workday ID**: Workday ID (32-character lowercase hexadecimal string).
+
+          - **Reference ID**: Workday reference ID (Type=Value). Valid types: Compensation_Performance_Scorecard_Result_ID'
+        required: true
+        schema:
+          $ref: '#/components/schemas/ResourceIdPathValue_scorecardResults'
+        examples:
+          wid:
+            summary: Specific resource WID
+            value: a3f5b554007d20e98360015c5e6daf6
+          referenceId:
+            summary: Reference ID
+            value: Compensation_Performance_Scorecard_Result_ID=21002
+      - name: subresourceID
+        in: path
+        description: 'The Workday ID of the subresource.
+
+
+          Accepts:
+
+          - **Workday ID**: Workday ID (32-character lowercase hexadecimal string).'
+        required: true
+        schema:
+          $ref: '#/components/schemas/ResourceIdPathValue_scores'
+        examples:
+          wid:
+            summary: Specific resource WID
+            value: a3f5b554007d20e98360015c5e6daf6
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/scoreInput_b919a306ff7e10000e12a527cd2c0166'
+      responses:
+        '200':
+          description: Successful response. A successful response can return no matched data. Updating resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/scoreInput_b919a306ff7e10000e12a527cd2c0166'
+        '400':
+          description: 'Invalid request. (https://community.workday.com/rest/error-messages)
+
+
+            You can’t update Scorecard Results used in a completed compensation review process.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '401':
+          description: 'Unauthorized: Missing or invalid credentials. (https://community.workday.com/rest/error-messages)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '403':
+          description: User has insufficient permissions. (https://community.workday.com/rest/error-messages)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '404':
+          description: Resource not found. (https://community.workday.com/rest/error-messages)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        default:
+          description: An error occurred.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
+      x-workday-internal-try-enabled: 'false'
+      x-workday-operation-id: b919a306ff7e10000ceaf185bf270163
+      x-workday-secured-by-domains:
+      - 'Set Up: Merit and Bonus'
+      operationId: patchScorecardResultsByIDScoresBySubresourceID
+      x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/compensation/v3
+  /scorecardResults/{ID}:
+    get:
+      tags:
+      - scorecardResults
+      summary: Provides the ability to set up and retrieve Scores on Scorecard Results
+      description: 'Retrieves the Scorecard Results.
+
+
+        Secured By Domain: Set Up: Merit and Bonus
+
+
+        Scope: Advanced Compensation'
+      parameters:
+      - name: ID
+        in: path
+        description: 'The Workday ID of the resource.
+
+
+          Accepts:
+
+          - **Workday ID**: Workday ID (32-character lowercase hexadecimal string).
+
+          - **Reference ID**: Workday reference ID (Type=Value). Valid types: Compensation_Performance_Scorecard_Result_ID'
+        required: true
+        schema:
+          $ref: '#/components/schemas/ResourceIdPathValue_scorecardResults'
+        examples:
+          wid:
+            summary: Specific resource WID
+            value: a3f5b554007d20e98360015c5e6daf6
+          referenceId:
+            summary: Reference ID
+            value: Compensation_Performance_Scorecard_Result_ID=21002
+      responses:
+        '200':
+          description: Successful response. A successful response can return no matched data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/scoresetContainer_9417ca9c97d910000b2cd7813b5b00fc'
+        '400':
+          description: Invalid request. (https://community.workday.com/rest/error-messages)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '401':
+          description: 'Unauthorized: Missing or invalid credentials. (https://community.workday.com/rest/error-messages)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '403':
+          description: User has insufficient permissions. (https://community.workday.com/rest/error-messages)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '404':
+          description: Resource not found. (https://community.workday.com/rest/error-messages)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        default:
+          description: An error occurred.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
+      x-workday-internal-try-enabled: 'true'
+      x-workday-operation-id: 9417ca9c97d910000b4e27fc474400ff
+      x-workday-secured-by-domains:
+      - 'Set Up: Merit and Bonus'
+      operationId: getScorecardResultsByID
+      x-operation-id-source: derived
+    delete:
+      tags:
+      - scorecardResults
+      summary: Deletes the Scorecard Results with the specified ID
+      description: 'Deletes the Scorecard Results with the specified ID.
+
+
+        Secured By Domain: Set Up: Merit and Bonus
+
+
+        Scope: Advanced Compensation'
+      parameters:
+      - name: ID
+        in: path
+        description: 'The Workday ID of the resource.
+
+
+          Accepts:
+
+          - **Workday ID**: Workday ID (32-character lowercase hexadecimal string).
+
+          - **Reference ID**: Workday reference ID (Type=Value). Valid types: Compensation_Performance_Scorecard_Result_ID'
+        required: true
+        schema:
+          $ref: '#/components/schemas/ResourceIdPathValue_scorecardResults'
+        examples:
+          wid:
+            summary: Specific resource WID
+            value: a3f5b554007d20e98360015c5e6daf6
+          referenceId:
+            summary: Reference ID
+            value: Compensation_Performance_Scorecard_Result_ID=21002
+      responses:
+        '200':
+          description: Successful response. A successful response can return no matched data. Deleting resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MULTIPLE_INSTANCE_MODEL_REFERENCE'
+        '400':
+          description: 'Invalid request. (https://community.workday.com/rest/error-messages)
+
+
+            You can’t delete the Scorecard Results used in a completed or in-progress compensation review process.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '401':
+          description: 'Unauthorized: Missing or invalid credentials. (https://community.workday.com/rest/error-messages)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '403':
+          description: User has insufficient permissions. (https://community.workday.com/rest/error-messages)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '404':
+          description: Resource not found. (https://community.workday.com/rest/error-messages)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        default:
+          description: An error occurred.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
+      x-workday-internal-try-enabled: 'false'
+      x-workday-operation-id: e41bd18d448910000d5f670d61e6026e
+      x-workday-secured-by-domains:
+      - 'Set Up: Merit and Bonus'
+      operationId: deleteScorecardResultsByID
+      x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/compensation/v3
+components:
+  schemas:
+    defaultScorecard_c04de7a15cc210000fc41acababf0019:
+      allOf:
+      - type: object
+        properties:
+          id:
+            type: string
+            description: The id for Compensation Scorecard
+    scoreset_9417ca9c97d91000112e77cec5c70111:
+      allOf:
+      - type: object
+        properties:
+          performanceScores:
+            type: array
+            description: The set of Performance Scores for a Compensation Scorecard.
+            items:
+              $ref: '#/components/schemas/performanceScores_031a6cc942de100013eade974c9a01d2'
+            x-workday-type: Multi-instance
+          weightedFundingPercent:
+            type: number
+            description: Calculates the total Weighted Funding Percent for all the scores in the scorecard result set.
+            format: double
+            example: 999999.999999
+            x-workday-type: Numeric
+          eligibiltyRule:
+            $ref: '#/components/schemas/eligibiltyRule_031a6cc942de100015833eaa47c701e4'
+          descriptor:
+            type: string
+            description: The display name of the instance
+            example: Lorem ipsum dolor sit ame
+          id:
+            type: string
+            description: The id for Compensation Scorecard Result
+    profileScorecardGoalsResult_031a6cc942de1000135e69b35a4601cd:
+      allOf:
+      - $ref: '#/components/schemas/scoreset_9417ca9c97d91000112e77cec5c70111'
+      - type: object
+        properties:
+          id:
+            type: string
+            description: The id for Compensation Scorecard Result
+    scorecardID_9417ca9c97d9100010b7515ebf9e010b:
+      description: Returns the Default Scorecard for the Scorecard Result Instance
+      allOf:
+      - $ref: '#/components/schemas/defaultScorecard_c04de7a15cc210000fc41acababf0019'
+      - type: object
+    INSTANCE_MODEL_REFERENCE:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          pattern: ^(([0-9a-f]{32})|(\S+=\S+))$
+          type: string
+          description: Workday Id or Reference Id of the instance.
+        descriptor:
+          type: string
+          description: The display name of the instance
+          readOnly: true
+        href:
+          type: string
+          description: A link to the instance
+          readOnly: true
+    eligibiltyRule_031a6cc942de100015833eaa47c701e4:
+      description: The Eligibility Rule for a Scorecard Profile.
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    ResourceIdPathValue_scores:
+      oneOf:
+      - $ref: '#/components/schemas/WorkdayId'
+    scorecardID_788fbbd8885d1000099731d83fc70160:
+      description: Returns the Default Scorecard for the Scorecard Result Instance
+      allOf:
+      - $ref: '#/components/schemas/defaultScorecard_c04de7a15cc210000fc41acababf0019'
+      - type: object
+    VALIDATION_ERROR_MODEL_REFERENCE:
+      allOf:
+      - required:
+        - error
+        type: object
+        properties:
+          error:
+            type: string
+            description: A description of the error
+          errors:
+            type: array
+            description: An array of validation errors
+            items:
+              $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
+    ERROR_MODEL_REFERENCE:
+      required:
+      - error
+      type: object
+      properties:
+        error:
+          type: string
+          description: A description of the error
+        code:
+          type: string
+          description: The code that corresponds to the error message. Use the error code to drive programmatic error-handling behavior. Don't use error message strings for this purpose because they are subject to change
+        field:
+          type: string
+          description: The field related to the error
+        path:
+          type: string
+          description: The path of the field related to the error
+        severity:
+          type: string
+          description: Severity of the validation (e.g. Critical, Warning).
+        internalMessage:
+          type: string
+          description: Internal message providing additional context for the validation (e.g. representation content validation details).
+    defaultScorecardGoalsResult_9417ca9c97d91000112f60d761110113:
+      description: Returns the Default Score for a Scorecard Result.
+      allOf:
+      - $ref: '#/components/schemas/scoreset_9417ca9c97d91000112e77cec5c70111'
+      - type: object
+    scoreInput_b919a306ff7e10000e12a527cd2c0166:
+      allOf:
+      - type: object
+        properties:
+          achievement:
+            type: number
+            description: The achievement percentage for the scorecard criteria result.
+            format: double
+            example: 1
+            x-workday-type: Numeric
+          descriptor:
+            type: string
+            description: The display name of the instance
+            example: Lorem ipsum dolor sit ame
+          id:
+            type: string
+            description: Workday Id or Reference Id of the instance.
+    scoresetContainer_9417ca9c97d910000b2cd7813b5b00fc:
+      allOf:
+      - type: object
+        properties:
+          scorecardID:
+            $ref: '#/components/schemas/scorecardID_9417ca9c97d9100010b7515ebf9e010b'
+          defaultScorecardGoalsResult:
+            $ref: '#/components/schemas/defaultScorecardGoalsResult_9417ca9c97d91000112f60d761110113'
+          profileScorecardGoalsResult:
+            type: array
+            description: Returns the Scorecard Profiles for a Scorecard Result
+            items:
+              $ref: '#/components/schemas/profileScorecardGoalsResult_031a6cc942de1000135e69b35a4601cd'
+            x-workday-type: Multi-instance
+          evaluationDate:
+            type: string
+            description: Scorecard Result Evaluation Date
+            format: date
+            x-workday-type: Date
+          scorecardDescription:
+            type: string
+            description: Returns the Scorecard's Description
+            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
+            x-workday-type: Text
+          scorecardName:
+            type: string
+            description: The \~goal\~ name of the scorecard criteria result.
+            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
+            x-workday-type: Text
+          descriptor:
+            type: string
+            description: The display name of the instance
+            example: Lorem ipsum dolor sit ame
+          id:
+            type: string
+            description: Workday Id or Reference Id of the instance.
+    createScorecardResults_788fbbd8885d100009973168b6ea015e:
+      allOf:
+      - required:
+        - evaluationDate
+        - scorecardID
+        type: object
+        properties:
+          scorecardName:
+            type: string
+            description: The \~goal\~ name of the scorecard criteria result.
+            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
+            x-workday-type: Text
+            x-readOnly: true
+          evaluationDate:
+            type: string
+            description: Scorecard Result Evaluation Date
+            format: date
+            x-workday-type: Date
+          scorecardID:
+            $ref: '#/components/schemas/scorecardID_788fbbd8885d1000099731d83fc70160'
+          descriptor:
+            type: string
+            description: The display name of the instance
+            example: Lorem ipsum dolor sit ame
+          id:
+            type: string
+            description: Workday Id or Reference Id of the instance.
+    performanceScores_031a6cc942de100013eade974c9a01d2:
+      allOf:
+      - $ref: '#/components/schemas/scoresetScore_031a6cc942de10001432e156a86901d4'
+      - type: object
+        properties:
+          id:
+            type: string
+            description: The id for Score
+    WorkdayId:
+      pattern: ^[0-9a-f]{32}$
+      type: string
+      description: Workday ID (32-character lowercase hexadecimal string).
+      example: a3f5b554007d20e98360015c5e6daf6
+    ResourceIdPathValue_scorecardResults:
+      oneOf:
+      - $ref: '#/components/schemas/WorkdayId'
+      - $ref: '#/components/schemas/WorkdayReferenceId_scorecardResults'
+    MULTIPLE_INSTANCE_MODEL_REFERENCE:
+      type: object
+      properties:
+        total:
+          type: integer
+          format: int32
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+    WorkdayReferenceId_scorecardResults:
+      pattern: ^(Compensation_Performance_Scorecard_Result_ID)=\S+$
+      type: string
+      description: 'Workday reference ID (Type=Value). Valid types: Compensation_Performance_Scorecard_Result_ID'
+      example: Compensation_Performance_Scorecard_Result_ID=21002
+    scoreGoal_99e36113850b10000c88dae09c9b00c0:
+      allOf:
+      - type: object
+        properties:
+          id:
+            type: string
+            description: The id for Performance Criteria
+    goalID_031a6cc942de10001432e1711d9201d6:
+      description: The criteria for the scorecard criteria result.
+      allOf:
+      - $ref: '#/components/schemas/scoreGoal_99e36113850b10000c88dae09c9b00c0'
+      - type: object
+    scoresetScore_031a6cc942de10001432e156a86901d4:
+      allOf:
+      - type: object
+        properties:
+          achievement:
+            type: number
+            description: The achievement percentage for the scorecard criteria result.
+            format: double
+            example: 999999.999999
+            x-workday-type: Numeric
+          goalWeight:
+            type: number
+            description: The criteria weighted percentage of the scorecard criteria result.
+            format: double
+            example: 999999.999999
+            x-workday-type: Numeric
+          goalID:
+            $ref: '#/components/schemas/goalID_031a6cc942de10001432e1711d9201d6'
+          goalName:
+            type: string
+            description: The \~goal\~ name of the scorecard criteria result.
+            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
+            x-workday-type: Text
+          id:
+            type: string
+            description: The id for Score
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: https://<tenantAuthorizationHostname>
+          scopes: {}
+x-refined-from:
+- workday-advanced-compensation-compensation-v3-openapi.json
+- workday-advanced-compensation-compensation-rest-v3-openapi.json

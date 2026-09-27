@@ -1,0 +1,166 @@
+openapi: 3.2.0
+info:
+  title: Workday Advanced Compensation Prompt Values API
+  version: v3
+  x-workday-confidence-level: Production
+  x-workday-internal-protected-usage-enabled: false
+  x-workday-internal-routing: Public
+  x-workday-internal-service-container-id: 2d8b79dba7251000105e1cc54b0a13e1
+  x-workday-internal-source: xo
+  description: 'Operations tagged Prompt Values across 2 of this provider''s published API definitions: workday-advanced-compensation-compensation-v3-openapi.json, workday-advanced-compensation-compensation-rest-v3-openapi.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://<tenantHostname>/compensation/v3
+tags:
+- name: Prompt Values
+  description: Retrieves instances that can be used as values for other endpoint parameters in this service.
+paths:
+  /values/oneTimePaymentPlanGroup/oneTimePaymentPlan/:
+    parameters:
+    - name: limit
+      in: query
+      description: The maximum number of objects in a single response. The default and maximum is 1000.
+      schema:
+        type: integer
+        format: int64
+    - name: offset
+      in: query
+      description: 'The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.'
+      schema:
+        type: integer
+        format: int64
+    - name: position
+      in: query
+      description: Eligibility for One-Time Payment Plan is evaluated against this query param.
+      schema:
+        type: string
+    - name: search
+      in: query
+      description: A search string that matches display IDs. The search is case-insensitive and matches words that start with the given string.
+      schema:
+        type: string
+    x-workday-confidence-level: Production
+    get:
+      tags:
+      - Prompt Values
+      description: Retrieves instances that can be used as values for other endpoint parameters in this service.
+      responses:
+        '200':
+          description: Successful response. A successful response can return no matched data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MULTIPLE_INSTANCE_MODEL_REFERENCE'
+        '400':
+          description: Invalid request. (https://community.workday.com/rest/error-messages)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '401':
+          description: 'Unauthorized: Missing or invalid credentials. (https://community.workday.com/rest/error-messages)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '403':
+          description: User has insufficient permissions. (https://community.workday.com/rest/error-messages)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '404':
+          description: Resource not found. (https://community.workday.com/rest/error-messages)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        default:
+          description: An error occurred.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
+      x-workday-internal-protected-usage-enabled: false
+      x-workday-internal-try-enabled: 'false'
+      summary: Get values one time payment plan group one time payment plan
+      x-summary-source: derived
+      operationId: getValuesOneTimePaymentPlanGroupOneTimePaymentPlan
+      x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/compensation/v3
+components:
+  schemas:
+    ERROR_MODEL_REFERENCE:
+      required:
+      - error
+      type: object
+      properties:
+        error:
+          type: string
+          description: A description of the error
+        code:
+          type: string
+          description: The code that corresponds to the error message. Use the error code to drive programmatic error-handling behavior. Don't use error message strings for this purpose because they are subject to change
+        field:
+          type: string
+          description: The field related to the error
+        path:
+          type: string
+          description: The path of the field related to the error
+        severity:
+          type: string
+          description: Severity of the validation (e.g. Critical, Warning).
+        internalMessage:
+          type: string
+          description: Internal message providing additional context for the validation (e.g. representation content validation details).
+    INSTANCE_MODEL_REFERENCE:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          pattern: ^(([0-9a-f]{32})|(\S+=\S+))$
+          type: string
+          description: Workday Id or Reference Id of the instance.
+        descriptor:
+          type: string
+          description: The display name of the instance
+          readOnly: true
+        href:
+          type: string
+          description: A link to the instance
+          readOnly: true
+    MULTIPLE_INSTANCE_MODEL_REFERENCE:
+      type: object
+      properties:
+        total:
+          type: integer
+          format: int32
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+    VALIDATION_ERROR_MODEL_REFERENCE:
+      allOf:
+      - required:
+        - error
+        type: object
+        properties:
+          error:
+            type: string
+            description: A description of the error
+          errors:
+            type: array
+            description: An array of validation errors
+            items:
+              $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: https://<tenantAuthorizationHostname>
+          scopes: {}
+x-refined-from:
+- workday-advanced-compensation-compensation-v3-openapi.json
+- workday-advanced-compensation-compensation-rest-v3-openapi.json

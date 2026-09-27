@@ -1,9 +1,15 @@
 {
   "provider": "workday-advanced-compensation",
   "sources": [
-    "_ae-authored/workday-advanced-compensation-openapi.yml"
+    "_original/workday-advanced-compensation-compensation-v3-openapi.json",
+    "_ae-authored/workday-advanced-compensation-openapi.yml",
+    "workday-advanced-compensation-compensation-rest-v3-openapi.json"
   ],
   "outputs": [
+    "workday-advanced-compensation-prompt-values-api-openapi.yml",
+    "workday-advanced-compensation-scorecardresults-api-openapi.yml",
+    "workday-advanced-compensation-scorecards-api-openapi.yml",
+    "workday-advanced-compensation-workers-api-openapi.yml",
     "workday-advanced-compensation-bonus-plans-api-openapi.yml",
     "workday-advanced-compensation-compensation-budgets-api-openapi.yml",
     "workday-advanced-compensation-compensation-grades-api-openapi.yml",
@@ -13,22 +19,33 @@
     "workday-advanced-compensation-merit-plans-api-openapi.yml",
     "workday-advanced-compensation-stock-plans-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "archived openapi/workday-advanced-compensation-compensation-rest-v3-openapi.json"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
-    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "10 archived document(s) dropped as subsets of other archived documents",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "workday-advanced-compensation-compensation-v3-openapi.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
     "workday-advanced-compensation-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "workday-advanced-compensation-compensation-rest-v3-openapi.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "tag 'Prompt Values' spans 2 source specs (workday-advanced-compensation-compensation-v3-openapi.json, workday-advanced-compensation-compensation-rest-v3-openapi.json): per-path servers applied",
+    "tag 'scorecardResults' spans 2 source specs (workday-advanced-compensation-compensation-v3-openapi.json, workday-advanced-compensation-compensation-rest-v3-openapi.json): per-path servers applied",
+    "tag 'scorecards' spans 2 source specs (workday-advanced-compensation-compensation-v3-openapi.json, workday-advanced-compensation-compensation-rest-v3-openapi.json): per-path servers applied",
+    "tag 'workers' spans 2 source specs (workday-advanced-compensation-compensation-v3-openapi.json, workday-advanced-compensation-compensation-rest-v3-openapi.json): per-path servers applied",
+    "apis.yml register: written (+4 apis, 13 total)"
   ],
   "skipped": [
-    "workday-advanced-compensation-bonus-plans-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "workday-advanced-compensation-compensation-budgets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "workday-advanced-compensation-compensation-grades-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "workday-advanced-compensation-compensation-plans-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "workday-advanced-compensation-compensation-reviews-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "workday-advanced-compensation-employee-compensation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "workday-advanced-compensation-merit-plans-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "workday-advanced-compensation-stock-plans-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+    "_ae-authored/workday-advanced-compensation-stock-plans-api-openapi.yml: archived document superseded by a larger archived document",
+    "_ae-authored/workday-advanced-compensation-merit-plans-api-openapi.yml: archived document superseded by a larger archived document",
+    "_ae-authored/workday-advanced-compensation-employee-compensation-api-openapi.yml: archived document superseded by a larger archived document",
+    "_ae-authored/workday-advanced-compensation-compensation-reviews-api-openapi.yml: archived document superseded by a larger archived document",
+    "_ae-authored/workday-advanced-compensation-compensation-plans-api-openapi.yml: archived document superseded by a larger archived document",
+    "_ae-authored/workday-advanced-compensation-compensation-grades-api-openapi.yml: archived document superseded by a larger archived document",
+    "_ae-authored/workday-advanced-compensation-compensation-budgets-api-openapi.yml: archived document superseded by a larger archived document",
+    "_ae-authored/workday-advanced-compensation-bonus-plans-api-openapi.yml: archived document superseded by a larger archived document",
+    "_original/workday-advanced-compensation-compensation-v2-openapi.json: archived document superseded by a larger archived document",
+    "_original/workday-advanced-compensation-compensation-v1-openapi.json: archived document superseded by a larger archived document"
   ]
 }
