@@ -67,6 +67,20 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Unauthorized401Example:
+              summary: Unauthorized example
+              x-microcks-default: true
+              value:
+                error: UNAUTHORIZED
+                message: Authentication required
   schemas:
     MeritPlansResponse:
       type: object
@@ -80,23 +94,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/MeritPlan'
-    ErrorResponse:
-      type: object
-      description: Workday API error response
-      properties:
-        error:
-          type: string
-          description: Error code
-          example: INVALID_REQUEST
-        message:
-          type: string
-          description: Human-readable error message
-          example: Invalid compensation plan ID
-        details:
-          type: array
-          items:
-            type: string
-          description: Additional error details
     MeritPlan:
       type: object
       description: A merit increase plan with guidelines and budget
@@ -134,20 +131,23 @@ components:
           type: number
           description: Maximum guideline percentage for merit increases
           example: 6.0
-  responses:
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Unauthorized401Example:
-              summary: Unauthorized example
-              x-microcks-default: true
-              value:
-                error: UNAUTHORIZED
-                message: Authentication required
+    ErrorResponse:
+      type: object
+      description: Workday API error response
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: INVALID_REQUEST
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid compensation plan ID
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
   securitySchemes:
     oauth2:
       type: oauth2

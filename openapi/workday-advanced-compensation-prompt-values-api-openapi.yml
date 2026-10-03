@@ -1,13 +1,13 @@
 openapi: 3.2.0
 info:
-  title: Workday Advanced Compensation Prompt Values API
+  title: compensation Prompt Values API
+  description: The Compensation service enables applications to extend Workday's HCM Compensation features.
   version: v3
   x-workday-confidence-level: Production
-  x-workday-internal-protected-usage-enabled: false
-  x-workday-internal-routing: Public
-  x-workday-internal-service-container-id: 2d8b79dba7251000105e1cc54b0a13e1
   x-workday-internal-source: xo
-  description: 'Operations tagged Prompt Values across 2 of this provider''s published API definitions: workday-advanced-compensation-compensation-v3-openapi.json, workday-advanced-compensation-compensation-rest-v3-openapi.json. Each path carries the servers of the definition it was published in.'
+  x-workday-internal-routing: Public
+  x-workday-internal-protected-usage-enabled: false
+  x-workday-internal-service-container-id: 2d8b79dba7251000105e1cc54b0a13e1
 servers:
 - url: https://<tenantHostname>/compensation/v3
 tags:
@@ -86,10 +86,32 @@ paths:
       x-summary-source: derived
       operationId: getValuesOneTimePaymentPlanGroupOneTimePaymentPlan
       x-operation-id-source: derived
-    servers:
-    - url: https://<tenantHostname>/compensation/v3
 components:
   schemas:
+    MULTIPLE_INSTANCE_MODEL_REFERENCE:
+      type: object
+      properties:
+        total:
+          type: integer
+          format: int32
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+    VALIDATION_ERROR_MODEL_REFERENCE:
+      allOf:
+      - required:
+        - error
+        type: object
+        properties:
+          error:
+            type: string
+            description: A description of the error
+          errors:
+            type: array
+            description: An array of validation errors
+            items:
+              $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
     ERROR_MODEL_REFERENCE:
       required:
       - error
@@ -130,30 +152,6 @@ components:
           type: string
           description: A link to the instance
           readOnly: true
-    MULTIPLE_INSTANCE_MODEL_REFERENCE:
-      type: object
-      properties:
-        total:
-          type: integer
-          format: int32
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-    VALIDATION_ERROR_MODEL_REFERENCE:
-      allOf:
-      - required:
-        - error
-        type: object
-        properties:
-          error:
-            type: string
-            description: A description of the error
-          errors:
-            type: array
-            description: An array of validation errors
-            items:
-              $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
   securitySchemes:
     OAuth2:
       type: oauth2
@@ -161,6 +159,3 @@ components:
         implicit:
           authorizationUrl: https://<tenantAuthorizationHostname>
           scopes: {}
-x-refined-from:
-- workday-advanced-compensation-compensation-v3-openapi.json
-- workday-advanced-compensation-compensation-rest-v3-openapi.json

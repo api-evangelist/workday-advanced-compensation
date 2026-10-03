@@ -108,6 +108,33 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Unauthorized401Example:
+              summary: Unauthorized example
+              x-microcks-default: true
+              value:
+                error: UNAUTHORIZED
+                message: Authentication required
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            NotFound404Example:
+              summary: Not found example
+              x-microcks-default: true
+              value:
+                error: NOT_FOUND
+                message: The requested resource was not found
   schemas:
     CompensationGradesResponse:
       type: object
@@ -175,33 +202,6 @@ components:
           items:
             type: string
           description: Additional error details
-  responses:
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Unauthorized401Example:
-              summary: Unauthorized example
-              x-microcks-default: true
-              value:
-                error: UNAUTHORIZED
-                message: Authentication required
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            NotFound404Example:
-              summary: Not found example
-              x-microcks-default: true
-              value:
-                error: NOT_FOUND
-                message: The requested resource was not found
   securitySchemes:
     oauth2:
       type: oauth2
