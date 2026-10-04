@@ -127,128 +127,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    CompensationChangeResponse:
-      type: object
-      description: Response from a compensation change submission
-      properties:
-        requestId:
-          type: string
-          description: Unique identifier for the change request
-          example: REQ-98765
-        status:
-          type: string
-          description: Current status of the request
-          enum:
-          - PENDING_APPROVAL
-          - APPROVED
-          - REJECTED
-          - IN_PROGRESS
-          example: PENDING_APPROVAL
-        employeeId:
-          type: string
-          description: Employee identifier
-          example: EMP-12345
-        effectiveDate:
-          type: string
-          format: date
-          description: Effective date of the change
-          example: '2026-04-01'
-        submittedAt:
-          type: string
-          format: date-time
-          description: Timestamp when the request was submitted
-          example: '2026-03-15T10:30:00Z'
-    StockComponent:
-      type: object
-      description: Stock grant component
-      properties:
-        shareCount:
-          type: integer
-          description: Number of shares granted
-          example: 200
-        vestingSchedule:
-          type: string
-          description: Vesting schedule
-          example: FOUR_YEAR_CLIFF
-    CompensationChangeRequest:
-      type: object
-      description: Request to change employee compensation
-      required:
-      - effectiveDate
-      - reason
-      properties:
-        effectiveDate:
-          type: string
-          format: date
-          description: Date when the change takes effect
-          example: '2026-04-01'
-        reason:
-          type: string
-          description: Reason for the compensation change
-          enum:
-          - MERIT_INCREASE
-          - PROMOTION
-          - MARKET_ADJUSTMENT
-          - EQUITY_ADJUSTMENT
-          - ROLE_CHANGE
-          example: MERIT_INCREASE
-        basePay:
-          $ref: '#/components/schemas/PayComponent'
-        bonusTarget:
-          $ref: '#/components/schemas/BonusComponent'
-        comment:
-          type: string
-          description: Optional comment for the change request
-          example: Annual merit increase based on performance review
-    EmployeeCompensation:
-      type: object
-      description: Current compensation package for an employee
-      properties:
-        employeeId:
-          type: string
-          description: Workday employee identifier
-          example: EMP-12345
-        employeeName:
-          type: string
-          description: Employee full name
-          example: Jane Smith
-        effectiveDate:
-          type: string
-          format: date
-          description: Effective date of current compensation
-          example: '2026-01-01'
-        basePay:
-          $ref: '#/components/schemas/PayComponent'
-        bonusTarget:
-          $ref: '#/components/schemas/BonusComponent'
-        stockGrant:
-          $ref: '#/components/schemas/StockComponent'
-        totalCompensation:
-          type: number
-          description: Total target compensation value
-          example: 155000
-    PayComponent:
-      type: object
-      description: Base pay component
-      properties:
-        amount:
-          type: number
-          description: Pay amount
-          example: 110000
-        currency:
-          type: string
-          description: Currency code
-          example: USD
-        frequency:
-          type: string
-          description: Pay frequency
-          enum:
-          - ANNUAL
-          - MONTHLY
-          - BIWEEKLY
-          - WEEKLY
-          - HOURLY
-          example: ANNUAL
     BonusComponent:
       type: object
       description: Bonus target component
@@ -282,33 +160,129 @@ components:
           items:
             type: string
           description: Additional error details
+    PayComponent:
+      type: object
+      description: Base pay component
+      properties:
+        amount:
+          type: number
+          description: Pay amount
+          example: 110000
+        currency:
+          type: string
+          description: Currency code
+          example: USD
+        frequency:
+          type: string
+          description: Pay frequency
+          enum:
+          - ANNUAL
+          - MONTHLY
+          - BIWEEKLY
+          - WEEKLY
+          - HOURLY
+          example: ANNUAL
+    StockComponent:
+      type: object
+      description: Stock grant component
+      properties:
+        shareCount:
+          type: integer
+          description: Number of shares granted
+          example: 200
+        vestingSchedule:
+          type: string
+          description: Vesting schedule
+          example: FOUR_YEAR_CLIFF
+    CompensationChangeResponse:
+      type: object
+      description: Response from a compensation change submission
+      properties:
+        requestId:
+          type: string
+          description: Unique identifier for the change request
+          example: REQ-98765
+        status:
+          type: string
+          description: Current status of the request
+          enum:
+          - PENDING_APPROVAL
+          - APPROVED
+          - REJECTED
+          - IN_PROGRESS
+          example: PENDING_APPROVAL
+        employeeId:
+          type: string
+          description: Employee identifier
+          example: EMP-12345
+        effectiveDate:
+          type: string
+          format: date
+          description: Effective date of the change
+          example: '2026-04-01'
+        submittedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the request was submitted
+          example: '2026-03-15T10:30:00Z'
+    EmployeeCompensation:
+      type: object
+      description: Current compensation package for an employee
+      properties:
+        employeeId:
+          type: string
+          description: Workday employee identifier
+          example: EMP-12345
+        employeeName:
+          type: string
+          description: Employee full name
+          example: Jane Smith
+        effectiveDate:
+          type: string
+          format: date
+          description: Effective date of current compensation
+          example: '2026-01-01'
+        basePay:
+          $ref: '#/components/schemas/PayComponent'
+        bonusTarget:
+          $ref: '#/components/schemas/BonusComponent'
+        stockGrant:
+          $ref: '#/components/schemas/StockComponent'
+        totalCompensation:
+          type: number
+          description: Total target compensation value
+          example: 155000
+    CompensationChangeRequest:
+      type: object
+      description: Request to change employee compensation
+      required:
+      - effectiveDate
+      - reason
+      properties:
+        effectiveDate:
+          type: string
+          format: date
+          description: Date when the change takes effect
+          example: '2026-04-01'
+        reason:
+          type: string
+          description: Reason for the compensation change
+          enum:
+          - MERIT_INCREASE
+          - PROMOTION
+          - MARKET_ADJUSTMENT
+          - EQUITY_ADJUSTMENT
+          - ROLE_CHANGE
+          example: MERIT_INCREASE
+        basePay:
+          $ref: '#/components/schemas/PayComponent'
+        bonusTarget:
+          $ref: '#/components/schemas/BonusComponent'
+        comment:
+          type: string
+          description: Optional comment for the change request
+          example: Annual merit increase based on performance review
   responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            NotFound404Example:
-              summary: Not found example
-              x-microcks-default: true
-              value:
-                error: NOT_FOUND
-                message: The requested resource was not found
-    Forbidden:
-      description: Insufficient permissions
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Forbidden403Example:
-              summary: Forbidden example
-              x-microcks-default: true
-              value:
-                error: FORBIDDEN
-                message: Insufficient permissions to access this resource
     BadRequest:
       description: Invalid request parameters
       content:
@@ -322,6 +296,32 @@ components:
               value:
                 error: INVALID_REQUEST
                 message: Invalid request parameters
+    Forbidden:
+      description: Insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Forbidden403Example:
+              summary: Forbidden example
+              x-microcks-default: true
+              value:
+                error: FORBIDDEN
+                message: Insufficient permissions to access this resource
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            NotFound404Example:
+              summary: Not found example
+              x-microcks-default: true
+              value:
+                error: NOT_FOUND
+                message: The requested resource was not found
   securitySchemes:
     oauth2:
       type: oauth2

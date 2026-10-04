@@ -82,18 +82,23 @@ components:
                 error: UNAUTHORIZED
                 message: Authentication required
   schemas:
-    MeritPlansResponse:
+    ErrorResponse:
       type: object
-      description: Paginated response containing merit plans
+      description: Workday API error response
       properties:
-        total:
-          type: integer
-          description: Total number of merit plans
-          example: 3
-        data:
+        error:
+          type: string
+          description: Error code
+          example: INVALID_REQUEST
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid compensation plan ID
+        details:
           type: array
           items:
-            $ref: '#/components/schemas/MeritPlan'
+            type: string
+          description: Additional error details
     MeritPlan:
       type: object
       description: A merit increase plan with guidelines and budget
@@ -131,23 +136,18 @@ components:
           type: number
           description: Maximum guideline percentage for merit increases
           example: 6.0
-    ErrorResponse:
+    MeritPlansResponse:
       type: object
-      description: Workday API error response
+      description: Paginated response containing merit plans
       properties:
-        error:
-          type: string
-          description: Error code
-          example: INVALID_REQUEST
-        message:
-          type: string
-          description: Human-readable error message
-          example: Invalid compensation plan ID
-        details:
+        total:
+          type: integer
+          description: Total number of merit plans
+          example: 3
+        data:
           type: array
           items:
-            type: string
-          description: Additional error details
+            $ref: '#/components/schemas/MeritPlan'
   securitySchemes:
     oauth2:
       type: oauth2

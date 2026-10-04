@@ -88,16 +88,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    MULTIPLE_INSTANCE_MODEL_REFERENCE:
-      type: object
-      properties:
-        total:
-          type: integer
-          format: int32
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
     VALIDATION_ERROR_MODEL_REFERENCE:
       allOf:
       - required:
@@ -112,6 +102,23 @@ components:
             description: An array of validation errors
             items:
               $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
+    INSTANCE_MODEL_REFERENCE:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          pattern: ^(([0-9a-f]{32})|(\S+=\S+))$
+          type: string
+          description: Workday Id or Reference Id of the instance.
+        descriptor:
+          type: string
+          description: The display name of the instance
+          readOnly: true
+        href:
+          type: string
+          description: A link to the instance
+          readOnly: true
     ERROR_MODEL_REFERENCE:
       required:
       - error
@@ -135,23 +142,16 @@ components:
         internalMessage:
           type: string
           description: Internal message providing additional context for the validation (e.g. representation content validation details).
-    INSTANCE_MODEL_REFERENCE:
-      required:
-      - id
+    MULTIPLE_INSTANCE_MODEL_REFERENCE:
       type: object
       properties:
-        id:
-          pattern: ^(([0-9a-f]{32})|(\S+=\S+))$
-          type: string
-          description: Workday Id or Reference Id of the instance.
-        descriptor:
-          type: string
-          description: The display name of the instance
-          readOnly: true
-        href:
-          type: string
-          description: A link to the instance
-          readOnly: true
+        total:
+          type: integer
+          format: int32
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
   securitySchemes:
     OAuth2:
       type: oauth2

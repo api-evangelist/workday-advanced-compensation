@@ -69,6 +69,35 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      description: Workday API error response
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: INVALID_REQUEST
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid compensation plan ID
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
+    BonusPlansResponse:
+      type: object
+      description: Paginated response containing bonus plans
+      properties:
+        total:
+          type: integer
+          description: Total number of bonus plans
+          example: 5
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BonusPlan'
     BonusPlan:
       type: object
       description: A bonus or incentive compensation plan
@@ -106,35 +135,6 @@ components:
           - INACTIVE
           - DRAFT
           example: ACTIVE
-    ErrorResponse:
-      type: object
-      description: Workday API error response
-      properties:
-        error:
-          type: string
-          description: Error code
-          example: INVALID_REQUEST
-        message:
-          type: string
-          description: Human-readable error message
-          example: Invalid compensation plan ID
-        details:
-          type: array
-          items:
-            type: string
-          description: Additional error details
-    BonusPlansResponse:
-      type: object
-      description: Paginated response containing bonus plans
-      properties:
-        total:
-          type: integer
-          description: Total number of bonus plans
-          example: 5
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/BonusPlan'
   responses:
     Unauthorized:
       description: Authentication required

@@ -108,46 +108,24 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  responses:
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Unauthorized401Example:
-              summary: Unauthorized example
-              x-microcks-default: true
-              value:
-                error: UNAUTHORIZED
-                message: Authentication required
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            NotFound404Example:
-              summary: Not found example
-              x-microcks-default: true
-              value:
-                error: NOT_FOUND
-                message: The requested resource was not found
   schemas:
-    CompensationGradesResponse:
+    ErrorResponse:
       type: object
-      description: Paginated response containing compensation grades
+      description: Workday API error response
       properties:
-        total:
-          type: integer
-          description: Total number of compensation grades
-          example: 12
-        data:
+        error:
+          type: string
+          description: Error code
+          example: INVALID_REQUEST
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid compensation plan ID
+        details:
           type: array
           items:
-            $ref: '#/components/schemas/CompensationGrade'
+            type: string
+          description: Additional error details
     CompensationGrade:
       type: object
       description: A compensation grade profile with pay range information
@@ -185,23 +163,45 @@ components:
           format: date
           description: Effective date for this grade
           example: '2026-01-01'
-    ErrorResponse:
+    CompensationGradesResponse:
       type: object
-      description: Workday API error response
+      description: Paginated response containing compensation grades
       properties:
-        error:
-          type: string
-          description: Error code
-          example: INVALID_REQUEST
-        message:
-          type: string
-          description: Human-readable error message
-          example: Invalid compensation plan ID
-        details:
+        total:
+          type: integer
+          description: Total number of compensation grades
+          example: 12
+        data:
           type: array
           items:
-            type: string
-          description: Additional error details
+            $ref: '#/components/schemas/CompensationGrade'
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Unauthorized401Example:
+              summary: Unauthorized example
+              x-microcks-default: true
+              value:
+                error: UNAUTHORIZED
+                message: Authentication required
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            NotFound404Example:
+              summary: Not found example
+              x-microcks-default: true
+              value:
+                error: NOT_FOUND
+                message: The requested resource was not found
   securitySchemes:
     oauth2:
       type: oauth2
