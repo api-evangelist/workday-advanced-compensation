@@ -535,7 +535,8 @@ apis:
   description: Provides the ability to set up and retrieve Scores on Scorecard Results.
   humanURL: https://developer.workday.com/
   baseURL: https://<tenantHostname>/compensation/v3
-  tags:
+  tags: []
+  tags_raw:
   - scorecardResults
   properties:
   - type: OpenAPI
@@ -553,6 +554,8 @@ apis:
   humanURL: https://developer.workday.com/
   baseURL: https://<tenantHostname>/compensation/v3
   tags:
+  - Scorecards
+  tags_raw:
   - scorecards
   properties:
   - type: OpenAPI
@@ -570,6 +573,8 @@ apis:
   humanURL: https://developer.workday.com/
   baseURL: https://<tenantHostname>/compensation/v3
   tags:
+  - Workers
+  tags_raw:
   - workers
   properties:
   - type: OpenAPI
