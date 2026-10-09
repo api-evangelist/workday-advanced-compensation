@@ -595,6 +595,10 @@ include:
 - name: Workday Payroll
   url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Payroll/index.html
 common:
+- type: Plans
+  url: plans/workday-advanced-compensation-plans-pricing.yml
+- type: FinOps
+  url: finops/workday-advanced-compensation-finops.yml
 - type: Overlay
   url: overlays/workday-advanced-compensation-compensation-rest-v3-overlay.yaml
 - type: TrustCenter
