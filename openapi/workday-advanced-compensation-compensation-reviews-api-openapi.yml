@@ -79,23 +79,18 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ErrorResponse:
+    CompensationReviewsResponse:
       type: object
-      description: Workday API error response
+      description: Paginated response containing compensation reviews
       properties:
-        error:
-          type: string
-          description: Error code
-          example: INVALID_REQUEST
-        message:
-          type: string
-          description: Human-readable error message
-          example: Invalid compensation plan ID
-        details:
+        total:
+          type: integer
+          description: Total number of reviews
+          example: 2
+        data:
           type: array
           items:
-            type: string
-          description: Additional error details
+            $ref: '#/components/schemas/CompensationReview'
     CompensationReview:
       type: object
       description: A compensation review process instance
@@ -131,18 +126,23 @@ components:
           type: integer
           description: Percentage of review tasks completed
           example: 65
-    CompensationReviewsResponse:
+    ErrorResponse:
       type: object
-      description: Paginated response containing compensation reviews
+      description: Workday API error response
       properties:
-        total:
-          type: integer
-          description: Total number of reviews
-          example: 2
-        data:
+        error:
+          type: string
+          description: Error code
+          example: INVALID_REQUEST
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid compensation plan ID
+        details:
           type: array
           items:
-            $ref: '#/components/schemas/CompensationReview'
+            type: string
+          description: Additional error details
   responses:
     Unauthorized:
       description: Authentication required

@@ -417,57 +417,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    VALIDATION_ERROR_MODEL_REFERENCE:
-      allOf:
-      - required:
-        - error
-        type: object
-        properties:
-          error:
-            type: string
-            description: A description of the error
-          errors:
-            type: array
-            description: An array of validation errors
-            items:
-              $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
-    eligibiltyRule_031a6cc942de100015833eaa47c701e4:
-      description: The Eligibility Rule for a Scorecard Profile.
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-    createScorecardResults_788fbbd8885d100009973168b6ea015e:
-      allOf:
-      - required:
-        - evaluationDate
-        - scorecardID
-        type: object
-        properties:
-          scorecardName:
-            type: string
-            description: The \~goal\~ name of the scorecard criteria result.
-            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
-            x-workday-type: Text
-            x-readOnly: true
-          evaluationDate:
-            type: string
-            description: Scorecard Result Evaluation Date
-            format: date
-            x-workday-type: Date
-          scorecardID:
-            $ref: '#/components/schemas/scorecardID_788fbbd8885d1000099731d83fc70160'
-          descriptor:
-            type: string
-            description: The display name of the instance
-            example: Lorem ipsum dolor sit ame
-          id:
-            type: string
-            description: Workday Id or Reference Id of the instance.
-    scorecardID_9417ca9c97d9100010b7515ebf9e010b:
-      description: Returns the Default Scorecard for the Scorecard Result Instance
-      allOf:
-      - $ref: '#/components/schemas/defaultScorecard_c04de7a15cc210000fc41acababf0019'
-      - type: object
     scoreset_9417ca9c97d91000112e77cec5c70111:
       allOf:
       - type: object
@@ -493,47 +442,6 @@ components:
           id:
             type: string
             description: The id for Compensation Scorecard Result
-    scorecardID_788fbbd8885d1000099731d83fc70160:
-      description: Returns the Default Scorecard for the Scorecard Result Instance
-      allOf:
-      - $ref: '#/components/schemas/defaultScorecard_c04de7a15cc210000fc41acababf0019'
-      - type: object
-    INSTANCE_MODEL_REFERENCE:
-      required:
-      - id
-      type: object
-      properties:
-        id:
-          pattern: ^(([0-9a-f]{32})|(\S+=\S+))$
-          type: string
-          description: Workday Id or Reference Id of the instance.
-        descriptor:
-          type: string
-          description: The display name of the instance
-          readOnly: true
-        href:
-          type: string
-          description: A link to the instance
-          readOnly: true
-    profileScorecardGoalsResult_031a6cc942de1000135e69b35a4601cd:
-      allOf:
-      - $ref: '#/components/schemas/scoreset_9417ca9c97d91000112e77cec5c70111'
-      - type: object
-        properties:
-          id:
-            type: string
-            description: The id for Compensation Scorecard Result
-    ResourceIdPathValue_scores:
-      oneOf:
-      - $ref: '#/components/schemas/WorkdayId'
-    performanceScores_031a6cc942de100013eade974c9a01d2:
-      allOf:
-      - $ref: '#/components/schemas/scoresetScore_031a6cc942de10001432e156a86901d4'
-      - type: object
-        properties:
-          id:
-            type: string
-            description: The id for Score
     defaultScorecard_c04de7a15cc210000fc41acababf0019:
       allOf:
       - type: object
@@ -541,37 +449,20 @@ components:
           id:
             type: string
             description: The id for Compensation Scorecard
-    scoreInput_b919a306ff7e10000e12a527cd2c0166:
+    eligibiltyRule_031a6cc942de100015833eaa47c701e4:
+      description: The Eligibility Rule for a Scorecard Profile.
       allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
       - type: object
-        properties:
-          achievement:
-            type: number
-            description: The achievement percentage for the scorecard criteria result.
-            format: double
-            example: 1
-            x-workday-type: Numeric
-          descriptor:
-            type: string
-            description: The display name of the instance
-            example: Lorem ipsum dolor sit ame
-          id:
-            type: string
-            description: Workday Id or Reference Id of the instance.
-    WorkdayId:
-      pattern: ^[0-9a-f]{32}$
-      type: string
-      description: Workday ID (32-character lowercase hexadecimal string).
-      example: a3f5b554007d20e98360015c5e6daf6
     WorkdayReferenceId_scorecardResults:
       pattern: ^(Compensation_Performance_Scorecard_Result_ID)=\S+$
       type: string
       description: 'Workday reference ID (Type=Value). Valid types: Compensation_Performance_Scorecard_Result_ID'
       example: Compensation_Performance_Scorecard_Result_ID=21002
-    goalID_031a6cc942de10001432e1711d9201d6:
-      description: The criteria for the scorecard criteria result.
+    defaultScorecardGoalsResult_9417ca9c97d91000112f60d761110113:
+      description: Returns the Default Score for a Scorecard Result.
       allOf:
-      - $ref: '#/components/schemas/scoreGoal_99e36113850b10000c88dae09c9b00c0'
+      - $ref: '#/components/schemas/scoreset_9417ca9c97d91000112e77cec5c70111'
       - type: object
     ERROR_MODEL_REFERENCE:
       required:
@@ -600,6 +491,141 @@ components:
       oneOf:
       - $ref: '#/components/schemas/WorkdayId'
       - $ref: '#/components/schemas/WorkdayReferenceId_scorecardResults'
+    createScorecardResults_788fbbd8885d100009973168b6ea015e:
+      allOf:
+      - required:
+        - evaluationDate
+        - scorecardID
+        type: object
+        properties:
+          scorecardName:
+            type: string
+            description: The \~goal\~ name of the scorecard criteria result.
+            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
+            x-workday-type: Text
+            x-readOnly: true
+          evaluationDate:
+            type: string
+            description: Scorecard Result Evaluation Date
+            format: date
+            x-workday-type: Date
+          scorecardID:
+            $ref: '#/components/schemas/scorecardID_788fbbd8885d1000099731d83fc70160'
+          descriptor:
+            type: string
+            description: The display name of the instance
+            example: Lorem ipsum dolor sit ame
+          id:
+            type: string
+            description: Workday Id or Reference Id of the instance.
+    scoreGoal_99e36113850b10000c88dae09c9b00c0:
+      allOf:
+      - type: object
+        properties:
+          id:
+            type: string
+            description: The id for Performance Criteria
+    scoresetScore_031a6cc942de10001432e156a86901d4:
+      allOf:
+      - type: object
+        properties:
+          achievement:
+            type: number
+            description: The achievement percentage for the scorecard criteria result.
+            format: double
+            example: 999999.999999
+            x-workday-type: Numeric
+          goalWeight:
+            type: number
+            description: The criteria weighted percentage of the scorecard criteria result.
+            format: double
+            example: 999999.999999
+            x-workday-type: Numeric
+          goalID:
+            $ref: '#/components/schemas/goalID_031a6cc942de10001432e1711d9201d6'
+          goalName:
+            type: string
+            description: The \~goal\~ name of the scorecard criteria result.
+            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
+            x-workday-type: Text
+          id:
+            type: string
+            description: The id for Score
+    performanceScores_031a6cc942de100013eade974c9a01d2:
+      allOf:
+      - $ref: '#/components/schemas/scoresetScore_031a6cc942de10001432e156a86901d4'
+      - type: object
+        properties:
+          id:
+            type: string
+            description: The id for Score
+    MULTIPLE_INSTANCE_MODEL_REFERENCE:
+      type: object
+      properties:
+        total:
+          type: integer
+          format: int32
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+    INSTANCE_MODEL_REFERENCE:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          pattern: ^(([0-9a-f]{32})|(\S+=\S+))$
+          type: string
+          description: Workday Id or Reference Id of the instance.
+        descriptor:
+          type: string
+          description: The display name of the instance
+          readOnly: true
+        href:
+          type: string
+          description: A link to the instance
+          readOnly: true
+    scorecardID_788fbbd8885d1000099731d83fc70160:
+      description: Returns the Default Scorecard for the Scorecard Result Instance
+      allOf:
+      - $ref: '#/components/schemas/defaultScorecard_c04de7a15cc210000fc41acababf0019'
+      - type: object
+    scoreInput_b919a306ff7e10000e12a527cd2c0166:
+      allOf:
+      - type: object
+        properties:
+          achievement:
+            type: number
+            description: The achievement percentage for the scorecard criteria result.
+            format: double
+            example: 1
+            x-workday-type: Numeric
+          descriptor:
+            type: string
+            description: The display name of the instance
+            example: Lorem ipsum dolor sit ame
+          id:
+            type: string
+            description: Workday Id or Reference Id of the instance.
+    WorkdayId:
+      pattern: ^[0-9a-f]{32}$
+      type: string
+      description: Workday ID (32-character lowercase hexadecimal string).
+      example: a3f5b554007d20e98360015c5e6daf6
+    scorecardID_9417ca9c97d9100010b7515ebf9e010b:
+      description: Returns the Default Scorecard for the Scorecard Result Instance
+      allOf:
+      - $ref: '#/components/schemas/defaultScorecard_c04de7a15cc210000fc41acababf0019'
+      - type: object
+    ResourceIdPathValue_scores:
+      oneOf:
+      - $ref: '#/components/schemas/WorkdayId'
+    goalID_031a6cc942de10001432e1711d9201d6:
+      description: The criteria for the scorecard criteria result.
+      allOf:
+      - $ref: '#/components/schemas/scoreGoal_99e36113850b10000c88dae09c9b00c0'
+      - type: object
     scoresetContainer_9417ca9c97d910000b2cd7813b5b00fc:
       allOf:
       - type: object
@@ -636,54 +662,28 @@ components:
           id:
             type: string
             description: Workday Id or Reference Id of the instance.
-    scoreGoal_99e36113850b10000c88dae09c9b00c0:
-      allOf:
-      - type: object
-        properties:
-          id:
-            type: string
-            description: The id for Performance Criteria
-    defaultScorecardGoalsResult_9417ca9c97d91000112f60d761110113:
-      description: Returns the Default Score for a Scorecard Result.
+    profileScorecardGoalsResult_031a6cc942de1000135e69b35a4601cd:
       allOf:
       - $ref: '#/components/schemas/scoreset_9417ca9c97d91000112e77cec5c70111'
       - type: object
-    scoresetScore_031a6cc942de10001432e156a86901d4:
-      allOf:
-      - type: object
         properties:
-          achievement:
-            type: number
-            description: The achievement percentage for the scorecard criteria result.
-            format: double
-            example: 999999.999999
-            x-workday-type: Numeric
-          goalWeight:
-            type: number
-            description: The criteria weighted percentage of the scorecard criteria result.
-            format: double
-            example: 999999.999999
-            x-workday-type: Numeric
-          goalID:
-            $ref: '#/components/schemas/goalID_031a6cc942de10001432e1711d9201d6'
-          goalName:
-            type: string
-            description: The \~goal\~ name of the scorecard criteria result.
-            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
-            x-workday-type: Text
           id:
             type: string
-            description: The id for Score
-    MULTIPLE_INSTANCE_MODEL_REFERENCE:
-      type: object
-      properties:
-        total:
-          type: integer
-          format: int32
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+            description: The id for Compensation Scorecard Result
+    VALIDATION_ERROR_MODEL_REFERENCE:
+      allOf:
+      - required:
+        - error
+        type: object
+        properties:
+          error:
+            type: string
+            description: A description of the error
+          errors:
+            type: array
+            description: An array of validation errors
+            items:
+              $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
   securitySchemes:
     OAuth2:
       type: oauth2

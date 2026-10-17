@@ -88,20 +88,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    VALIDATION_ERROR_MODEL_REFERENCE:
-      allOf:
-      - required:
-        - error
-        type: object
-        properties:
-          error:
-            type: string
-            description: A description of the error
-          errors:
-            type: array
-            description: An array of validation errors
-            items:
-              $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
     INSTANCE_MODEL_REFERENCE:
       required:
       - id
@@ -119,6 +105,20 @@ components:
           type: string
           description: A link to the instance
           readOnly: true
+    VALIDATION_ERROR_MODEL_REFERENCE:
+      allOf:
+      - required:
+        - error
+        type: object
+        properties:
+          error:
+            type: string
+            description: A description of the error
+          errors:
+            type: array
+            description: An array of validation errors
+            items:
+              $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
     ERROR_MODEL_REFERENCE:
       required:
       - error

@@ -68,24 +68,33 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Unauthorized401Example:
+              summary: Unauthorized example
+              x-microcks-default: true
+              value:
+                error: UNAUTHORIZED
+                message: Authentication required
   schemas:
-    ErrorResponse:
+    StockPlansResponse:
       type: object
-      description: Workday API error response
+      description: Paginated response containing stock plans
       properties:
-        error:
-          type: string
-          description: Error code
-          example: INVALID_REQUEST
-        message:
-          type: string
-          description: Human-readable error message
-          example: Invalid compensation plan ID
-        details:
+        total:
+          type: integer
+          description: Total number of stock plans
+          example: 4
+        data:
           type: array
           items:
-            type: string
-          description: Additional error details
+            $ref: '#/components/schemas/StockPlan'
     StockPlan:
       type: object
       description: An equity or stock compensation plan
@@ -125,32 +134,23 @@ components:
           type: string
           description: Currency code
           example: USD
-    StockPlansResponse:
+    ErrorResponse:
       type: object
-      description: Paginated response containing stock plans
+      description: Workday API error response
       properties:
-        total:
-          type: integer
-          description: Total number of stock plans
-          example: 4
-        data:
+        error:
+          type: string
+          description: Error code
+          example: INVALID_REQUEST
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid compensation plan ID
+        details:
           type: array
           items:
-            $ref: '#/components/schemas/StockPlan'
-  responses:
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Unauthorized401Example:
-              summary: Unauthorized example
-              x-microcks-default: true
-              value:
-                error: UNAUTHORIZED
-                message: Authentication required
+            type: string
+          description: Additional error details
   securitySchemes:
     oauth2:
       type: oauth2

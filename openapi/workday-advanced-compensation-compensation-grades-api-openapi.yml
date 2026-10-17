@@ -109,6 +109,18 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    CompensationGradesResponse:
+      type: object
+      description: Paginated response containing compensation grades
+      properties:
+        total:
+          type: integer
+          description: Total number of compensation grades
+          example: 12
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompensationGrade'
     ErrorResponse:
       type: object
       description: Workday API error response
@@ -163,18 +175,6 @@ components:
           format: date
           description: Effective date for this grade
           example: '2026-01-01'
-    CompensationGradesResponse:
-      type: object
-      description: Paginated response containing compensation grades
-      properties:
-        total:
-          type: integer
-          description: Total number of compensation grades
-          example: 12
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CompensationGrade'
   responses:
     Unauthorized:
       description: Authentication required

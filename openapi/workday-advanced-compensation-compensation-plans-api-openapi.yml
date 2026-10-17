@@ -116,35 +116,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      description: Workday API error response
-      properties:
-        error:
-          type: string
-          description: Error code
-          example: INVALID_REQUEST
-        message:
-          type: string
-          description: Human-readable error message
-          example: Invalid compensation plan ID
-        details:
-          type: array
-          items:
-            type: string
-          description: Additional error details
-    CompensationPlansResponse:
-      type: object
-      description: Paginated response containing compensation plans
-      properties:
-        total:
-          type: integer
-          description: Total number of compensation plans
-          example: 15
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CompensationPlan'
     CompensationPlan:
       type: object
       description: A Workday compensation plan defining structure and eligibility
@@ -198,6 +169,35 @@ components:
           type: string
           description: Description of the compensation plan
           example: Annual merit increase plan for all eligible employees
+    ErrorResponse:
+      type: object
+      description: Workday API error response
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: INVALID_REQUEST
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid compensation plan ID
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
+    CompensationPlansResponse:
+      type: object
+      description: Paginated response containing compensation plans
+      properties:
+        total:
+          type: integer
+          description: Total number of compensation plans
+          example: 15
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompensationPlan'
   responses:
     Unauthorized:
       description: Authentication required
