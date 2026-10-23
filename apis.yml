@@ -595,6 +595,8 @@ include:
 - name: Workday Payroll
   url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Payroll/index.html
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/workday-advanced-compensation/overview
 - type: Plans
   url: plans/workday-advanced-compensation-plans-pricing.yml
 - type: FinOps
