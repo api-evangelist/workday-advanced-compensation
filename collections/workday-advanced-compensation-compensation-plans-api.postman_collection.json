@@ -1,448 +1,393 @@
 {
+  "info": {
+    "_postman_id": "483af9f4-1fa7-4d99-8acd-fb31a293e275",
+    "name": "Workday Advanced Compensation Compensation Plans API",
+    "description": "The Workday Advanced Compensation API provides RESTful access to compensation management capabilities including compensation plans, merit increases, bonuses, stock awards, compensation grades, budgets, and review processes. The API enables organizations to programmatically manage their total compensation strategy, administer compensation cycles, and integrate compensation data with other systems.\n\nContact Support:\n Name: Workday Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:04:27.000Z",
+    "updatedAt": "2026-10-21T20:04:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-483af9f4-1fa7-4d99-8acd-fb31a293e275"
+  },
   "item": [
     {
-      "id": "cc156142-5c07-4d5c-ae4a-715e9a2b424b",
-      "name": "Compensation Plans",
-      "description": {
-        "content": "Manage compensation plans and eligibility rules",
-        "type": "text/plain"
-      },
+      "name": "compensationPlans",
       "item": [
         {
-          "id": "ec705d83-c3c6-49db-b912-f2f8ed2ece76",
+          "name": "{planId}",
+          "item": [
+            {
+              "name": "Workday Get Compensation Plan",
+              "id": "5f73887b-8b63-43d1-9db5-6ef6bd973fa8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/compensationPlans/:planId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "compensationPlans",
+                    ":planId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "7d1069a9-ea2e-4804-8ebc-95eb7f3c1819",
+                      "key": "planId",
+                      "value": "<string>",
+                      "description": "(Required) Unique identifier for the compensation plan"
+                    }
+                  ]
+                },
+                "description": "Retrieves details for a specific compensation plan including eligibility criteria, budget pools, and plan components."
+              },
+              "response": [
+                {
+                  "id": "7a41eb9f-bcdc-47aa-b622-ae6de3bd1d27",
+                  "name": "A compensation plan",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/compensationPlans/:planId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "compensationPlans",
+                        ":planId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "planId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"STOCK\",\n  \"effectiveDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"status\": \"DRAFT\",\n  \"currency\": \"<string>\",\n  \"budgetPool\": \"<number>\",\n  \"description\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:04:28.000Z",
+                  "updatedAt": "2026-10-21T20:04:28.000Z",
+                  "uid": "35240-7a41eb9f-bcdc-47aa-b622-ae6de3bd1d27"
+                },
+                {
+                  "id": "5d277560-1b43-4504-ac60-4038edff2e65",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/compensationPlans/:planId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "compensationPlans",
+                        ":planId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "planId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-10-21T20:04:28.000Z",
+                  "updatedAt": "2026-10-21T20:04:28.000Z",
+                  "uid": "35240-5d277560-1b43-4504-ac60-4038edff2e65"
+                }
+              ],
+              "createdAt": "2026-10-21T20:04:28.000Z",
+              "updatedAt": "2026-10-21T20:04:28.000Z",
+              "uid": "35240-5f73887b-8b63-43d1-9db5-6ef6bd973fa8"
+            }
+          ],
+          "id": "7febb7c7-326f-4fe3-9dee-238ff1e38260",
+          "createdAt": "2026-10-21T20:04:28.000Z",
+          "updatedAt": "2026-10-21T20:04:28.000Z",
+          "uid": "35240-7febb7c7-326f-4fe3-9dee-238ff1e38260"
+        },
+        {
           "name": "Workday List Compensation Plans",
+          "id": "0bf420d0-1894-476a-800e-f7550552b832",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Workday List Compensation Plans",
-            "description": {
-              "content": "Retrieves a collection of compensation plans including eligibility rules, effective dates, and plan types.",
-              "type": "text/plain"
-            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
+              "raw": "{{baseUrl}}/compensationPlans?limit=100&offset=0&planType=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
               "path": [
                 "compensationPlans"
               ],
-              "host": [
-                "{{baseUrl}}"
-              ],
               "query": [
                 {
-                  "disabled": false,
+                  "description": "Maximum number of records to return",
                   "key": "limit",
-                  "value": "100",
-                  "description": "Maximum number of records to return"
+                  "value": "100"
                 },
                 {
-                  "disabled": false,
+                  "description": "Number of records to skip",
                   "key": "offset",
-                  "value": "0",
-                  "description": "Number of records to skip"
+                  "value": "0"
                 },
                 {
-                  "disabled": false,
+                  "description": "Filter by compensation plan type",
                   "key": "planType",
-                  "value": "<string>",
-                  "description": "Filter by compensation plan type"
-                }
-              ],
-              "variable": [
-                {
-                  "description": "Your Workday tenant hostname",
-                  "type": "any",
-                  "value": "{{tenant}}",
-                  "key": "tenant"
+                  "value": "<string>"
                 }
               ]
             },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
+            "description": "Retrieves a collection of compensation plans including eligibility rules, effective dates, and plan types."
           },
           "response": [
             {
-              "id": "6e5f7a06-4a63-4aac-8399-116c391ac1d3",
+              "id": "763d1290-d8c4-4011-b685-310d7691a875",
               "name": "A list of compensation plans",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "compensationPlans"
-                  ],
+                  "raw": "{{baseUrl}}/compensationPlans?limit=100&offset=0&planType=<string>",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "compensationPlans"
+                  ],
                   "query": [
                     {
+                      "description": "Maximum number of records to return",
                       "key": "limit",
                       "value": "100"
                     },
                     {
+                      "description": "Number of records to skip",
                       "key": "offset",
                       "value": "0"
                     },
                     {
+                      "description": "Filter by compensation plan type",
                       "key": "planType",
-                      "value": "MERIT"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "description": "Your Workday tenant hostname",
-                      "type": "any",
-                      "value": "{{tenant}}",
-                      "key": "tenant"
+                      "value": "<string>"
                     }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"total\": 15,\n  \"data\": [\n    {\n      \"id\": \"CP-001\",\n      \"name\": \"Annual Merit Plan 2026\",\n      \"type\": \"MERIT\",\n      \"effectiveDate\": \"2026-01-01\",\n      \"status\": \"ACTIVE\",\n      \"currency\": \"USD\"\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"total\": \"<integer>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"SALARY\",\n      \"effectiveDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"status\": \"INACTIVE\",\n      \"currency\": \"<string>\",\n      \"budgetPool\": \"<number>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"ALLOWANCE\",\n      \"effectiveDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"status\": \"ARCHIVED\",\n      \"currency\": \"<string>\",\n      \"budgetPool\": \"<number>\",\n      \"description\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:04:28.000Z",
+              "updatedAt": "2026-10-21T20:04:28.000Z",
+              "uid": "35240-763d1290-d8c4-4011-b685-310d7691a875"
             },
             {
-              "id": "93c1355d-c7eb-4958-9621-231853500230",
+              "id": "ca1a5b36-ad00-4558-af6e-bd9a24b0f107",
               "name": "Authentication required",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "compensationPlans"
-                  ],
+                  "raw": "{{baseUrl}}/compensationPlans?limit=100&offset=0&planType=<string>",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "compensationPlans"
+                  ],
                   "query": [
                     {
+                      "description": "Maximum number of records to return",
                       "key": "limit",
                       "value": "100"
                     },
                     {
+                      "description": "Number of records to skip",
                       "key": "offset",
                       "value": "0"
                     },
                     {
+                      "description": "Filter by compensation plan type",
                       "key": "planType",
-                      "value": "MERIT"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "description": "Your Workday tenant hostname",
-                      "type": "any",
-                      "value": "{{tenant}}",
-                      "key": "tenant"
+                      "value": "<string>"
                     }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": \"UNAUTHORIZED\",\n  \"message\": \"Authentication required\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-10-21T20:04:28.000Z",
+              "updatedAt": "2026-10-21T20:04:28.000Z",
+              "uid": "35240-ca1a5b36-ad00-4558-af6e-bd9a24b0f107"
             },
             {
-              "id": "665a3028-4c61-4f2c-9d45-6b4a17799dc9",
+              "id": "ec7fb1f3-17f7-4101-b636-f42b64e2a4bf",
               "name": "Insufficient permissions",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "compensationPlans"
-                  ],
+                  "raw": "{{baseUrl}}/compensationPlans?limit=100&offset=0&planType=<string>",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "compensationPlans"
+                  ],
                   "query": [
                     {
+                      "description": "Maximum number of records to return",
                       "key": "limit",
                       "value": "100"
                     },
                     {
+                      "description": "Number of records to skip",
                       "key": "offset",
                       "value": "0"
                     },
                     {
+                      "description": "Filter by compensation plan type",
                       "key": "planType",
-                      "value": "MERIT"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "description": "Your Workday tenant hostname",
-                      "type": "any",
-                      "value": "{{tenant}}",
-                      "key": "tenant"
+                      "value": "<string>"
                     }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "Forbidden",
               "code": 403,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": \"FORBIDDEN\",\n  \"message\": \"Insufficient permissions to access this resource\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-10-21T20:04:28.000Z",
+              "updatedAt": "2026-10-21T20:04:28.000Z",
+              "uid": "35240-ec7fb1f3-17f7-4101-b636-f42b64e2a4bf"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "682e4674-bb95-482d-bbdb-96d1c8781647",
-          "name": "Workday Get Compensation Plan",
-          "request": {
-            "name": "Workday Get Compensation Plan",
-            "description": {
-              "content": "Retrieves details for a specific compensation plan including eligibility criteria, budget pools, and plan components.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "compensationPlans",
-                ":planId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "planId",
-                  "description": "(Required) Unique identifier for the compensation plan"
-                },
-                {
-                  "description": "Your Workday tenant hostname",
-                  "type": "any",
-                  "value": "{{tenant}}",
-                  "key": "tenant"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "327b6109-b377-43bd-b3ac-91e247434c5e",
-              "name": "A compensation plan",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "compensationPlans",
-                    ":planId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "planId",
-                      "description": "(Required) Unique identifier for the compensation plan"
-                    },
-                    {
-                      "description": "Your Workday tenant hostname",
-                      "type": "any",
-                      "value": "{{tenant}}",
-                      "key": "tenant"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"CP-001\",\n  \"name\": \"Annual Merit Plan 2026\",\n  \"type\": \"MERIT\",\n  \"effectiveDate\": \"2026-01-01\",\n  \"status\": \"ACTIVE\",\n  \"currency\": \"USD\",\n  \"budgetPool\": 3.5\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "1a793498-3ec1-446c-b8ef-58da314ece51",
-              "name": "Resource not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "compensationPlans",
-                    ":planId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "planId",
-                      "description": "(Required) Unique identifier for the compensation plan"
-                    },
-                    {
-                      "description": "Your Workday tenant hostname",
-                      "type": "any",
-                      "value": "{{tenant}}",
-                      "key": "tenant"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": \"NOT_FOUND\",\n  \"message\": \"The requested resource was not found\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:04:28.000Z",
+          "updatedAt": "2026-10-21T20:04:28.000Z",
+          "uid": "35240-0bf420d0-1894-476a-800e-f7550552b832"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Your Workday tenant hostname",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "wd2-impl-services1",
-      "key": "tenant"
-    },
-    {
-      "type": "string",
-      "value": "https://{{tenant}}.workday.com/api/compensation/v1",
-      "key": "baseUrl"
+      "id": "f28d0d3d-97ac-4375-8df1-7dc7e999f1e1",
+      "createdAt": "2026-10-21T20:04:28.000Z",
+      "updatedAt": "2026-10-21T20:04:28.000Z",
+      "uid": "35240-f28d0d3d-97ac-4375-8df1-7dc7e999f1e1"
     }
   ],
   "auth": {
@@ -450,25 +395,29 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "compensation.read compensation.write"
+        "value": "compensation.read compensation.write",
+        "type": "string"
       },
       {
         "key": "accessTokenUrl",
-        "value": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token"
+        "value": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token",
+        "type": "string"
       },
       {
         "key": "grant_type",
-        "value": "client_credentials"
+        "value": "client_credentials",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "12518a6d-61ab-44ab-8185-f04c413f9060",
-    "name": "Workday Advanced Compensation Bonus Plans Compensation Plans API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Workday Advanced Compensation API provides RESTful access to compensation management capabilities including compensation plans, merit increases, bonuses, stock awards, compensation grades, budgets, and review processes. The API enables organizations to programmatically manage their total compensation strategy, administer compensation cycles, and integrate compensation data with other systems.\n\nContact Support:\n Name: Workday Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "wd2-impl-services1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tenant}}.workday.com/api/compensation/v1"
     }
-  }
+  ]
 }

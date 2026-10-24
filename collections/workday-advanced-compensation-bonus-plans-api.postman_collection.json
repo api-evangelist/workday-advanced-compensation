@@ -1,205 +1,174 @@
 {
+  "info": {
+    "_postman_id": "f521009b-fb80-4356-a5d7-8ba5d7fbabbd",
+    "name": "Workday Advanced Compensation Bonus Plans API",
+    "description": "The Workday Advanced Compensation API provides RESTful access to compensation management capabilities including compensation plans, merit increases, bonuses, stock awards, compensation grades, budgets, and review processes. The API enables organizations to programmatically manage their total compensation strategy, administer compensation cycles, and integrate compensation data with other systems.\n\nContact Support:\n Name: Workday Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:04:05.000Z",
+    "updatedAt": "2026-10-21T20:04:08.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f521009b-fb80-4356-a5d7-8ba5d7fbabbd"
+  },
   "item": [
     {
-      "id": "0acc8f9f-a150-45de-816d-27c106d8ef54",
-      "name": "Bonus Plans",
-      "description": {
-        "content": "Manage bonus and incentive plans",
-        "type": "text/plain"
-      },
+      "name": "bonusPlans",
       "item": [
         {
-          "id": "0c421047-5385-4df7-a828-0f30e11629a3",
           "name": "Workday List Bonus Plans",
+          "id": "2474b60f-6ea3-4e99-ad26-94d145a8a5fa",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Workday List Bonus Plans",
-            "description": {
-              "content": "Retrieves bonus and incentive plans including target percentages, performance multipliers, and eligibility rules.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "bonusPlans"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "100",
-                  "description": "Maximum number of records to return"
-                },
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "0",
-                  "description": "Number of records to skip"
-                }
-              ],
-              "variable": [
-                {
-                  "description": "Your Workday tenant hostname",
-                  "type": "any",
-                  "value": "{{tenant}}",
-                  "key": "tenant"
-                }
-              ]
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/bonusPlans?limit=100&offset=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bonusPlans"
+              ],
+              "query": [
+                {
+                  "description": "Maximum number of records to return",
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "description": "Number of records to skip",
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Retrieves bonus and incentive plans including target percentages, performance multipliers, and eligibility rules."
           },
           "response": [
             {
-              "id": "e91b6e83-e7d4-45d5-acea-7dacfe704b79",
+              "id": "e4616adc-a978-45d3-86f1-76013c336fa0",
               "name": "A list of bonus plans",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "bonusPlans"
-                  ],
+                  "raw": "{{baseUrl}}/bonusPlans?limit=100&offset=0",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "bonusPlans"
+                  ],
                   "query": [
                     {
+                      "description": "Maximum number of records to return",
                       "key": "limit",
                       "value": "100"
                     },
                     {
+                      "description": "Number of records to skip",
                       "key": "offset",
                       "value": "0"
                     }
-                  ],
-                  "variable": [
-                    {
-                      "description": "Your Workday tenant hostname",
-                      "type": "any",
-                      "value": "{{tenant}}",
-                      "key": "tenant"
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"total\": 5,\n  \"data\": [\n    {\n      \"id\": \"BP-001\",\n      \"name\": \"Annual Performance Bonus\",\n      \"targetPercent\": 15,\n      \"currency\": \"USD\",\n      \"frequency\": \"ANNUAL\",\n      \"status\": \"ACTIVE\"\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"total\": \"<integer>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"targetPercent\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"frequency\": \"ANNUAL\",\n      \"status\": \"ACTIVE\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"targetPercent\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"frequency\": \"SEMI_ANNUAL\",\n      \"status\": \"ACTIVE\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:04:06.000Z",
+              "updatedAt": "2026-10-21T20:04:06.000Z",
+              "uid": "35240-e4616adc-a978-45d3-86f1-76013c336fa0"
             },
             {
-              "id": "cdad3b95-dfa0-4fa6-8d15-c54cfa814c09",
+              "id": "c5f221df-a481-4aec-957c-2df6122a5d13",
               "name": "Authentication required",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "bonusPlans"
-                  ],
+                  "raw": "{{baseUrl}}/bonusPlans?limit=100&offset=0",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "bonusPlans"
+                  ],
                   "query": [
                     {
+                      "description": "Maximum number of records to return",
                       "key": "limit",
                       "value": "100"
                     },
                     {
+                      "description": "Number of records to skip",
                       "key": "offset",
                       "value": "0"
                     }
-                  ],
-                  "variable": [
-                    {
-                      "description": "Your Workday tenant hostname",
-                      "type": "any",
-                      "value": "{{tenant}}",
-                      "key": "tenant"
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": \"UNAUTHORIZED\",\n  \"message\": \"Authentication required\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-10-21T20:04:06.000Z",
+              "updatedAt": "2026-10-21T20:04:06.000Z",
+              "uid": "35240-c5f221df-a481-4aec-957c-2df6122a5d13"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:04:05.000Z",
+          "updatedAt": "2026-10-21T20:04:05.000Z",
+          "uid": "35240-2474b60f-6ea3-4e99-ad26-94d145a8a5fa"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Your Workday tenant hostname",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "wd2-impl-services1",
-      "key": "tenant"
-    },
-    {
-      "type": "string",
-      "value": "https://{{tenant}}.workday.com/api/compensation/v1",
-      "key": "baseUrl"
+      "id": "62f6e7ca-e1b1-42ff-b8d9-4ef27cbc0b7f",
+      "createdAt": "2026-10-21T20:04:05.000Z",
+      "updatedAt": "2026-10-21T20:04:05.000Z",
+      "uid": "35240-62f6e7ca-e1b1-42ff-b8d9-4ef27cbc0b7f"
     }
   ],
   "auth": {
@@ -207,25 +176,29 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "compensation.read compensation.write"
+        "value": "compensation.read compensation.write",
+        "type": "string"
       },
       {
         "key": "accessTokenUrl",
-        "value": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token"
+        "value": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token",
+        "type": "string"
       },
       {
         "key": "grant_type",
-        "value": "client_credentials"
+        "value": "client_credentials",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "4a71924f-0b39-466c-841b-0a0d650877f4",
-    "name": "Workday Advanced Compensation Bonus Plans API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Workday Advanced Compensation API provides RESTful access to compensation management capabilities including compensation plans, merit increases, bonuses, stock awards, compensation grades, budgets, and review processes. The API enables organizations to programmatically manage their total compensation strategy, administer compensation cycles, and integrate compensation data with other systems.\n\nContact Support:\n Name: Workday Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "wd2-impl-services1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tenant}}.workday.com/api/compensation/v1"
     }
-  }
+  ]
 }

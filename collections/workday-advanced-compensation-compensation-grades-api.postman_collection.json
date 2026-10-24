@@ -1,371 +1,319 @@
 {
+  "info": {
+    "_postman_id": "49415ef9-79a5-4b23-86ab-d8a90c12a324",
+    "name": "Workday Advanced Compensation Compensation Grades API",
+    "description": "The Workday Advanced Compensation API provides RESTful access to compensation management capabilities including compensation plans, merit increases, bonuses, stock awards, compensation grades, budgets, and review processes. The API enables organizations to programmatically manage their total compensation strategy, administer compensation cycles, and integrate compensation data with other systems.\n\nContact Support:\n Name: Workday Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:04:21.000Z",
+    "updatedAt": "2026-10-21T20:04:21.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-49415ef9-79a5-4b23-86ab-d8a90c12a324"
+  },
   "item": [
     {
-      "id": "f79a8acf-0895-4929-8bd5-43e309255dfa",
-      "name": "Compensation Grades",
-      "description": {
-        "content": "Manage compensation grade profiles and pay ranges",
-        "type": "text/plain"
-      },
+      "name": "compensationGrades",
       "item": [
         {
-          "id": "7360f204-7261-4ab7-986f-9f30ee652529",
+          "name": "{gradeId}",
+          "item": [
+            {
+              "name": "Workday Get Compensation Grade",
+              "id": "033a5e7e-bcde-418c-990b-d5eacd0d069f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/compensationGrades/:gradeId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "compensationGrades",
+                    ":gradeId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "319ce5bd-0957-4392-9789-2df0e2d6a326",
+                      "key": "gradeId",
+                      "value": "<string>",
+                      "description": "(Required) Unique identifier for the compensation grade"
+                    }
+                  ]
+                },
+                "description": "Retrieves details for a specific compensation grade including pay ranges and eligibility criteria."
+              },
+              "response": [
+                {
+                  "id": "0f1fb941-5a4a-4f2d-a571-a96aed6adcb5",
+                  "name": "A compensation grade",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/compensationGrades/:gradeId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "compensationGrades",
+                        ":gradeId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "gradeId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"profile\": \"<string>\",\n  \"minimumPay\": \"<number>\",\n  \"midpointPay\": \"<number>\",\n  \"maximumPay\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"effectiveDate\": \"<date>\"\n}",
+                  "createdAt": "2026-10-21T20:04:21.000Z",
+                  "updatedAt": "2026-10-21T20:04:21.000Z",
+                  "uid": "35240-0f1fb941-5a4a-4f2d-a571-a96aed6adcb5"
+                },
+                {
+                  "id": "92c07867-f77e-4252-84a1-1387e6ea15d7",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/compensationGrades/:gradeId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "compensationGrades",
+                        ":gradeId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "gradeId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-10-21T20:04:21.000Z",
+                  "updatedAt": "2026-10-21T20:04:21.000Z",
+                  "uid": "35240-92c07867-f77e-4252-84a1-1387e6ea15d7"
+                }
+              ],
+              "createdAt": "2026-10-21T20:04:21.000Z",
+              "updatedAt": "2026-10-21T20:04:21.000Z",
+              "uid": "35240-033a5e7e-bcde-418c-990b-d5eacd0d069f"
+            }
+          ],
+          "id": "1d6c67ef-69df-442a-9bf2-e3cc7764dacd",
+          "createdAt": "2026-10-21T20:04:21.000Z",
+          "updatedAt": "2026-10-21T20:04:21.000Z",
+          "uid": "35240-1d6c67ef-69df-442a-9bf2-e3cc7764dacd"
+        },
+        {
           "name": "Workday List Compensation Grades",
+          "id": "352c27d6-acdb-4b43-9978-7376db14c860",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Workday List Compensation Grades",
-            "description": {
-              "content": "Retrieves compensation grade profiles with pay ranges, midpoints, and band information.",
-              "type": "text/plain"
-            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
+              "raw": "{{baseUrl}}/compensationGrades?limit=100&offset=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
               "path": [
                 "compensationGrades"
               ],
-              "host": [
-                "{{baseUrl}}"
-              ],
               "query": [
                 {
-                  "disabled": false,
+                  "description": "Maximum number of records to return",
                   "key": "limit",
-                  "value": "100",
-                  "description": "Maximum number of records to return"
+                  "value": "100"
                 },
                 {
-                  "disabled": false,
+                  "description": "Number of records to skip",
                   "key": "offset",
-                  "value": "0",
-                  "description": "Number of records to skip"
-                }
-              ],
-              "variable": [
-                {
-                  "description": "Your Workday tenant hostname",
-                  "type": "any",
-                  "value": "{{tenant}}",
-                  "key": "tenant"
+                  "value": "0"
                 }
               ]
             },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
+            "description": "Retrieves compensation grade profiles with pay ranges, midpoints, and band information."
           },
           "response": [
             {
-              "id": "c9ab2f37-b132-4488-8a4d-e76207235e14",
+              "id": "0a28d47f-b12c-4891-9b8e-16b6a730fcfa",
               "name": "A list of compensation grades",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "compensationGrades"
-                  ],
+                  "raw": "{{baseUrl}}/compensationGrades?limit=100&offset=0",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "compensationGrades"
+                  ],
                   "query": [
                     {
+                      "description": "Maximum number of records to return",
                       "key": "limit",
                       "value": "100"
                     },
                     {
+                      "description": "Number of records to skip",
                       "key": "offset",
                       "value": "0"
                     }
-                  ],
-                  "variable": [
-                    {
-                      "description": "Your Workday tenant hostname",
-                      "type": "any",
-                      "value": "{{tenant}}",
-                      "key": "tenant"
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"total\": 12,\n  \"data\": [\n    {\n      \"id\": \"CG-001\",\n      \"name\": \"Grade 5\",\n      \"profile\": \"Software Engineer\",\n      \"minimumPay\": 85000,\n      \"midpointPay\": 105000,\n      \"maximumPay\": 125000,\n      \"currency\": \"USD\"\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"total\": \"<integer>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"minimumPay\": \"<number>\",\n      \"midpointPay\": \"<number>\",\n      \"maximumPay\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"effectiveDate\": \"<date>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"profile\": \"<string>\",\n      \"minimumPay\": \"<number>\",\n      \"midpointPay\": \"<number>\",\n      \"maximumPay\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"effectiveDate\": \"<date>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:04:21.000Z",
+              "updatedAt": "2026-10-21T20:04:21.000Z",
+              "uid": "35240-0a28d47f-b12c-4891-9b8e-16b6a730fcfa"
             },
             {
-              "id": "c78275b9-bd46-4f85-b21e-aec3d445e57b",
+              "id": "2663fb79-29f7-44a9-a3f7-0713c81e3ed3",
               "name": "Authentication required",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "compensationGrades"
-                  ],
+                  "raw": "{{baseUrl}}/compensationGrades?limit=100&offset=0",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "compensationGrades"
+                  ],
                   "query": [
                     {
+                      "description": "Maximum number of records to return",
                       "key": "limit",
                       "value": "100"
                     },
                     {
+                      "description": "Number of records to skip",
                       "key": "offset",
                       "value": "0"
                     }
-                  ],
-                  "variable": [
-                    {
-                      "description": "Your Workday tenant hostname",
-                      "type": "any",
-                      "value": "{{tenant}}",
-                      "key": "tenant"
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": \"UNAUTHORIZED\",\n  \"message\": \"Authentication required\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-10-21T20:04:21.000Z",
+              "updatedAt": "2026-10-21T20:04:21.000Z",
+              "uid": "35240-2663fb79-29f7-44a9-a3f7-0713c81e3ed3"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "84e8f920-89ed-45fe-87e1-9fe070b432ec",
-          "name": "Workday Get Compensation Grade",
-          "request": {
-            "name": "Workday Get Compensation Grade",
-            "description": {
-              "content": "Retrieves details for a specific compensation grade including pay ranges and eligibility criteria.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "compensationGrades",
-                ":gradeId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "gradeId",
-                  "description": "(Required) Unique identifier for the compensation grade"
-                },
-                {
-                  "description": "Your Workday tenant hostname",
-                  "type": "any",
-                  "value": "{{tenant}}",
-                  "key": "tenant"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "27079c5b-9011-4716-b90d-e5d95176e6cd",
-              "name": "A compensation grade",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "compensationGrades",
-                    ":gradeId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "gradeId",
-                      "description": "(Required) Unique identifier for the compensation grade"
-                    },
-                    {
-                      "description": "Your Workday tenant hostname",
-                      "type": "any",
-                      "value": "{{tenant}}",
-                      "key": "tenant"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"CG-001\",\n  \"name\": \"Grade 5\",\n  \"profile\": \"Software Engineer\",\n  \"minimumPay\": 85000,\n  \"midpointPay\": 105000,\n  \"maximumPay\": 125000,\n  \"currency\": \"USD\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "24387706-d3c9-412e-ac87-e6cb93325cbb",
-              "name": "Resource not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "compensationGrades",
-                    ":gradeId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "gradeId",
-                      "description": "(Required) Unique identifier for the compensation grade"
-                    },
-                    {
-                      "description": "Your Workday tenant hostname",
-                      "type": "any",
-                      "value": "{{tenant}}",
-                      "key": "tenant"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": \"NOT_FOUND\",\n  \"message\": \"The requested resource was not found\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:04:21.000Z",
+          "updatedAt": "2026-10-21T20:04:21.000Z",
+          "uid": "35240-352c27d6-acdb-4b43-9978-7376db14c860"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Your Workday tenant hostname",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "wd2-impl-services1",
-      "key": "tenant"
-    },
-    {
-      "type": "string",
-      "value": "https://{{tenant}}.workday.com/api/compensation/v1",
-      "key": "baseUrl"
+      "id": "1336965a-8c7b-42aa-9079-7f843c6daf32",
+      "createdAt": "2026-10-21T20:04:21.000Z",
+      "updatedAt": "2026-10-21T20:04:21.000Z",
+      "uid": "35240-1336965a-8c7b-42aa-9079-7f843c6daf32"
     }
   ],
   "auth": {
@@ -373,25 +321,29 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "compensation.read compensation.write"
+        "value": "compensation.read compensation.write",
+        "type": "string"
       },
       {
         "key": "accessTokenUrl",
-        "value": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token"
+        "value": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token",
+        "type": "string"
       },
       {
         "key": "grant_type",
-        "value": "client_credentials"
+        "value": "client_credentials",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "985e2887-4bea-4f29-ad2f-af9d5840bc69",
-    "name": "Workday Advanced Compensation Bonus Plans Compensation Grades API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Workday Advanced Compensation API provides RESTful access to compensation management capabilities including compensation plans, merit increases, bonuses, stock awards, compensation grades, budgets, and review processes. The API enables organizations to programmatically manage their total compensation strategy, administer compensation cycles, and integrate compensation data with other systems.\n\nContact Support:\n Name: Workday Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "wd2-impl-services1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tenant}}.workday.com/api/compensation/v1"
     }
-  }
+  ]
 }

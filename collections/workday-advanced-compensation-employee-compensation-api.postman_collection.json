@@ -1,525 +1,473 @@
 {
+  "info": {
+    "_postman_id": "0afb657f-7e7a-40ce-a2bb-ffca05bd9ea7",
+    "name": "Workday Advanced Compensation Employee Compensation API",
+    "description": "The Workday Advanced Compensation API provides RESTful access to compensation management capabilities including compensation plans, merit increases, bonuses, stock awards, compensation grades, budgets, and review processes. The API enables organizations to programmatically manage their total compensation strategy, administer compensation cycles, and integrate compensation data with other systems.\n\nContact Support:\n Name: Workday Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:04:40.000Z",
+    "updatedAt": "2026-10-21T20:04:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0afb657f-7e7a-40ce-a2bb-ffca05bd9ea7"
+  },
   "item": [
     {
-      "id": "791ce069-9f81-4a85-bd9c-98f06acc5e76",
-      "name": "Employee Compensation",
-      "description": {
-        "content": "Manage individual employee compensation packages",
-        "type": "text/plain"
-      },
+      "name": "employees",
       "item": [
         {
-          "id": "9955b04a-7991-4370-9f67-2f6cf14f9e1a",
-          "name": "Workday Get Employee Compensation",
-          "request": {
-            "name": "Workday Get Employee Compensation",
-            "description": {
-              "content": "Retrieves the current compensation package for a specific employee including base pay, bonuses, equity, and total compensation.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "employees",
-                ":employeeId",
-                "compensation"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "employeeId",
-                  "description": "(Required) Workday employee identifier"
-                },
-                {
-                  "description": "Your Workday tenant hostname",
-                  "type": "any",
-                  "value": "{{tenant}}",
-                  "key": "tenant"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{employeeId}",
+          "item": [
             {
-              "id": "dcf8582b-eec6-4859-b7c9-1ca8e812508d",
-              "name": "Employee compensation details",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "employees",
-                    ":employeeId",
-                    "compensation"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "employeeId",
-                      "description": "(Required) Workday employee identifier"
-                    },
-                    {
-                      "description": "Your Workday tenant hostname",
-                      "type": "any",
-                      "value": "{{tenant}}",
-                      "key": "tenant"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "compensation",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Workday Get Employee Compensation",
+                  "id": "c001961f-e159-4701-9064-6fa31c0e6d71",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:employeeId/compensation",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":employeeId",
+                        "compensation"
+                      ],
+                      "variable": [
+                        {
+                          "id": "307ed933-5c37-4474-8648-0e4b8e0ee39f",
+                          "key": "employeeId",
+                          "value": "<string>",
+                          "description": "(Required) Workday employee identifier"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves the current compensation package for a specific employee including base pay, bonuses, equity, and total compensation."
+                  },
+                  "response": [
+                    {
+                      "id": "d925c4d7-9774-4520-ac91-6b9a536c42b9",
+                      "name": "Employee compensation details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:employeeId/compensation",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":employeeId",
+                            "compensation"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employeeId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"employeeId\": \"<string>\",\n  \"employeeName\": \"<string>\",\n  \"effectiveDate\": \"<date>\",\n  \"basePay\": {\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\",\n    \"frequency\": \"HOURLY\"\n  },\n  \"bonusTarget\": {\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\",\n    \"percent\": \"<number>\"\n  },\n  \"stockGrant\": {\n    \"shareCount\": \"<integer>\",\n    \"vestingSchedule\": \"<string>\"\n  },\n  \"totalCompensation\": \"<number>\"\n}",
+                      "createdAt": "2026-10-21T20:04:40.000Z",
+                      "updatedAt": "2026-10-21T20:04:40.000Z",
+                      "uid": "35240-d925c4d7-9774-4520-ac91-6b9a536c42b9"
+                    },
+                    {
+                      "id": "9dd0c967-e8bb-4ce4-8aaa-171e5a27f243",
+                      "name": "Insufficient permissions",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:employeeId/compensation",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":employeeId",
+                            "compensation"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employeeId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-10-21T20:04:40.000Z",
+                      "updatedAt": "2026-10-21T20:04:40.000Z",
+                      "uid": "35240-9dd0c967-e8bb-4ce4-8aaa-171e5a27f243"
+                    },
+                    {
+                      "id": "05411cea-5bd6-4195-a808-4772f6b8b892",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:employeeId/compensation",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":employeeId",
+                            "compensation"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employeeId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-10-21T20:04:40.000Z",
+                      "updatedAt": "2026-10-21T20:04:40.000Z",
+                      "uid": "35240-05411cea-5bd6-4195-a808-4772f6b8b892"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:04:40.000Z",
+                  "updatedAt": "2026-10-21T20:04:40.000Z",
+                  "uid": "35240-c001961f-e159-4701-9064-6fa31c0e6d71"
+                },
+                {
+                  "name": "Workday Submit Compensation Change",
+                  "id": "0767d9a3-10d6-4c25-be63-a767f45a984e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"effectiveDate\": \"<date>\",\n  \"reason\": \"MARKET_ADJUSTMENT\",\n  \"basePay\": {\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\",\n    \"frequency\": \"HOURLY\"\n  },\n  \"bonusTarget\": {\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\",\n    \"percent\": \"<number>\"\n  },\n  \"comment\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:employeeId/compensation",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":employeeId",
+                        "compensation"
+                      ],
+                      "variable": [
+                        {
+                          "id": "fb8082bd-5b32-4fd0-a28e-1e964c230191",
+                          "key": "employeeId",
+                          "value": "<string>",
+                          "description": "(Required) Workday employee identifier"
+                        }
+                      ]
+                    },
+                    "description": "Submits a compensation change request for an employee including base pay changes, bonus adjustments, and equity grants."
+                  },
+                  "response": [
+                    {
+                      "id": "2ec72799-6953-4211-bd22-3a1b27eec624",
+                      "name": "Compensation change submitted successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"effectiveDate\": \"<date>\",\n  \"reason\": \"MARKET_ADJUSTMENT\",\n  \"basePay\": {\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\",\n    \"frequency\": \"HOURLY\"\n  },\n  \"bonusTarget\": {\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\",\n    \"percent\": \"<number>\"\n  },\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:employeeId/compensation",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":employeeId",
+                            "compensation"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employeeId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"requestId\": \"<string>\",\n  \"status\": \"IN_PROGRESS\",\n  \"employeeId\": \"<string>\",\n  \"effectiveDate\": \"<date>\",\n  \"submittedAt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-10-21T20:04:40.000Z",
+                      "updatedAt": "2026-10-21T20:04:40.000Z",
+                      "uid": "35240-2ec72799-6953-4211-bd22-3a1b27eec624"
+                    },
+                    {
+                      "id": "b980ac00-8e89-4072-9869-55b090b5804d",
+                      "name": "Invalid request parameters",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"effectiveDate\": \"<date>\",\n  \"reason\": \"MARKET_ADJUSTMENT\",\n  \"basePay\": {\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\",\n    \"frequency\": \"HOURLY\"\n  },\n  \"bonusTarget\": {\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\",\n    \"percent\": \"<number>\"\n  },\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:employeeId/compensation",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":employeeId",
+                            "compensation"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employeeId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-10-21T20:04:40.000Z",
+                      "updatedAt": "2026-10-21T20:04:40.000Z",
+                      "uid": "35240-b980ac00-8e89-4072-9869-55b090b5804d"
+                    },
+                    {
+                      "id": "2639b9c5-f906-44da-b8df-9bc9c34ff472",
+                      "name": "Insufficient permissions",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"effectiveDate\": \"<date>\",\n  \"reason\": \"MARKET_ADJUSTMENT\",\n  \"basePay\": {\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\",\n    \"frequency\": \"HOURLY\"\n  },\n  \"bonusTarget\": {\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\",\n    \"percent\": \"<number>\"\n  },\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:employeeId/compensation",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":employeeId",
+                            "compensation"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employeeId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-10-21T20:04:40.000Z",
+                      "updatedAt": "2026-10-21T20:04:40.000Z",
+                      "uid": "35240-2639b9c5-f906-44da-b8df-9bc9c34ff472"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:04:40.000Z",
+                  "updatedAt": "2026-10-21T20:04:40.000Z",
+                  "uid": "35240-0767d9a3-10d6-4c25-be63-a767f45a984e"
                 }
               ],
-              "body": "{\n  \"employeeId\": \"EMP-12345\",\n  \"employeeName\": \"Jane Smith\",\n  \"effectiveDate\": \"2026-01-01\",\n  \"basePay\": {\n    \"amount\": 110000,\n    \"currency\": \"USD\",\n    \"frequency\": \"ANNUAL\"\n  },\n  \"bonusTarget\": {\n    \"amount\": 16500,\n    \"currency\": \"USD\",\n    \"percent\": 15\n  },\n  \"stockGrant\": {\n    \"shareCount\": 200,\n    \"vestingSchedule\": \"FOUR_YEAR_CLIFF\"\n  },\n  \"totalCompensation\": 155000\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f65d148b-83ff-4c98-9103-456da342735d",
-              "name": "Insufficient permissions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "employees",
-                    ":employeeId",
-                    "compensation"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "employeeId",
-                      "description": "(Required) Workday employee identifier"
-                    },
-                    {
-                      "description": "Your Workday tenant hostname",
-                      "type": "any",
-                      "value": "{{tenant}}",
-                      "key": "tenant"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": \"FORBIDDEN\",\n  \"message\": \"Insufficient permissions to access this resource\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "7494437a-1f3e-4e54-a00c-7ee2b61ee874",
-              "name": "Resource not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "employees",
-                    ":employeeId",
-                    "compensation"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "employeeId",
-                      "description": "(Required) Workday employee identifier"
-                    },
-                    {
-                      "description": "Your Workday tenant hostname",
-                      "type": "any",
-                      "value": "{{tenant}}",
-                      "key": "tenant"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": \"NOT_FOUND\",\n  \"message\": \"The requested resource was not found\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "a05a3828-4f4e-44f2-9c35-55acd6a9d18c",
+              "createdAt": "2026-10-21T20:04:40.000Z",
+              "updatedAt": "2026-10-21T20:04:40.000Z",
+              "uid": "35240-a05a3828-4f4e-44f2-9c35-55acd6a9d18c"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "5115ea46-093f-499e-b2d6-8bb2c7d3eb5d",
-          "name": "Workday Submit Compensation Change",
-          "request": {
-            "name": "Workday Submit Compensation Change",
-            "description": {
-              "content": "Submits a compensation change request for an employee including base pay changes, bonus adjustments, and equity grants.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "employees",
-                ":employeeId",
-                "compensation"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "employeeId",
-                  "description": "(Required) Workday employee identifier"
-                },
-                {
-                  "description": "Your Workday tenant hostname",
-                  "type": "any",
-                  "value": "{{tenant}}",
-                  "key": "tenant"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"effectiveDate\": \"<date>\",\n  \"reason\": \"<string>\",\n  \"basePay\": {\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\",\n    \"frequency\": \"<string>\"\n  },\n  \"bonusTarget\": {\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\",\n    \"percent\": \"<number>\"\n  },\n  \"comment\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "4d9fd56d-9bea-4607-80db-6aa1a16df57e",
-              "name": "Compensation change submitted successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "employees",
-                    ":employeeId",
-                    "compensation"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "employeeId",
-                      "description": "(Required) Workday employee identifier"
-                    },
-                    {
-                      "description": "Your Workday tenant hostname",
-                      "type": "any",
-                      "value": "{{tenant}}",
-                      "key": "tenant"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"effectiveDate\": \"2026-04-01\",\n  \"reason\": \"MERIT_INCREASE\",\n  \"basePay\": {\n    \"amount\": 115000,\n    \"currency\": \"USD\",\n    \"frequency\": \"ANNUAL\"\n  },\n  \"comment\": \"Annual merit increase based on performance review\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"requestId\": \"REQ-98765\",\n  \"status\": \"PENDING_APPROVAL\",\n  \"employeeId\": \"EMP-12345\",\n  \"effectiveDate\": \"2026-04-01\",\n  \"submittedAt\": \"2026-03-15T10:30:00Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "0ab4b022-688d-4d90-8ed3-41c3c4a87ebd",
-              "name": "Invalid request parameters",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "employees",
-                    ":employeeId",
-                    "compensation"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "employeeId",
-                      "description": "(Required) Workday employee identifier"
-                    },
-                    {
-                      "description": "Your Workday tenant hostname",
-                      "type": "any",
-                      "value": "{{tenant}}",
-                      "key": "tenant"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"effectiveDate\": \"2026-04-01\",\n  \"reason\": \"MERIT_INCREASE\",\n  \"basePay\": {\n    \"amount\": 115000,\n    \"currency\": \"USD\",\n    \"frequency\": \"ANNUAL\"\n  },\n  \"comment\": \"Annual merit increase based on performance review\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": \"INVALID_REQUEST\",\n  \"message\": \"Invalid request parameters\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "ff0fa537-68e8-45fa-b105-b7208e4be8b6",
-              "name": "Insufficient permissions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "employees",
-                    ":employeeId",
-                    "compensation"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "employeeId",
-                      "description": "(Required) Workday employee identifier"
-                    },
-                    {
-                      "description": "Your Workday tenant hostname",
-                      "type": "any",
-                      "value": "{{tenant}}",
-                      "key": "tenant"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"effectiveDate\": \"2026-04-01\",\n  \"reason\": \"MERIT_INCREASE\",\n  \"basePay\": {\n    \"amount\": 115000,\n    \"currency\": \"USD\",\n    \"frequency\": \"ANNUAL\"\n  },\n  \"comment\": \"Annual merit increase based on performance review\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": \"FORBIDDEN\",\n  \"message\": \"Insufficient permissions to access this resource\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "b7544024-0dc6-4106-b6f6-ee91592f6da1",
+          "createdAt": "2026-10-21T20:04:40.000Z",
+          "updatedAt": "2026-10-21T20:04:40.000Z",
+          "uid": "35240-b7544024-0dc6-4106-b6f6-ee91592f6da1"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Your Workday tenant hostname",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "wd2-impl-services1",
-      "key": "tenant"
-    },
-    {
-      "type": "string",
-      "value": "https://{{tenant}}.workday.com/api/compensation/v1",
-      "key": "baseUrl"
+      "id": "cbe3a040-724c-4ee7-858a-84ed112d7b40",
+      "createdAt": "2026-10-21T20:04:40.000Z",
+      "updatedAt": "2026-10-21T20:04:40.000Z",
+      "uid": "35240-cbe3a040-724c-4ee7-858a-84ed112d7b40"
     }
   ],
   "auth": {
@@ -527,25 +475,29 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "compensation.read compensation.write"
+        "value": "compensation.read compensation.write",
+        "type": "string"
       },
       {
         "key": "accessTokenUrl",
-        "value": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token"
+        "value": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token",
+        "type": "string"
       },
       {
         "key": "grant_type",
-        "value": "client_credentials"
+        "value": "client_credentials",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "4f38d12c-d9ea-42cd-8832-05c5e0e62a28",
-    "name": "Workday Advanced Compensation Bonus Plans Employee Compensation API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Workday Advanced Compensation API provides RESTful access to compensation management capabilities including compensation plans, merit increases, bonuses, stock awards, compensation grades, budgets, and review processes. The API enables organizations to programmatically manage their total compensation strategy, administer compensation cycles, and integrate compensation data with other systems.\n\nContact Support:\n Name: Workday Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "wd2-impl-services1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tenant}}.workday.com/api/compensation/v1"
     }
-  }
+  ]
 }

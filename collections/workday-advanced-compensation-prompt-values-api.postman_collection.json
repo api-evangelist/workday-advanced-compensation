@@ -1,0 +1,475 @@
+{
+  "info": {
+    "_postman_id": "ab04b665-d74b-4dd9-b2ca-149301f3e593",
+    "name": "compensation Prompt Values API",
+    "description": "The Compensation service enables applications to extend Workday's HCM Compensation features.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:05:00.000Z",
+    "updatedAt": "2026-10-21T20:05:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ab04b665-d74b-4dd9-b2ca-149301f3e593"
+  },
+  "item": [
+    {
+      "name": "values",
+      "item": [
+        {
+          "name": "oneTimePaymentPlanGroup",
+          "item": [
+            {
+              "name": "oneTimePaymentPlan",
+              "item": [
+                {
+                  "name": "Get values one time payment plan group one time payment plan",
+                  "id": "d72aaf99-a9a8-49cb-96a3-f2c7ec84924e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/values/oneTimePaymentPlanGroup/oneTimePaymentPlan/?limit=<long>&offset=<long>&position=<string>&search=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "values",
+                        "oneTimePaymentPlanGroup",
+                        "oneTimePaymentPlan",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "The maximum number of objects in a single response. The default and maximum is 1000.",
+                          "key": "limit",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.",
+                          "key": "offset",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "Eligibility for One-Time Payment Plan is evaluated against this query param.",
+                          "key": "position",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A search string that matches display IDs. The search is case-insensitive and matches words that start with the given string.",
+                          "key": "search",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves instances that can be used as values for other endpoint parameters in this service."
+                  },
+                  "response": [
+                    {
+                      "id": "1c83972b-5e78-4e43-99a3-a66559ea224e",
+                      "name": "Successful response. A successful response can return no matched data.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/values/oneTimePaymentPlanGroup/oneTimePaymentPlan/?limit=<long>&offset=<long>&position=<string>&search=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "values",
+                            "oneTimePaymentPlanGroup",
+                            "oneTimePaymentPlan",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response. The default and maximum is 1000.",
+                              "key": "limit",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.",
+                              "key": "offset",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "Eligibility for One-Time Payment Plan is evaluated against this query param.",
+                              "key": "position",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A search string that matches display IDs. The search is case-insensitive and matches words that start with the given string.",
+                              "key": "search",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"total\": \"<integer>\",\n  \"data\": [\n    {\n      \"id\": \"w$=n\",\n      \"descriptor\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"id\": \"2446e030f02523b02bcb5c4bf9c908ea\",\n      \"descriptor\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:05:01.000Z",
+                      "updatedAt": "2026-10-21T20:05:01.000Z",
+                      "uid": "35240-1c83972b-5e78-4e43-99a3-a66559ea224e"
+                    },
+                    {
+                      "id": "dc98491b-d228-4a91-9919-f81ebfc7b1f9",
+                      "name": "Invalid request. (https://community.workday.com/rest/error-messages)",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/values/oneTimePaymentPlanGroup/oneTimePaymentPlan/?limit=<long>&offset=<long>&position=<string>&search=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "values",
+                            "oneTimePaymentPlanGroup",
+                            "oneTimePaymentPlan",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response. The default and maximum is 1000.",
+                              "key": "limit",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.",
+                              "key": "offset",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "Eligibility for One-Time Payment Plan is evaluated against this query param.",
+                              "key": "position",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A search string that matches display IDs. The search is case-insensitive and matches words that start with the given string.",
+                              "key": "search",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:05:01.000Z",
+                      "updatedAt": "2026-10-21T20:05:01.000Z",
+                      "uid": "35240-dc98491b-d228-4a91-9919-f81ebfc7b1f9"
+                    },
+                    {
+                      "id": "59f3c5ae-4b54-4120-a324-80ecd75f5e73",
+                      "name": "Unauthorized: Missing or invalid credentials. (https://community.workday.com/rest/error-messages)",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/values/oneTimePaymentPlanGroup/oneTimePaymentPlan/?limit=<long>&offset=<long>&position=<string>&search=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "values",
+                            "oneTimePaymentPlanGroup",
+                            "oneTimePaymentPlan",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response. The default and maximum is 1000.",
+                              "key": "limit",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.",
+                              "key": "offset",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "Eligibility for One-Time Payment Plan is evaluated against this query param.",
+                              "key": "position",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A search string that matches display IDs. The search is case-insensitive and matches words that start with the given string.",
+                              "key": "search",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:05:01.000Z",
+                      "updatedAt": "2026-10-21T20:05:01.000Z",
+                      "uid": "35240-59f3c5ae-4b54-4120-a324-80ecd75f5e73"
+                    },
+                    {
+                      "id": "d26287c2-2db1-4b01-bc59-b20b31371e22",
+                      "name": "User has insufficient permissions. (https://community.workday.com/rest/error-messages)",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/values/oneTimePaymentPlanGroup/oneTimePaymentPlan/?limit=<long>&offset=<long>&position=<string>&search=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "values",
+                            "oneTimePaymentPlanGroup",
+                            "oneTimePaymentPlan",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response. The default and maximum is 1000.",
+                              "key": "limit",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.",
+                              "key": "offset",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "Eligibility for One-Time Payment Plan is evaluated against this query param.",
+                              "key": "position",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A search string that matches display IDs. The search is case-insensitive and matches words that start with the given string.",
+                              "key": "search",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:05:01.000Z",
+                      "updatedAt": "2026-10-21T20:05:01.000Z",
+                      "uid": "35240-d26287c2-2db1-4b01-bc59-b20b31371e22"
+                    },
+                    {
+                      "id": "a455c4c6-28be-426e-9724-b376af28ad42",
+                      "name": "Resource not found. (https://community.workday.com/rest/error-messages)",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/values/oneTimePaymentPlanGroup/oneTimePaymentPlan/?limit=<long>&offset=<long>&position=<string>&search=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "values",
+                            "oneTimePaymentPlanGroup",
+                            "oneTimePaymentPlan",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response. The default and maximum is 1000.",
+                              "key": "limit",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.",
+                              "key": "offset",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "Eligibility for One-Time Payment Plan is evaluated against this query param.",
+                              "key": "position",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A search string that matches display IDs. The search is case-insensitive and matches words that start with the given string.",
+                              "key": "search",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:05:01.000Z",
+                      "updatedAt": "2026-10-21T20:05:01.000Z",
+                      "uid": "35240-a455c4c6-28be-426e-9724-b376af28ad42"
+                    },
+                    {
+                      "id": "ddda4d19-0b9c-4e46-ae85-ebc54ff02f0f",
+                      "name": "An error occurred.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/values/oneTimePaymentPlanGroup/oneTimePaymentPlan/?limit=<long>&offset=<long>&position=<string>&search=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "values",
+                            "oneTimePaymentPlanGroup",
+                            "oneTimePaymentPlan",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of objects in a single response. The default and maximum is 1000.",
+                              "key": "limit",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.",
+                              "key": "offset",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "Eligibility for One-Time Payment Plan is evaluated against this query param.",
+                              "key": "position",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A search string that matches display IDs. The search is case-insensitive and matches words that start with the given string.",
+                              "key": "search",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"field\": \"<string>\",\n  \"path\": \"<string>\",\n  \"severity\": \"<string>\",\n  \"internalMessage\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:05:01.000Z",
+                      "updatedAt": "2026-10-21T20:05:01.000Z",
+                      "uid": "35240-ddda4d19-0b9c-4e46-ae85-ebc54ff02f0f"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:05:01.000Z",
+                  "updatedAt": "2026-10-21T20:05:01.000Z",
+                  "uid": "35240-d72aaf99-a9a8-49cb-96a3-f2c7ec84924e"
+                }
+              ],
+              "id": "bd190ffa-1461-4e0f-83e3-a5234ab44162",
+              "createdAt": "2026-10-21T20:05:01.000Z",
+              "updatedAt": "2026-10-21T20:05:01.000Z",
+              "uid": "35240-bd190ffa-1461-4e0f-83e3-a5234ab44162"
+            }
+          ],
+          "id": "c5736c43-fbc9-45a5-882a-961b22e17a02",
+          "createdAt": "2026-10-21T20:05:01.000Z",
+          "updatedAt": "2026-10-21T20:05:01.000Z",
+          "uid": "35240-c5736c43-fbc9-45a5-882a-961b22e17a02"
+        }
+      ],
+      "id": "20ebf508-0f6b-4212-85c7-831bb315dd98",
+      "createdAt": "2026-10-21T20:05:01.000Z",
+      "updatedAt": "2026-10-21T20:05:01.000Z",
+      "uid": "35240-20ebf508-0f6b-4212-85c7-831bb315dd98"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://<tenantHostname>/compensation/v3"
+    }
+  ]
+}

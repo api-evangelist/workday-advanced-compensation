@@ -1,205 +1,174 @@
 {
+  "info": {
+    "_postman_id": "897787d3-c87e-4e4c-9244-4d740889f5e9",
+    "name": "Workday Advanced Compensation Merit Plans API",
+    "description": "The Workday Advanced Compensation API provides RESTful access to compensation management capabilities including compensation plans, merit increases, bonuses, stock awards, compensation grades, budgets, and review processes. The API enables organizations to programmatically manage their total compensation strategy, administer compensation cycles, and integrate compensation data with other systems.\n\nContact Support:\n Name: Workday Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:04:47.000Z",
+    "updatedAt": "2026-10-21T20:04:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-897787d3-c87e-4e4c-9244-4d740889f5e9"
+  },
   "item": [
     {
-      "id": "15381cd0-ea12-4f82-b0ac-720bd7514883",
-      "name": "Merit Plans",
-      "description": {
-        "content": "Manage merit increase plans and cycles",
-        "type": "text/plain"
-      },
+      "name": "meritPlans",
       "item": [
         {
-          "id": "9c3c38af-2ac9-4daf-8187-64a6ad1f6252",
           "name": "Workday List Merit Plans",
+          "id": "1f098727-0912-4bd4-b959-23d0ab03a376",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Workday List Merit Plans",
-            "description": {
-              "content": "Retrieves merit increase plans with guidelines, matrices, and budget allocations.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "meritPlans"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "100",
-                  "description": "Maximum number of records to return"
-                },
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "0",
-                  "description": "Number of records to skip"
-                }
-              ],
-              "variable": [
-                {
-                  "description": "Your Workday tenant hostname",
-                  "type": "any",
-                  "value": "{{tenant}}",
-                  "key": "tenant"
-                }
-              ]
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/meritPlans?limit=100&offset=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "meritPlans"
+              ],
+              "query": [
+                {
+                  "description": "Maximum number of records to return",
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "description": "Number of records to skip",
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Retrieves merit increase plans with guidelines, matrices, and budget allocations."
           },
           "response": [
             {
-              "id": "04daf14c-abde-4e00-8554-894d49ca6f43",
+              "id": "2aa31a2d-f47b-47fb-b282-3f6bb7b268ad",
               "name": "A list of merit plans",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "meritPlans"
-                  ],
+                  "raw": "{{baseUrl}}/meritPlans?limit=100&offset=0",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "meritPlans"
+                  ],
                   "query": [
                     {
+                      "description": "Maximum number of records to return",
                       "key": "limit",
                       "value": "100"
                     },
                     {
+                      "description": "Number of records to skip",
                       "key": "offset",
                       "value": "0"
                     }
-                  ],
-                  "variable": [
-                    {
-                      "description": "Your Workday tenant hostname",
-                      "type": "any",
-                      "value": "{{tenant}}",
-                      "key": "tenant"
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"total\": 3,\n  \"data\": [\n    {\n      \"id\": \"MP-001\",\n      \"name\": \"2026 Annual Merit Increase\",\n      \"effectiveDate\": \"2026-04-01\",\n      \"budgetPercent\": 3.5,\n      \"status\": \"ACTIVE\"\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"total\": \"<integer>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"effectiveDate\": \"<date>\",\n      \"budgetPercent\": \"<number>\",\n      \"status\": \"ACTIVE\",\n      \"guidelineMin\": \"<number>\",\n      \"guidelineMax\": \"<number>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"effectiveDate\": \"<date>\",\n      \"budgetPercent\": \"<number>\",\n      \"status\": \"INACTIVE\",\n      \"guidelineMin\": \"<number>\",\n      \"guidelineMax\": \"<number>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:04:48.000Z",
+              "updatedAt": "2026-10-21T20:04:48.000Z",
+              "uid": "35240-2aa31a2d-f47b-47fb-b282-3f6bb7b268ad"
             },
             {
-              "id": "f248c20a-566b-44ab-b44a-1298daba1c40",
+              "id": "1acab9a2-34ef-414b-931f-d20a1bd73f2b",
               "name": "Authentication required",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "meritPlans"
-                  ],
+                  "raw": "{{baseUrl}}/meritPlans?limit=100&offset=0",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "meritPlans"
+                  ],
                   "query": [
                     {
+                      "description": "Maximum number of records to return",
                       "key": "limit",
                       "value": "100"
                     },
                     {
+                      "description": "Number of records to skip",
                       "key": "offset",
                       "value": "0"
                     }
-                  ],
-                  "variable": [
-                    {
-                      "description": "Your Workday tenant hostname",
-                      "type": "any",
-                      "value": "{{tenant}}",
-                      "key": "tenant"
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": \"UNAUTHORIZED\",\n  \"message\": \"Authentication required\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-10-21T20:04:48.000Z",
+              "updatedAt": "2026-10-21T20:04:48.000Z",
+              "uid": "35240-1acab9a2-34ef-414b-931f-d20a1bd73f2b"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:04:48.000Z",
+          "updatedAt": "2026-10-21T20:04:48.000Z",
+          "uid": "35240-1f098727-0912-4bd4-b959-23d0ab03a376"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Your Workday tenant hostname",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "wd2-impl-services1",
-      "key": "tenant"
-    },
-    {
-      "type": "string",
-      "value": "https://{{tenant}}.workday.com/api/compensation/v1",
-      "key": "baseUrl"
+      "id": "34c42e49-6124-4d11-9b9a-27b27b488dce",
+      "createdAt": "2026-10-21T20:04:48.000Z",
+      "updatedAt": "2026-10-21T20:04:48.000Z",
+      "uid": "35240-34c42e49-6124-4d11-9b9a-27b27b488dce"
     }
   ],
   "auth": {
@@ -207,25 +176,29 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "compensation.read compensation.write"
+        "value": "compensation.read compensation.write",
+        "type": "string"
       },
       {
         "key": "accessTokenUrl",
-        "value": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token"
+        "value": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token",
+        "type": "string"
       },
       {
         "key": "grant_type",
-        "value": "client_credentials"
+        "value": "client_credentials",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "968685c2-f085-4119-a411-b0ec6de760ba",
-    "name": "Workday Advanced Compensation Bonus Plans Merit Plans API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Workday Advanced Compensation API provides RESTful access to compensation management capabilities including compensation plans, merit increases, bonuses, stock awards, compensation grades, budgets, and review processes. The API enables organizations to programmatically manage their total compensation strategy, administer compensation cycles, and integrate compensation data with other systems.\n\nContact Support:\n Name: Workday Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "wd2-impl-services1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tenant}}.workday.com/api/compensation/v1"
     }
-  }
+  ]
 }

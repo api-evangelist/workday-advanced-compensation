@@ -1,0 +1,219 @@
+{
+  "info": {
+    "_postman_id": "8853bf88-0445-4aed-895e-85eaac6db528",
+    "name": "Workday Advanced Compensation Compensation Reviews API",
+    "description": "The Workday Advanced Compensation API provides RESTful access to compensation management capabilities including compensation plans, merit increases, bonuses, stock awards, compensation grades, budgets, and review processes. The API enables organizations to programmatically manage their total compensation strategy, administer compensation cycles, and integrate compensation data with other systems.\n\nContact Support:\n Name: Workday Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:04:33.000Z",
+    "updatedAt": "2026-10-21T20:04:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8853bf88-0445-4aed-895e-85eaac6db528"
+  },
+  "item": [
+    {
+      "name": "compensationReviews",
+      "item": [
+        {
+          "name": "Workday List Compensation Reviews",
+          "id": "e00b06e7-0ee7-4355-a6b3-eb5edf398a02",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/compensationReviews?limit=100&offset=0&status=NOT_STARTED",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "compensationReviews"
+              ],
+              "query": [
+                {
+                  "description": "Maximum number of records to return",
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "description": "Number of records to skip",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "Filter by review status",
+                  "key": "status",
+                  "value": "NOT_STARTED"
+                }
+              ]
+            },
+            "description": "Retrieves compensation review process instances including status, participants, and completion tracking."
+          },
+          "response": [
+            {
+              "id": "6e3bfbc9-80fd-47f2-b798-994e18fcf3cd",
+              "name": "A list of compensation reviews",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/compensationReviews?limit=100&offset=0&status=NOT_STARTED",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "compensationReviews"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter by review status",
+                      "key": "status",
+                      "value": "NOT_STARTED"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"total\": \"<integer>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"IN_PROGRESS\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"completionPercent\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"IN_PROGRESS\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"completionPercent\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:04:34.000Z",
+              "updatedAt": "2026-10-21T20:04:34.000Z",
+              "uid": "35240-6e3bfbc9-80fd-47f2-b798-994e18fcf3cd"
+            },
+            {
+              "id": "2406dc97-66d3-4065-9a82-8a02e6ec809d",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/compensationReviews?limit=100&offset=0&status=NOT_STARTED",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "compensationReviews"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter by review status",
+                      "key": "status",
+                      "value": "NOT_STARTED"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-10-21T20:04:34.000Z",
+              "updatedAt": "2026-10-21T20:04:34.000Z",
+              "uid": "35240-2406dc97-66d3-4065-9a82-8a02e6ec809d"
+            }
+          ],
+          "createdAt": "2026-10-21T20:04:34.000Z",
+          "updatedAt": "2026-10-21T20:04:34.000Z",
+          "uid": "35240-e00b06e7-0ee7-4355-a6b3-eb5edf398a02"
+        }
+      ],
+      "id": "d29d560b-fae3-42b2-9cd1-7afad7b1bd91",
+      "createdAt": "2026-10-21T20:04:34.000Z",
+      "updatedAt": "2026-10-21T20:04:34.000Z",
+      "uid": "35240-d29d560b-fae3-42b2-9cd1-7afad7b1bd91"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "compensation.read compensation.write",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "wd2-impl-services1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tenant}}.workday.com/api/compensation/v1"
+    }
+  ]
+}

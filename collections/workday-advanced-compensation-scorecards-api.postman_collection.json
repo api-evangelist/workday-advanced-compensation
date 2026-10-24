@@ -1,0 +1,1753 @@
+{
+  "info": {
+    "_postman_id": "82282615-4c63-4d65-a042-1d54fa336a3c",
+    "name": "compensation Scorecards API",
+    "description": "The Compensation service enables applications to extend Workday's HCM Compensation features.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:05:11.000Z",
+    "updatedAt": "2026-10-21T20:05:11.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-82282615-4c63-4d65-a042-1d54fa336a3c"
+  },
+  "item": [
+    {
+      "name": "scorecards",
+      "item": [
+        {
+          "name": "{ID}",
+          "item": [
+            {
+              "name": "Retrieves Compensation Scorecard information",
+              "id": "f7ad3d8d-a60f-41f3-aeaf-4f677b36e852",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/scorecards/:ID",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scorecards",
+                    ":ID"
+                  ],
+                  "variable": [
+                    {
+                      "id": "4a4d2ace-1b5e-4455-86b7-7f62a2ad911c",
+                      "key": "ID",
+                      "value": "b8291269228b9f1f3bd4bb126df80421",
+                      "description": "(Required) The Workday ID of the resource.\n\nAccepts:\n- **Workday ID**: Workday ID (32-character lowercase hexadecimal string).\n- **Reference ID**: Workday reference ID (Type=Value). Valid types: Performance_Scorecard_ID"
+                    }
+                  ]
+                },
+                "description": "Retrieves Compensation Scorecard information including the scorecardName, scorecardDescription, inactive status, defaultScorecardGoals, scorecardProfiles containing profileScorecardGoals as of the effective date. The default effective date is the request date.\n\nSecured By Domain: Set Up: Merit and Bonus\n\nScope: Advanced Compensation"
+              },
+              "response": [
+                {
+                  "id": "c31d35a5-c75d-42c6-8e70-8b9734de93ac",
+                  "name": "Successful response. A successful response can return no matched data.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scorecards/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scorecards",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"scorecardProfiles\": [\n    {\n      \"eligibilityRule\": {\n        \"id\": \"$dq@hba\\\"e@=X*}7CiJ\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"goalName\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"goalName\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    },\n    {\n      \"eligibilityRule\": {\n        \"id\": \"N,<u,z\\\"&7=0Oep\\\"\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"goalName\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"goalName\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    }\n  ],\n  \"scorecardName\": \"<string>\",\n  \"effectiveDate\": \"<date>\",\n  \"inactive\": \"<boolean>\",\n  \"scorecardDescription\": \"<string>\",\n  \"defaultScorecardGoals\": [\n    {\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"goalName\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"goalName\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"id\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:05:12.000Z",
+                  "updatedAt": "2026-10-21T20:05:12.000Z",
+                  "uid": "35240-c31d35a5-c75d-42c6-8e70-8b9734de93ac"
+                },
+                {
+                  "id": "de507f5f-5b40-4951-9c50-3f8011afb9d4",
+                  "name": "Invalid request. (https://community.workday.com/rest/error-messages)",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scorecards/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scorecards",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:05:12.000Z",
+                  "updatedAt": "2026-10-21T20:05:12.000Z",
+                  "uid": "35240-de507f5f-5b40-4951-9c50-3f8011afb9d4"
+                },
+                {
+                  "id": "c0b8191f-84b2-460a-8630-50dec921d2c5",
+                  "name": "Unauthorized: Missing or invalid credentials. (https://community.workday.com/rest/error-messages)",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scorecards/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scorecards",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:05:12.000Z",
+                  "updatedAt": "2026-10-21T20:05:12.000Z",
+                  "uid": "35240-c0b8191f-84b2-460a-8630-50dec921d2c5"
+                },
+                {
+                  "id": "3d022402-217f-4dc4-ad26-70710ed741cc",
+                  "name": "User has insufficient permissions. (https://community.workday.com/rest/error-messages)",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scorecards/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scorecards",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:05:12.000Z",
+                  "updatedAt": "2026-10-21T20:05:12.000Z",
+                  "uid": "35240-3d022402-217f-4dc4-ad26-70710ed741cc"
+                },
+                {
+                  "id": "1ac4e872-4a60-469d-9427-f3b7b7f1558c",
+                  "name": "Resource not found. (https://community.workday.com/rest/error-messages)",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scorecards/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scorecards",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:05:12.000Z",
+                  "updatedAt": "2026-10-21T20:05:12.000Z",
+                  "uid": "35240-1ac4e872-4a60-469d-9427-f3b7b7f1558c"
+                },
+                {
+                  "id": "0cbf1da5-b2f6-4b9a-844f-9ecebc6e163d",
+                  "name": "An error occurred.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scorecards/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scorecards",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"field\": \"<string>\",\n  \"path\": \"<string>\",\n  \"severity\": \"<string>\",\n  \"internalMessage\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:05:12.000Z",
+                  "updatedAt": "2026-10-21T20:05:12.000Z",
+                  "uid": "35240-0cbf1da5-b2f6-4b9a-844f-9ecebc6e163d"
+                }
+              ],
+              "createdAt": "2026-10-21T20:05:12.000Z",
+              "updatedAt": "2026-10-21T20:05:12.000Z",
+              "uid": "35240-f7ad3d8d-a60f-41f3-aeaf-4f677b36e852"
+            },
+            {
+              "name": "Updates a Compensation Scorecard",
+              "id": "47ae0ffd-41d5-4195-a5f2-258876632015",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"defaultScorecardGoals\": [\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"effectiveDate\": \"<date>\",\n  \"scorecardName\": \"<string>\",\n  \"scorecardProfiles\": [\n    {\n      \"eligibilityRule\": {\n        \"id\": \"[f=b8TgqB@k<.\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    },\n    {\n      \"eligibilityRule\": {\n        \"id\": \"838e4e97a612b3b928c653967b4369cc\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    }\n  ],\n  \"inactive\": \"<boolean>\",\n  \"scorecardDescription\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/scorecards/:ID",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scorecards",
+                    ":ID"
+                  ],
+                  "variable": [
+                    {
+                      "id": "19fab128-0aa1-42ec-9283-1c6c0a5ba9c9",
+                      "key": "ID",
+                      "value": "b8291269228b9f1f3bd4bb126df80421",
+                      "description": "(Required) The Workday ID of the resource.\n\nAccepts:\n- **Workday ID**: Workday ID (32-character lowercase hexadecimal string).\n- **Reference ID**: Workday reference ID (Type=Value). Valid types: Performance_Scorecard_ID"
+                    }
+                  ]
+                },
+                "description": "Replaces an existing Compensation Scorecard as of the specified effectiveDate.\nCall GET /scorecards/{ID} to initially populate the request body with the existing data. You can then update the scorecardName, scorecardDescription, and inactive fields. You can also add, update, and delete the existing data in defaultScorecardGoals[], scorecardProfiles[], and profileScorecardGoals[].\n\nSecured By Domain: Set Up: Merit and Bonus\n\nScope: Advanced Compensation"
+              },
+              "response": [
+                {
+                  "id": "657a11a2-4d41-4261-9c84-a243f9fa56e4",
+                  "name": "Successful response. A successful response can return no matched data. Updating resource.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"defaultScorecardGoals\": [\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"effectiveDate\": \"<date>\",\n  \"scorecardName\": \"<string>\",\n  \"scorecardProfiles\": [\n    {\n      \"eligibilityRule\": {\n        \"id\": \"[f=b8TgqB@k<.\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    },\n    {\n      \"eligibilityRule\": {\n        \"id\": \"838e4e97a612b3b928c653967b4369cc\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    }\n  ],\n  \"inactive\": \"<boolean>\",\n  \"scorecardDescription\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/scorecards/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scorecards",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"defaultScorecardGoals\": [\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"effectiveDate\": \"<date>\",\n  \"scorecardName\": \"<string>\",\n  \"scorecardProfiles\": [\n    {\n      \"eligibilityRule\": {\n        \"id\": \"[f=b8TgqB@k<.\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    },\n    {\n      \"eligibilityRule\": {\n        \"id\": \"838e4e97a612b3b928c653967b4369cc\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    }\n  ],\n  \"inactive\": \"<boolean>\",\n  \"scorecardDescription\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:05:12.000Z",
+                  "updatedAt": "2026-10-21T20:05:12.000Z",
+                  "uid": "35240-657a11a2-4d41-4261-9c84-a243f9fa56e4"
+                },
+                {
+                  "id": "401ceabb-63ab-445f-9cc6-8d846fe7c19c",
+                  "name": "Invalid request. (https://community.workday.com/rest/error-messages)\n\nA Default Scorecard \\~Goal\\~ is missing\n\nA Scorecard Profile doesn't exist as of the Effective Date. Remove or replace the invalid Scorecard Profile or change the Effective Date.\n\nA Sco",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"defaultScorecardGoals\": [\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"effectiveDate\": \"<date>\",\n  \"scorecardName\": \"<string>\",\n  \"scorecardProfiles\": [\n    {\n      \"eligibilityRule\": {\n        \"id\": \"[f=b8TgqB@k<.\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    },\n    {\n      \"eligibilityRule\": {\n        \"id\": \"838e4e97a612b3b928c653967b4369cc\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    }\n  ],\n  \"inactive\": \"<boolean>\",\n  \"scorecardDescription\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/scorecards/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scorecards",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:05:12.000Z",
+                  "updatedAt": "2026-10-21T20:05:12.000Z",
+                  "uid": "35240-401ceabb-63ab-445f-9cc6-8d846fe7c19c"
+                },
+                {
+                  "id": "51c807a3-8056-46af-958e-43b3bfc681b1",
+                  "name": "Unauthorized: Missing or invalid credentials. (https://community.workday.com/rest/error-messages)",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"defaultScorecardGoals\": [\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"effectiveDate\": \"<date>\",\n  \"scorecardName\": \"<string>\",\n  \"scorecardProfiles\": [\n    {\n      \"eligibilityRule\": {\n        \"id\": \"[f=b8TgqB@k<.\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    },\n    {\n      \"eligibilityRule\": {\n        \"id\": \"838e4e97a612b3b928c653967b4369cc\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    }\n  ],\n  \"inactive\": \"<boolean>\",\n  \"scorecardDescription\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/scorecards/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scorecards",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:05:12.000Z",
+                  "updatedAt": "2026-10-21T20:05:12.000Z",
+                  "uid": "35240-51c807a3-8056-46af-958e-43b3bfc681b1"
+                },
+                {
+                  "id": "71329ac7-9091-4d25-9802-356ea6459ae0",
+                  "name": "User has insufficient permissions. (https://community.workday.com/rest/error-messages)",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"defaultScorecardGoals\": [\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"effectiveDate\": \"<date>\",\n  \"scorecardName\": \"<string>\",\n  \"scorecardProfiles\": [\n    {\n      \"eligibilityRule\": {\n        \"id\": \"[f=b8TgqB@k<.\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    },\n    {\n      \"eligibilityRule\": {\n        \"id\": \"838e4e97a612b3b928c653967b4369cc\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    }\n  ],\n  \"inactive\": \"<boolean>\",\n  \"scorecardDescription\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/scorecards/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scorecards",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:05:12.000Z",
+                  "updatedAt": "2026-10-21T20:05:12.000Z",
+                  "uid": "35240-71329ac7-9091-4d25-9802-356ea6459ae0"
+                },
+                {
+                  "id": "ee3e899c-39ae-41bb-a991-f603a2c065cc",
+                  "name": "Resource not found. (https://community.workday.com/rest/error-messages)",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"defaultScorecardGoals\": [\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"effectiveDate\": \"<date>\",\n  \"scorecardName\": \"<string>\",\n  \"scorecardProfiles\": [\n    {\n      \"eligibilityRule\": {\n        \"id\": \"[f=b8TgqB@k<.\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    },\n    {\n      \"eligibilityRule\": {\n        \"id\": \"838e4e97a612b3b928c653967b4369cc\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    }\n  ],\n  \"inactive\": \"<boolean>\",\n  \"scorecardDescription\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/scorecards/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scorecards",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:05:12.000Z",
+                  "updatedAt": "2026-10-21T20:05:12.000Z",
+                  "uid": "35240-ee3e899c-39ae-41bb-a991-f603a2c065cc"
+                },
+                {
+                  "id": "a8fd6067-55c4-49f5-aad8-8f5aad7780c2",
+                  "name": "An error occurred.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"defaultScorecardGoals\": [\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"effectiveDate\": \"<date>\",\n  \"scorecardName\": \"<string>\",\n  \"scorecardProfiles\": [\n    {\n      \"eligibilityRule\": {\n        \"id\": \"[f=b8TgqB@k<.\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    },\n    {\n      \"eligibilityRule\": {\n        \"id\": \"838e4e97a612b3b928c653967b4369cc\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    }\n  ],\n  \"inactive\": \"<boolean>\",\n  \"scorecardDescription\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/scorecards/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scorecards",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"field\": \"<string>\",\n  \"path\": \"<string>\",\n  \"severity\": \"<string>\",\n  \"internalMessage\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:05:12.000Z",
+                  "updatedAt": "2026-10-21T20:05:12.000Z",
+                  "uid": "35240-a8fd6067-55c4-49f5-aad8-8f5aad7780c2"
+                }
+              ],
+              "createdAt": "2026-10-21T20:05:12.000Z",
+              "updatedAt": "2026-10-21T20:05:12.000Z",
+              "uid": "35240-47ae0ffd-41d5-4195-a5f2-258876632015"
+            },
+            {
+              "name": "Deletes a Compensation Scorecard with the specified ID",
+              "id": "dc1d8d31-6aab-47ff-95e8-4889675567b7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/scorecards/:ID",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scorecards",
+                    ":ID"
+                  ],
+                  "variable": [
+                    {
+                      "id": "799d06ac-d6ac-4849-83f8-fb13fa0a4e6f",
+                      "key": "ID",
+                      "value": "b8291269228b9f1f3bd4bb126df80421",
+                      "description": "(Required) The Workday ID of the resource.\n\nAccepts:\n- **Workday ID**: Workday ID (32-character lowercase hexadecimal string).\n- **Reference ID**: Workday reference ID (Type=Value). Valid types: Performance_Scorecard_ID"
+                    }
+                  ]
+                },
+                "description": "Deletes Compensation Scorecards.\n\nSecured By Domain: Set Up: Merit and Bonus\n\nScope: Advanced Compensation"
+              },
+              "response": [
+                {
+                  "id": "9adad6d6-85c2-424a-931c-48a05a53c31d",
+                  "name": "Successful response. A successful response can return no matched data. Deleting resource.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scorecards/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scorecards",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"total\": \"<integer>\",\n  \"data\": [\n    {\n      \"id\": \"72225e6ba6c3aa712921f0b61ead58da\",\n      \"descriptor\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"id\": \"3d2ed01ab6ab43ed293df8469b7d306a\",\n      \"descriptor\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:05:12.000Z",
+                  "updatedAt": "2026-10-21T20:05:12.000Z",
+                  "uid": "35240-9adad6d6-85c2-424a-931c-48a05a53c31d"
+                },
+                {
+                  "id": "3754172d-1091-42ad-9de2-c8efad8d649a",
+                  "name": "Invalid request. (https://community.workday.com/rest/error-messages)\n\nThe Compensation Scorecard cannot be deleted because it is in use.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scorecards/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scorecards",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:05:12.000Z",
+                  "updatedAt": "2026-10-21T20:05:12.000Z",
+                  "uid": "35240-3754172d-1091-42ad-9de2-c8efad8d649a"
+                },
+                {
+                  "id": "07911a4b-f8bb-4c38-90fa-8c00620f2559",
+                  "name": "Unauthorized: Missing or invalid credentials. (https://community.workday.com/rest/error-messages)",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scorecards/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scorecards",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:05:12.000Z",
+                  "updatedAt": "2026-10-21T20:05:12.000Z",
+                  "uid": "35240-07911a4b-f8bb-4c38-90fa-8c00620f2559"
+                },
+                {
+                  "id": "f11412eb-6a10-4808-ac3b-941905dd463b",
+                  "name": "User has insufficient permissions. (https://community.workday.com/rest/error-messages)",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scorecards/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scorecards",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:05:12.000Z",
+                  "updatedAt": "2026-10-21T20:05:12.000Z",
+                  "uid": "35240-f11412eb-6a10-4808-ac3b-941905dd463b"
+                },
+                {
+                  "id": "e81aa456-e3e6-4cc2-bb08-8ac7fd6d3276",
+                  "name": "Resource not found. (https://community.workday.com/rest/error-messages)",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scorecards/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scorecards",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:05:12.000Z",
+                  "updatedAt": "2026-10-21T20:05:12.000Z",
+                  "uid": "35240-e81aa456-e3e6-4cc2-bb08-8ac7fd6d3276"
+                },
+                {
+                  "id": "e7678912-7c2c-4e13-a5a9-cfc059e4a837",
+                  "name": "An error occurred.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scorecards/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scorecards",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"field\": \"<string>\",\n  \"path\": \"<string>\",\n  \"severity\": \"<string>\",\n  \"internalMessage\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:05:12.000Z",
+                  "updatedAt": "2026-10-21T20:05:12.000Z",
+                  "uid": "35240-e7678912-7c2c-4e13-a5a9-cfc059e4a837"
+                }
+              ],
+              "createdAt": "2026-10-21T20:05:12.000Z",
+              "updatedAt": "2026-10-21T20:05:12.000Z",
+              "uid": "35240-dc1d8d31-6aab-47ff-95e8-4889675567b7"
+            }
+          ],
+          "id": "58a37007-ab10-4c67-be45-5a08c675a24a",
+          "createdAt": "2026-10-21T20:05:12.000Z",
+          "updatedAt": "2026-10-21T20:05:12.000Z",
+          "uid": "35240-58a37007-ab10-4c67-be45-5a08c675a24a"
+        },
+        {
+          "name": "Retrieves Compensation Scorecard information",
+          "id": "fa13f4e7-96e3-4045-aa7e-116dc65fe79a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/scorecards?effectiveDate=<date>&limit=<long>&offset=<long>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "scorecards"
+              ],
+              "query": [
+                {
+                  "description": "Effective date the scorecard task takes effect.",
+                  "key": "effectiveDate",
+                  "value": "<date>"
+                },
+                {
+                  "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                  "key": "limit",
+                  "value": "<long>"
+                },
+                {
+                  "description": "The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.",
+                  "key": "offset",
+                  "value": "<long>"
+                }
+              ]
+            },
+            "description": "Retrieves Compensation Scorecard information including the scorecardName, scorecardDescription, inactive status, defaultScorecardGoals, scorecardProfiles containing profileScorecardGoals as of the effective date. The default effective date is the request date.\n\nSecured By Domain: Set Up: Merit and Bonus\n\nScope: Advanced Compensation"
+          },
+          "response": [
+            {
+              "id": "c3a873d9-de71-4957-a68e-02c908394b12",
+              "name": "Successful response. A successful response can return no matched data.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/scorecards?effectiveDate=<date>&limit=<long>&offset=<long>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scorecards"
+                  ],
+                  "query": [
+                    {
+                      "description": "Effective date the scorecard task takes effect.",
+                      "key": "effectiveDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.",
+                      "key": "offset",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"total\": \"<integer>\",\n  \"data\": [\n    {\n      \"scorecardProfiles\": [\n        {\n          \"eligibilityRule\": {\n            \"id\": \"c8962e59266b156ee2e4e38bb7df4abe\",\n            \"descriptor\": \"<string>\",\n            \"href\": \"<string>\"\n          },\n          \"profileScorecardGoals\": [\n            {\n              \"goalWeight\": \"<double>\",\n              \"goalDescription\": \"<string>\",\n              \"goalName\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"goalWeight\": \"<double>\",\n              \"goalDescription\": \"<string>\",\n              \"goalName\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ],\n          \"id\": \"<string>\"\n        },\n        {\n          \"eligibilityRule\": {\n            \"id\": \"ixJKl$?=>Ob@oC3E7\",\n            \"descriptor\": \"<string>\",\n            \"href\": \"<string>\"\n          },\n          \"profileScorecardGoals\": [\n            {\n              \"goalWeight\": \"<double>\",\n              \"goalDescription\": \"<string>\",\n              \"goalName\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"goalWeight\": \"<double>\",\n              \"goalDescription\": \"<string>\",\n              \"goalName\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ],\n          \"id\": \"<string>\"\n        }\n      ],\n      \"scorecardName\": \"<string>\",\n      \"effectiveDate\": \"<date>\",\n      \"inactive\": \"<boolean>\",\n      \"scorecardDescription\": \"<string>\",\n      \"defaultScorecardGoals\": [\n        {\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"goalName\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"goalName\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    },\n    {\n      \"scorecardProfiles\": [\n        {\n          \"eligibilityRule\": {\n            \"id\": \"84d6669fac78716086bb1d6cac59cd30\",\n            \"descriptor\": \"<string>\",\n            \"href\": \"<string>\"\n          },\n          \"profileScorecardGoals\": [\n            {\n              \"goalWeight\": \"<double>\",\n              \"goalDescription\": \"<string>\",\n              \"goalName\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"goalWeight\": \"<double>\",\n              \"goalDescription\": \"<string>\",\n              \"goalName\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ],\n          \"id\": \"<string>\"\n        },\n        {\n          \"eligibilityRule\": {\n            \"id\": \"2obk>=1hq\",\n            \"descriptor\": \"<string>\",\n            \"href\": \"<string>\"\n          },\n          \"profileScorecardGoals\": [\n            {\n              \"goalWeight\": \"<double>\",\n              \"goalDescription\": \"<string>\",\n              \"goalName\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"goalWeight\": \"<double>\",\n              \"goalDescription\": \"<string>\",\n              \"goalName\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ],\n          \"id\": \"<string>\"\n        }\n      ],\n      \"scorecardName\": \"<string>\",\n      \"effectiveDate\": \"<date>\",\n      \"inactive\": \"<boolean>\",\n      \"scorecardDescription\": \"<string>\",\n      \"defaultScorecardGoals\": [\n        {\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"goalName\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"goalName\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:05:12.000Z",
+              "updatedAt": "2026-10-21T20:05:12.000Z",
+              "uid": "35240-c3a873d9-de71-4957-a68e-02c908394b12"
+            },
+            {
+              "id": "04d21c5c-9a81-4dab-a780-c398e3da8047",
+              "name": "Invalid request. (https://community.workday.com/rest/error-messages)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/scorecards?effectiveDate=<date>&limit=<long>&offset=<long>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scorecards"
+                  ],
+                  "query": [
+                    {
+                      "description": "Effective date the scorecard task takes effect.",
+                      "key": "effectiveDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.",
+                      "key": "offset",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:05:12.000Z",
+              "updatedAt": "2026-10-21T20:05:12.000Z",
+              "uid": "35240-04d21c5c-9a81-4dab-a780-c398e3da8047"
+            },
+            {
+              "id": "d9ec738d-b85a-4014-804c-1768a7637db5",
+              "name": "Unauthorized: Missing or invalid credentials. (https://community.workday.com/rest/error-messages)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/scorecards?effectiveDate=<date>&limit=<long>&offset=<long>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scorecards"
+                  ],
+                  "query": [
+                    {
+                      "description": "Effective date the scorecard task takes effect.",
+                      "key": "effectiveDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.",
+                      "key": "offset",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:05:12.000Z",
+              "updatedAt": "2026-10-21T20:05:12.000Z",
+              "uid": "35240-d9ec738d-b85a-4014-804c-1768a7637db5"
+            },
+            {
+              "id": "73d0c098-3147-45d5-a470-deab8a6f4c34",
+              "name": "User has insufficient permissions. (https://community.workday.com/rest/error-messages)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/scorecards?effectiveDate=<date>&limit=<long>&offset=<long>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scorecards"
+                  ],
+                  "query": [
+                    {
+                      "description": "Effective date the scorecard task takes effect.",
+                      "key": "effectiveDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.",
+                      "key": "offset",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:05:12.000Z",
+              "updatedAt": "2026-10-21T20:05:12.000Z",
+              "uid": "35240-73d0c098-3147-45d5-a470-deab8a6f4c34"
+            },
+            {
+              "id": "ec6e70b6-6b2d-444f-a83d-2f5a1b95f82f",
+              "name": "Resource not found. (https://community.workday.com/rest/error-messages)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/scorecards?effectiveDate=<date>&limit=<long>&offset=<long>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scorecards"
+                  ],
+                  "query": [
+                    {
+                      "description": "Effective date the scorecard task takes effect.",
+                      "key": "effectiveDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.",
+                      "key": "offset",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:05:12.000Z",
+              "updatedAt": "2026-10-21T20:05:12.000Z",
+              "uid": "35240-ec6e70b6-6b2d-444f-a83d-2f5a1b95f82f"
+            },
+            {
+              "id": "83e937e8-c056-4de1-aa35-73acdfc2c6d5",
+              "name": "An error occurred.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/scorecards?effectiveDate=<date>&limit=<long>&offset=<long>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scorecards"
+                  ],
+                  "query": [
+                    {
+                      "description": "Effective date the scorecard task takes effect.",
+                      "key": "effectiveDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.",
+                      "key": "offset",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"field\": \"<string>\",\n  \"path\": \"<string>\",\n  \"severity\": \"<string>\",\n  \"internalMessage\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:05:12.000Z",
+              "updatedAt": "2026-10-21T20:05:12.000Z",
+              "uid": "35240-83e937e8-c056-4de1-aa35-73acdfc2c6d5"
+            }
+          ],
+          "createdAt": "2026-10-21T20:05:12.000Z",
+          "updatedAt": "2026-10-21T20:05:12.000Z",
+          "uid": "35240-fa13f4e7-96e3-4045-aa7e-116dc65fe79a"
+        },
+        {
+          "name": "Creates a Compensation Scorecard",
+          "id": "84f122ff-8fba-4b66-bf75-9c36b7741fbf",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"defaultScorecardGoals\": [\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"effectiveDate\": \"<date>\",\n  \"scorecardName\": \"<string>\",\n  \"inactive\": \"<boolean>\",\n  \"scorecardProfiles\": [\n    {\n      \"eligibilityRule\": {\n        \"id\": \"1a50fa3697b0f1ef4069993a599da99f\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    },\n    {\n      \"eligibilityRule\": {\n        \"id\": \"rC+>oh.zo==UH|0a2=\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    }\n  ],\n  \"scorecardDescription\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/scorecards",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "scorecards"
+              ]
+            },
+            "description": "Creates a new Compensation Scorecard.\n\nIn the request body, specify these required fields: scorecardName, effectiveDate, and defaultScorecardGoals[ {goalName, goalWeight} ].\nIf you specify the optional scorecardProfiles[], you must specify the eligibilityRule{id} and at least 1 goal in profileScorecardGoals[ {goalName, goalWeight} ].\n\nSecured By Domain: Set Up: Merit and Bonus\n\nScope: Advanced Compensation"
+          },
+          "response": [
+            {
+              "id": "eb5712c9-afa7-4d87-bf09-0df12ab7c630",
+              "name": "Resource created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"defaultScorecardGoals\": [\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"effectiveDate\": \"<date>\",\n  \"scorecardName\": \"<string>\",\n  \"inactive\": \"<boolean>\",\n  \"scorecardProfiles\": [\n    {\n      \"eligibilityRule\": {\n        \"id\": \"1a50fa3697b0f1ef4069993a599da99f\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    },\n    {\n      \"eligibilityRule\": {\n        \"id\": \"rC+>oh.zo==UH|0a2=\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    }\n  ],\n  \"scorecardDescription\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/scorecards",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scorecards"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"defaultScorecardGoals\": [\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"effectiveDate\": \"<date>\",\n  \"scorecardName\": \"<string>\",\n  \"inactive\": \"<boolean>\",\n  \"scorecardProfiles\": [\n    {\n      \"eligibilityRule\": {\n        \"id\": \"1a50fa3697b0f1ef4069993a599da99f\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    },\n    {\n      \"eligibilityRule\": {\n        \"id\": \"rC+>oh.zo==UH|0a2=\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    }\n  ],\n  \"scorecardDescription\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:05:12.000Z",
+              "updatedAt": "2026-10-21T20:05:12.000Z",
+              "uid": "35240-eb5712c9-afa7-4d87-bf09-0df12ab7c630"
+            },
+            {
+              "id": "b7e63932-b86e-4ce5-a5e3-9a85e8f00e05",
+              "name": "Invalid request. (https://community.workday.com/rest/error-messages)\n\nA Default Scorecard \\~Goal\\~ is missing\n\nA \\~Goal\\~ is missing for a Scorecard Profile.\n\nScorecard Name entered has already been used.\n\nThe sum of the \\~goal\\~ weightings must equal 100",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"defaultScorecardGoals\": [\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"effectiveDate\": \"<date>\",\n  \"scorecardName\": \"<string>\",\n  \"inactive\": \"<boolean>\",\n  \"scorecardProfiles\": [\n    {\n      \"eligibilityRule\": {\n        \"id\": \"1a50fa3697b0f1ef4069993a599da99f\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    },\n    {\n      \"eligibilityRule\": {\n        \"id\": \"rC+>oh.zo==UH|0a2=\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    }\n  ],\n  \"scorecardDescription\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/scorecards",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scorecards"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:05:12.000Z",
+              "updatedAt": "2026-10-21T20:05:12.000Z",
+              "uid": "35240-b7e63932-b86e-4ce5-a5e3-9a85e8f00e05"
+            },
+            {
+              "id": "c6ab51c1-650c-435e-b0d5-fb96da047785",
+              "name": "Unauthorized: Missing or invalid credentials. (https://community.workday.com/rest/error-messages)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"defaultScorecardGoals\": [\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"effectiveDate\": \"<date>\",\n  \"scorecardName\": \"<string>\",\n  \"inactive\": \"<boolean>\",\n  \"scorecardProfiles\": [\n    {\n      \"eligibilityRule\": {\n        \"id\": \"1a50fa3697b0f1ef4069993a599da99f\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    },\n    {\n      \"eligibilityRule\": {\n        \"id\": \"rC+>oh.zo==UH|0a2=\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    }\n  ],\n  \"scorecardDescription\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/scorecards",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scorecards"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:05:12.000Z",
+              "updatedAt": "2026-10-21T20:05:12.000Z",
+              "uid": "35240-c6ab51c1-650c-435e-b0d5-fb96da047785"
+            },
+            {
+              "id": "b801d0b9-3f6f-443b-9c1f-1643c7133e65",
+              "name": "User has insufficient permissions. (https://community.workday.com/rest/error-messages)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"defaultScorecardGoals\": [\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"effectiveDate\": \"<date>\",\n  \"scorecardName\": \"<string>\",\n  \"inactive\": \"<boolean>\",\n  \"scorecardProfiles\": [\n    {\n      \"eligibilityRule\": {\n        \"id\": \"1a50fa3697b0f1ef4069993a599da99f\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    },\n    {\n      \"eligibilityRule\": {\n        \"id\": \"rC+>oh.zo==UH|0a2=\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    }\n  ],\n  \"scorecardDescription\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/scorecards",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scorecards"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:05:12.000Z",
+              "updatedAt": "2026-10-21T20:05:12.000Z",
+              "uid": "35240-b801d0b9-3f6f-443b-9c1f-1643c7133e65"
+            },
+            {
+              "id": "f513e3ca-8333-43bc-9228-ee7df8d74892",
+              "name": "Resource not found. (https://community.workday.com/rest/error-messages)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"defaultScorecardGoals\": [\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"effectiveDate\": \"<date>\",\n  \"scorecardName\": \"<string>\",\n  \"inactive\": \"<boolean>\",\n  \"scorecardProfiles\": [\n    {\n      \"eligibilityRule\": {\n        \"id\": \"1a50fa3697b0f1ef4069993a599da99f\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    },\n    {\n      \"eligibilityRule\": {\n        \"id\": \"rC+>oh.zo==UH|0a2=\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    }\n  ],\n  \"scorecardDescription\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/scorecards",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scorecards"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:05:12.000Z",
+              "updatedAt": "2026-10-21T20:05:12.000Z",
+              "uid": "35240-f513e3ca-8333-43bc-9228-ee7df8d74892"
+            },
+            {
+              "id": "d65a79d1-aa44-48ef-b4c1-56c0ff969db5",
+              "name": "An error occurred.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"defaultScorecardGoals\": [\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"goalName\": \"<string>\",\n      \"goalWeight\": \"<double>\",\n      \"goalDescription\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"effectiveDate\": \"<date>\",\n  \"scorecardName\": \"<string>\",\n  \"inactive\": \"<boolean>\",\n  \"scorecardProfiles\": [\n    {\n      \"eligibilityRule\": {\n        \"id\": \"1a50fa3697b0f1ef4069993a599da99f\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    },\n    {\n      \"eligibilityRule\": {\n        \"id\": \"rC+>oh.zo==UH|0a2=\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"profileScorecardGoals\": [\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"goalName\": \"<string>\",\n          \"goalWeight\": \"<double>\",\n          \"goalDescription\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\"\n    }\n  ],\n  \"scorecardDescription\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/scorecards",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scorecards"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"field\": \"<string>\",\n  \"path\": \"<string>\",\n  \"severity\": \"<string>\",\n  \"internalMessage\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:05:12.000Z",
+              "updatedAt": "2026-10-21T20:05:12.000Z",
+              "uid": "35240-d65a79d1-aa44-48ef-b4c1-56c0ff969db5"
+            }
+          ],
+          "createdAt": "2026-10-21T20:05:12.000Z",
+          "updatedAt": "2026-10-21T20:05:12.000Z",
+          "uid": "35240-84f122ff-8fba-4b66-bf75-9c36b7741fbf"
+        }
+      ],
+      "id": "cbb2ee99-6577-406e-9dbc-0c32accf784c",
+      "createdAt": "2026-10-21T20:05:12.000Z",
+      "updatedAt": "2026-10-21T20:05:12.000Z",
+      "uid": "35240-cbb2ee99-6577-406e-9dbc-0c32accf784c"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://<tenantHostname>/compensation/v3"
+    }
+  ]
+}

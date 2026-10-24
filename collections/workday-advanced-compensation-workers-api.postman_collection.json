@@ -1,0 +1,1148 @@
+{
+  "info": {
+    "_postman_id": "f1e675af-cc4e-418b-8656-26f6448667d5",
+    "name": "compensation Workers API",
+    "description": "The Compensation service enables applications to extend Workday's HCM Compensation features.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:05:17.000Z",
+    "updatedAt": "2026-10-21T20:05:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f1e675af-cc4e-418b-8656-26f6448667d5"
+  },
+  "item": [
+    {
+      "name": "workers",
+      "item": [
+        {
+          "name": "{ID}",
+          "item": [
+            {
+              "name": "requestOneTimePayment",
+              "item": [
+                {
+                  "name": "Request a one-time payment for a worker with the specified ID",
+                  "id": "a48d8cca-3f5a-4107-a430-7154fd3185b8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"oneTimePayments\": [\n    {\n      \"additionalInformation\": \"<string>\",\n      \"coverageEndDate\": \"<date>\",\n      \"oneTimePaymentPlan\": {\n        \"id\": \"j)K,j'UrC=wl-MOAtw{D\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentPercent\": \"<double>\",\n      \"sendToPayroll\": \"<boolean>\",\n      \"scheduledPaymentDate\": \"<date>\",\n      \"payrollWorktags\": [\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"coverageStartDate\": \"<date>\",\n      \"paymentCurrency\": {\n        \"id\": \"6e9e47b660a315a6d3d44fd23ab117e3\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentAmount\": {},\n      \"descriptor\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"additionalInformation\": \"<string>\",\n      \"coverageEndDate\": \"<date>\",\n      \"oneTimePaymentPlan\": {\n        \"id\": \"c5ce8c537b94cf84117dd6898a837233\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentPercent\": \"<double>\",\n      \"sendToPayroll\": \"<boolean>\",\n      \"scheduledPaymentDate\": \"<date>\",\n      \"payrollWorktags\": [\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"coverageStartDate\": \"<date>\",\n      \"paymentCurrency\": {\n        \"id\": \"2qMd+=38G*_ZbcG}2\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentAmount\": {},\n      \"descriptor\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"position\": {\n    \"id\": \"88e1565cf40822ab53b2f7474b3326ef\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"reason\": {\n    \"id\": \"6S[W=M!mWMG@\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"effectiveDate\": \"<date>\",\n  \"employeeVisibilityDate\": \"<date>\",\n  \"descriptor\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID/requestOneTimePayment",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID",
+                        "requestOneTimePayment"
+                      ],
+                      "variable": [
+                        {
+                          "id": "bbacb9c6-f3a5-425c-954b-2740edb31719",
+                          "key": "ID",
+                          "value": "c769eeb2bf992760dd60b5bc1c8a6e59",
+                          "description": "(Required) The Workday ID of the resource.\n\nAccepts:\n- **Workday ID**: Workday ID (32-character lowercase hexadecimal string).\n- **Reference ID**: Workday reference ID (Type=Value). Valid types: Employee_ID, Contingent_Worker_ID\n- **Named entry**: Valid values: `me`."
+                        }
+                      ]
+                    },
+                    "description": "Creates a one-time payment for a worker with the specified ID, and initiates the Request One-Time Payment business process. In the request body, specify at least these required fields: reason{id}, position{id}, oneTimePayments[ paymentCurrency{id}, oneTimePaymentPlan {id}].\n\nSample format for paymentAmount:\n\"payment Amount\": {\n\"value\": \"2500\"\n}\n\nSecured By Business Process Type: Request One-Time Payment\n\nScope: Core Compensation"
+                  },
+                  "response": [
+                    {
+                      "id": "9b5aefcf-41b8-4684-8a9c-49318670074c",
+                      "name": "Resource created.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"oneTimePayments\": [\n    {\n      \"additionalInformation\": \"<string>\",\n      \"coverageEndDate\": \"<date>\",\n      \"oneTimePaymentPlan\": {\n        \"id\": \"j)K,j'UrC=wl-MOAtw{D\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentPercent\": \"<double>\",\n      \"sendToPayroll\": \"<boolean>\",\n      \"scheduledPaymentDate\": \"<date>\",\n      \"payrollWorktags\": [\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"coverageStartDate\": \"<date>\",\n      \"paymentCurrency\": {\n        \"id\": \"6e9e47b660a315a6d3d44fd23ab117e3\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentAmount\": {},\n      \"descriptor\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"additionalInformation\": \"<string>\",\n      \"coverageEndDate\": \"<date>\",\n      \"oneTimePaymentPlan\": {\n        \"id\": \"c5ce8c537b94cf84117dd6898a837233\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentPercent\": \"<double>\",\n      \"sendToPayroll\": \"<boolean>\",\n      \"scheduledPaymentDate\": \"<date>\",\n      \"payrollWorktags\": [\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"coverageStartDate\": \"<date>\",\n      \"paymentCurrency\": {\n        \"id\": \"2qMd+=38G*_ZbcG}2\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentAmount\": {},\n      \"descriptor\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"position\": {\n    \"id\": \"88e1565cf40822ab53b2f7474b3326ef\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"reason\": {\n    \"id\": \"6S[W=M!mWMG@\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"effectiveDate\": \"<date>\",\n  \"employeeVisibilityDate\": \"<date>\",\n  \"descriptor\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/requestOneTimePayment",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "requestOneTimePayment"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"oneTimePayments\": [\n    {\n      \"additionalInformation\": \"<string>\",\n      \"coverageEndDate\": \"<date>\",\n      \"oneTimePaymentPlan\": {\n        \"id\": \"j)K,j'UrC=wl-MOAtw{D\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentPercent\": \"<double>\",\n      \"sendToPayroll\": \"<boolean>\",\n      \"scheduledPaymentDate\": \"<date>\",\n      \"payrollWorktags\": [\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"coverageStartDate\": \"<date>\",\n      \"paymentCurrency\": {\n        \"id\": \"6e9e47b660a315a6d3d44fd23ab117e3\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentAmount\": {},\n      \"descriptor\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"additionalInformation\": \"<string>\",\n      \"coverageEndDate\": \"<date>\",\n      \"oneTimePaymentPlan\": {\n        \"id\": \"c5ce8c537b94cf84117dd6898a837233\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentPercent\": \"<double>\",\n      \"sendToPayroll\": \"<boolean>\",\n      \"scheduledPaymentDate\": \"<date>\",\n      \"payrollWorktags\": [\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"coverageStartDate\": \"<date>\",\n      \"paymentCurrency\": {\n        \"id\": \"2qMd+=38G*_ZbcG}2\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentAmount\": {},\n      \"descriptor\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"position\": {\n    \"id\": \"88e1565cf40822ab53b2f7474b3326ef\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"reason\": {\n    \"id\": \"6S[W=M!mWMG@\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"effectiveDate\": \"<date>\",\n  \"employeeVisibilityDate\": \"<date>\",\n  \"descriptor\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:05:18.000Z",
+                      "updatedAt": "2026-10-21T20:05:18.000Z",
+                      "uid": "35240-9b5aefcf-41b8-4684-8a9c-49318670074c"
+                    },
+                    {
+                      "id": "50bdad80-2a0b-46f4-8f88-a000e54d7de5",
+                      "name": "Invalid request. (https://community.workday.com/rest/error-messages)\n\nA One-Time Payment plan is required.\n\nAt least 1 One-Time Payment is required.\n\nBased on the worktag type configuration following worktag types are not valid for taggable type [tt]: [aw",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"oneTimePayments\": [\n    {\n      \"additionalInformation\": \"<string>\",\n      \"coverageEndDate\": \"<date>\",\n      \"oneTimePaymentPlan\": {\n        \"id\": \"j)K,j'UrC=wl-MOAtw{D\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentPercent\": \"<double>\",\n      \"sendToPayroll\": \"<boolean>\",\n      \"scheduledPaymentDate\": \"<date>\",\n      \"payrollWorktags\": [\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"coverageStartDate\": \"<date>\",\n      \"paymentCurrency\": {\n        \"id\": \"6e9e47b660a315a6d3d44fd23ab117e3\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentAmount\": {},\n      \"descriptor\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"additionalInformation\": \"<string>\",\n      \"coverageEndDate\": \"<date>\",\n      \"oneTimePaymentPlan\": {\n        \"id\": \"c5ce8c537b94cf84117dd6898a837233\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentPercent\": \"<double>\",\n      \"sendToPayroll\": \"<boolean>\",\n      \"scheduledPaymentDate\": \"<date>\",\n      \"payrollWorktags\": [\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"coverageStartDate\": \"<date>\",\n      \"paymentCurrency\": {\n        \"id\": \"2qMd+=38G*_ZbcG}2\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentAmount\": {},\n      \"descriptor\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"position\": {\n    \"id\": \"88e1565cf40822ab53b2f7474b3326ef\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"reason\": {\n    \"id\": \"6S[W=M!mWMG@\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"effectiveDate\": \"<date>\",\n  \"employeeVisibilityDate\": \"<date>\",\n  \"descriptor\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/requestOneTimePayment",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "requestOneTimePayment"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:05:18.000Z",
+                      "updatedAt": "2026-10-21T20:05:18.000Z",
+                      "uid": "35240-50bdad80-2a0b-46f4-8f88-a000e54d7de5"
+                    },
+                    {
+                      "id": "36eb5c9f-6772-4f6b-b910-e08b51016095",
+                      "name": "Unauthorized: Missing or invalid credentials. (https://community.workday.com/rest/error-messages)",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"oneTimePayments\": [\n    {\n      \"additionalInformation\": \"<string>\",\n      \"coverageEndDate\": \"<date>\",\n      \"oneTimePaymentPlan\": {\n        \"id\": \"j)K,j'UrC=wl-MOAtw{D\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentPercent\": \"<double>\",\n      \"sendToPayroll\": \"<boolean>\",\n      \"scheduledPaymentDate\": \"<date>\",\n      \"payrollWorktags\": [\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"coverageStartDate\": \"<date>\",\n      \"paymentCurrency\": {\n        \"id\": \"6e9e47b660a315a6d3d44fd23ab117e3\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentAmount\": {},\n      \"descriptor\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"additionalInformation\": \"<string>\",\n      \"coverageEndDate\": \"<date>\",\n      \"oneTimePaymentPlan\": {\n        \"id\": \"c5ce8c537b94cf84117dd6898a837233\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentPercent\": \"<double>\",\n      \"sendToPayroll\": \"<boolean>\",\n      \"scheduledPaymentDate\": \"<date>\",\n      \"payrollWorktags\": [\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"coverageStartDate\": \"<date>\",\n      \"paymentCurrency\": {\n        \"id\": \"2qMd+=38G*_ZbcG}2\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentAmount\": {},\n      \"descriptor\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"position\": {\n    \"id\": \"88e1565cf40822ab53b2f7474b3326ef\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"reason\": {\n    \"id\": \"6S[W=M!mWMG@\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"effectiveDate\": \"<date>\",\n  \"employeeVisibilityDate\": \"<date>\",\n  \"descriptor\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/requestOneTimePayment",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "requestOneTimePayment"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:05:18.000Z",
+                      "updatedAt": "2026-10-21T20:05:18.000Z",
+                      "uid": "35240-36eb5c9f-6772-4f6b-b910-e08b51016095"
+                    },
+                    {
+                      "id": "d7c94a17-46a0-4980-9568-e77def8c2686",
+                      "name": "User has insufficient permissions. (https://community.workday.com/rest/error-messages)",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"oneTimePayments\": [\n    {\n      \"additionalInformation\": \"<string>\",\n      \"coverageEndDate\": \"<date>\",\n      \"oneTimePaymentPlan\": {\n        \"id\": \"j)K,j'UrC=wl-MOAtw{D\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentPercent\": \"<double>\",\n      \"sendToPayroll\": \"<boolean>\",\n      \"scheduledPaymentDate\": \"<date>\",\n      \"payrollWorktags\": [\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"coverageStartDate\": \"<date>\",\n      \"paymentCurrency\": {\n        \"id\": \"6e9e47b660a315a6d3d44fd23ab117e3\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentAmount\": {},\n      \"descriptor\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"additionalInformation\": \"<string>\",\n      \"coverageEndDate\": \"<date>\",\n      \"oneTimePaymentPlan\": {\n        \"id\": \"c5ce8c537b94cf84117dd6898a837233\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentPercent\": \"<double>\",\n      \"sendToPayroll\": \"<boolean>\",\n      \"scheduledPaymentDate\": \"<date>\",\n      \"payrollWorktags\": [\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"coverageStartDate\": \"<date>\",\n      \"paymentCurrency\": {\n        \"id\": \"2qMd+=38G*_ZbcG}2\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentAmount\": {},\n      \"descriptor\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"position\": {\n    \"id\": \"88e1565cf40822ab53b2f7474b3326ef\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"reason\": {\n    \"id\": \"6S[W=M!mWMG@\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"effectiveDate\": \"<date>\",\n  \"employeeVisibilityDate\": \"<date>\",\n  \"descriptor\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/requestOneTimePayment",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "requestOneTimePayment"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:05:18.000Z",
+                      "updatedAt": "2026-10-21T20:05:18.000Z",
+                      "uid": "35240-d7c94a17-46a0-4980-9568-e77def8c2686"
+                    },
+                    {
+                      "id": "395747bd-d66e-4e95-90e2-f6ee7e7ab3d7",
+                      "name": "Resource not found. (https://community.workday.com/rest/error-messages)",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"oneTimePayments\": [\n    {\n      \"additionalInformation\": \"<string>\",\n      \"coverageEndDate\": \"<date>\",\n      \"oneTimePaymentPlan\": {\n        \"id\": \"j)K,j'UrC=wl-MOAtw{D\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentPercent\": \"<double>\",\n      \"sendToPayroll\": \"<boolean>\",\n      \"scheduledPaymentDate\": \"<date>\",\n      \"payrollWorktags\": [\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"coverageStartDate\": \"<date>\",\n      \"paymentCurrency\": {\n        \"id\": \"6e9e47b660a315a6d3d44fd23ab117e3\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentAmount\": {},\n      \"descriptor\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"additionalInformation\": \"<string>\",\n      \"coverageEndDate\": \"<date>\",\n      \"oneTimePaymentPlan\": {\n        \"id\": \"c5ce8c537b94cf84117dd6898a837233\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentPercent\": \"<double>\",\n      \"sendToPayroll\": \"<boolean>\",\n      \"scheduledPaymentDate\": \"<date>\",\n      \"payrollWorktags\": [\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"coverageStartDate\": \"<date>\",\n      \"paymentCurrency\": {\n        \"id\": \"2qMd+=38G*_ZbcG}2\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentAmount\": {},\n      \"descriptor\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"position\": {\n    \"id\": \"88e1565cf40822ab53b2f7474b3326ef\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"reason\": {\n    \"id\": \"6S[W=M!mWMG@\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"effectiveDate\": \"<date>\",\n  \"employeeVisibilityDate\": \"<date>\",\n  \"descriptor\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/requestOneTimePayment",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "requestOneTimePayment"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:05:18.000Z",
+                      "updatedAt": "2026-10-21T20:05:18.000Z",
+                      "uid": "35240-395747bd-d66e-4e95-90e2-f6ee7e7ab3d7"
+                    },
+                    {
+                      "id": "72a1d699-b438-4b73-8ec5-7e67d4f7bb6e",
+                      "name": "An error occurred.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"oneTimePayments\": [\n    {\n      \"additionalInformation\": \"<string>\",\n      \"coverageEndDate\": \"<date>\",\n      \"oneTimePaymentPlan\": {\n        \"id\": \"j)K,j'UrC=wl-MOAtw{D\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentPercent\": \"<double>\",\n      \"sendToPayroll\": \"<boolean>\",\n      \"scheduledPaymentDate\": \"<date>\",\n      \"payrollWorktags\": [\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"coverageStartDate\": \"<date>\",\n      \"paymentCurrency\": {\n        \"id\": \"6e9e47b660a315a6d3d44fd23ab117e3\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentAmount\": {},\n      \"descriptor\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"additionalInformation\": \"<string>\",\n      \"coverageEndDate\": \"<date>\",\n      \"oneTimePaymentPlan\": {\n        \"id\": \"c5ce8c537b94cf84117dd6898a837233\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentPercent\": \"<double>\",\n      \"sendToPayroll\": \"<boolean>\",\n      \"scheduledPaymentDate\": \"<date>\",\n      \"payrollWorktags\": [\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"descriptor\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"coverageStartDate\": \"<date>\",\n      \"paymentCurrency\": {\n        \"id\": \"2qMd+=38G*_ZbcG}2\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"paymentAmount\": {},\n      \"descriptor\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"position\": {\n    \"id\": \"88e1565cf40822ab53b2f7474b3326ef\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"reason\": {\n    \"id\": \"6S[W=M!mWMG@\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"effectiveDate\": \"<date>\",\n  \"employeeVisibilityDate\": \"<date>\",\n  \"descriptor\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/workers/:ID/requestOneTimePayment",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workers",
+                            ":ID",
+                            "requestOneTimePayment"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ID"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"field\": \"<string>\",\n  \"path\": \"<string>\",\n  \"severity\": \"<string>\",\n  \"internalMessage\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:05:18.000Z",
+                      "updatedAt": "2026-10-21T20:05:18.000Z",
+                      "uid": "35240-72a1d699-b438-4b73-8ec5-7e67d4f7bb6e"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:05:18.000Z",
+                  "updatedAt": "2026-10-21T20:05:18.000Z",
+                  "uid": "35240-a48d8cca-3f5a-4107-a430-7154fd3185b8"
+                }
+              ],
+              "id": "5e9f1495-bbbd-4234-84c6-5ef5cffcf8e9",
+              "createdAt": "2026-10-21T20:05:18.000Z",
+              "updatedAt": "2026-10-21T20:05:18.000Z",
+              "uid": "35240-5e9f1495-bbbd-4234-84c6-5ef5cffcf8e9"
+            },
+            {
+              "name": "Retrieves a worker instance",
+              "id": "f1c26202-89b5-4598-b4af-2182304dc1ba",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/workers/:ID",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "workers",
+                    ":ID"
+                  ],
+                  "variable": [
+                    {
+                      "id": "97503cc2-ad6b-40d9-9829-6676cf1c938e",
+                      "key": "ID",
+                      "value": "c769eeb2bf992760dd60b5bc1c8a6e59",
+                      "description": "(Required) The Workday ID of the resource.\n\nAccepts:\n- **Workday ID**: Workday ID (32-character lowercase hexadecimal string).\n- **Reference ID**: Workday reference ID (Type=Value). Valid types: Employee_ID, Contingent_Worker_ID\n- **Named entry**: Valid values: `me`."
+                    }
+                  ]
+                },
+                "description": "Retrieves a worker instance with the specific ID.\n\nSecured By Domain: FLW Service, Self-Service: Current Staffing Information, Worker Data: Public Worker Reports\n\nScope: Staffing"
+              },
+              "response": [
+                {
+                  "id": "fc77b31b-d862-4c3b-92cf-f69b5adb1cf1",
+                  "name": "Successful response. A successful response can return no matched data.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"dateOfBirth\": \"<date>\",\n  \"supervisoryOrganizationsManaged\": \"<string>\",\n  \"businessTitle\": \"<string>\",\n  \"isManager\": \"<boolean>\",\n  \"primaryWorkEmail\": \"<string>\",\n  \"location\": {\n    \"id\": \"fef1b09b265cf1ea42a9366ec9b3a019\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"primaryWorkPhone\": \"<string>\",\n  \"primaryWorkAddressText\": \"<string>\",\n  \"primarySupervisoryOrganization\": {\n    \"id\": \"12a5322fdb6c677c3d8adc557a53fcf8\",\n    \"descriptor\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"yearsOfService\": \"<double>\",\n  \"descriptor\": \"<string>\",\n  \"href\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:05:18.000Z",
+                  "updatedAt": "2026-10-21T20:05:18.000Z",
+                  "uid": "35240-fc77b31b-d862-4c3b-92cf-f69b5adb1cf1"
+                },
+                {
+                  "id": "54f74202-af72-4bda-9e62-5c071f53a624",
+                  "name": "Invalid request. (https://community.workday.com/rest/error-messages)",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:05:18.000Z",
+                  "updatedAt": "2026-10-21T20:05:18.000Z",
+                  "uid": "35240-54f74202-af72-4bda-9e62-5c071f53a624"
+                },
+                {
+                  "id": "dec12eaf-cbc8-4fdc-96cd-b4901f71758c",
+                  "name": "Unauthorized: Missing or invalid credentials. (https://community.workday.com/rest/error-messages)",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:05:18.000Z",
+                  "updatedAt": "2026-10-21T20:05:18.000Z",
+                  "uid": "35240-dec12eaf-cbc8-4fdc-96cd-b4901f71758c"
+                },
+                {
+                  "id": "02f6253a-5c24-46d1-9f3b-8401a5b605af",
+                  "name": "User has insufficient permissions. (https://community.workday.com/rest/error-messages)",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:05:18.000Z",
+                  "updatedAt": "2026-10-21T20:05:18.000Z",
+                  "uid": "35240-02f6253a-5c24-46d1-9f3b-8401a5b605af"
+                },
+                {
+                  "id": "28fab631-0fa2-494c-8d0a-8e7bf46505ce",
+                  "name": "Resource not found. (https://community.workday.com/rest/error-messages)",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:05:18.000Z",
+                  "updatedAt": "2026-10-21T20:05:18.000Z",
+                  "uid": "35240-28fab631-0fa2-494c-8d0a-8e7bf46505ce"
+                },
+                {
+                  "id": "f6cecbcb-8b6b-4531-bbf8-4cad026c1015",
+                  "name": "An error occurred.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workers/:ID",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workers",
+                        ":ID"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"field\": \"<string>\",\n  \"path\": \"<string>\",\n  \"severity\": \"<string>\",\n  \"internalMessage\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:05:18.000Z",
+                  "updatedAt": "2026-10-21T20:05:18.000Z",
+                  "uid": "35240-f6cecbcb-8b6b-4531-bbf8-4cad026c1015"
+                }
+              ],
+              "createdAt": "2026-10-21T20:05:18.000Z",
+              "updatedAt": "2026-10-21T20:05:18.000Z",
+              "uid": "35240-f1c26202-89b5-4598-b4af-2182304dc1ba"
+            }
+          ],
+          "id": "db54e015-f25c-40b9-9e98-098e89251ba9",
+          "createdAt": "2026-10-21T20:05:18.000Z",
+          "updatedAt": "2026-10-21T20:05:18.000Z",
+          "uid": "35240-db54e015-f25c-40b9-9e98-098e89251ba9"
+        },
+        {
+          "name": "Retrieves a collection of workers",
+          "id": "8cce12f5-3475-4f34-8913-14a80abe1b08",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/workers?includeTerminatedWorkers=<boolean>&limit=<long>&offset=<long>&search=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "workers"
+              ],
+              "query": [
+                {
+                  "description": "Include terminated workers in the output",
+                  "key": "includeTerminatedWorkers",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                  "key": "limit",
+                  "value": "<long>"
+                },
+                {
+                  "description": "The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.",
+                  "key": "offset",
+                  "value": "<long>"
+                },
+                {
+                  "key": "search",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves all workers. Use the search parameter to search for workers by name. The search is case-insensitive.\n\nSecured By Domain: FLW Service, Self-Service: Current Staffing Information, Worker Data: Public Worker Reports\n\nScope: Staffing"
+          },
+          "response": [
+            {
+              "id": "4981a89a-53bd-42ea-86ac-c47e0be9f2a3",
+              "name": "Successful response. A successful response can return no matched data.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/workers?includeTerminatedWorkers=<boolean>&limit=<long>&offset=<long>&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "workers"
+                  ],
+                  "query": [
+                    {
+                      "description": "Include terminated workers in the output",
+                      "key": "includeTerminatedWorkers",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.",
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"total\": \"<integer>\",\n  \"data\": [\n    {\n      \"isManager\": \"<boolean>\",\n      \"primaryWorkPhone\": \"<string>\",\n      \"primaryWorkEmail\": \"<string>\",\n      \"primarySupervisoryOrganization\": {\n        \"id\": \"ie#=VV&yhrL2\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"businessTitle\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"href\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"isManager\": \"<boolean>\",\n      \"primaryWorkPhone\": \"<string>\",\n      \"primaryWorkEmail\": \"<string>\",\n      \"primarySupervisoryOrganization\": {\n        \"id\": \"IuzosG=^uPho:Hd\",\n        \"descriptor\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"businessTitle\": \"<string>\",\n      \"descriptor\": \"<string>\",\n      \"href\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:05:18.000Z",
+              "updatedAt": "2026-10-21T20:05:18.000Z",
+              "uid": "35240-4981a89a-53bd-42ea-86ac-c47e0be9f2a3"
+            },
+            {
+              "id": "a0126e55-fe84-4610-8ebb-f6fad851f676",
+              "name": "Invalid request. (https://community.workday.com/rest/error-messages)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/workers?includeTerminatedWorkers=<boolean>&limit=<long>&offset=<long>&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "workers"
+                  ],
+                  "query": [
+                    {
+                      "description": "Include terminated workers in the output",
+                      "key": "includeTerminatedWorkers",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.",
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:05:18.000Z",
+              "updatedAt": "2026-10-21T20:05:18.000Z",
+              "uid": "35240-a0126e55-fe84-4610-8ebb-f6fad851f676"
+            },
+            {
+              "id": "aa543580-b314-46d5-a790-224f37af6bf7",
+              "name": "Unauthorized: Missing or invalid credentials. (https://community.workday.com/rest/error-messages)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/workers?includeTerminatedWorkers=<boolean>&limit=<long>&offset=<long>&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "workers"
+                  ],
+                  "query": [
+                    {
+                      "description": "Include terminated workers in the output",
+                      "key": "includeTerminatedWorkers",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.",
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:05:18.000Z",
+              "updatedAt": "2026-10-21T20:05:18.000Z",
+              "uid": "35240-aa543580-b314-46d5-a790-224f37af6bf7"
+            },
+            {
+              "id": "efaba451-a800-4cfe-a520-0bcf4e5a285a",
+              "name": "User has insufficient permissions. (https://community.workday.com/rest/error-messages)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/workers?includeTerminatedWorkers=<boolean>&limit=<long>&offset=<long>&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "workers"
+                  ],
+                  "query": [
+                    {
+                      "description": "Include terminated workers in the output",
+                      "key": "includeTerminatedWorkers",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.",
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:05:18.000Z",
+              "updatedAt": "2026-10-21T20:05:18.000Z",
+              "uid": "35240-efaba451-a800-4cfe-a520-0bcf4e5a285a"
+            },
+            {
+              "id": "ddee71fc-15d1-4d30-950c-ef8fb7fd28e1",
+              "name": "Resource not found. (https://community.workday.com/rest/error-messages)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/workers?includeTerminatedWorkers=<boolean>&limit=<long>&offset=<long>&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "workers"
+                  ],
+                  "query": [
+                    {
+                      "description": "Include terminated workers in the output",
+                      "key": "includeTerminatedWorkers",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.",
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"errors\": [\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\",\n      \"code\": \"<string>\",\n      \"field\": \"<string>\",\n      \"path\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"internalMessage\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:05:18.000Z",
+              "updatedAt": "2026-10-21T20:05:18.000Z",
+              "uid": "35240-ddee71fc-15d1-4d30-950c-ef8fb7fd28e1"
+            },
+            {
+              "id": "1fe06a18-11e4-4a7d-8731-b8ffc5efc1d3",
+              "name": "An error occurred.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/workers?includeTerminatedWorkers=<boolean>&limit=<long>&offset=<long>&search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "workers"
+                  ],
+                  "query": [
+                    {
+                      "description": "Include terminated workers in the output",
+                      "key": "includeTerminatedWorkers",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "The maximum number of objects in a single response. The default is 20. The maximum is 100.",
+                      "key": "limit",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.",
+                      "key": "offset",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"field\": \"<string>\",\n  \"path\": \"<string>\",\n  \"severity\": \"<string>\",\n  \"internalMessage\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:05:18.000Z",
+              "updatedAt": "2026-10-21T20:05:18.000Z",
+              "uid": "35240-1fe06a18-11e4-4a7d-8731-b8ffc5efc1d3"
+            }
+          ],
+          "createdAt": "2026-10-21T20:05:18.000Z",
+          "updatedAt": "2026-10-21T20:05:18.000Z",
+          "uid": "35240-8cce12f5-3475-4f34-8913-14a80abe1b08"
+        }
+      ],
+      "id": "6aafdc65-f9a3-4b36-9fb4-b475ee4c3bb0",
+      "createdAt": "2026-10-21T20:05:18.000Z",
+      "updatedAt": "2026-10-21T20:05:18.000Z",
+      "uid": "35240-6aafdc65-f9a3-4b36-9fb4-b475ee4c3bb0"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://<tenantHostname>/compensation/v3"
+    }
+  ]
+}

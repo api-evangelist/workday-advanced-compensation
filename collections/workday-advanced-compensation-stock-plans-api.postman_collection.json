@@ -1,205 +1,174 @@
 {
+  "info": {
+    "_postman_id": "d035cf42-6ac2-4052-b6ca-c4a24c390b83",
+    "name": "Workday Advanced Compensation Stock Plans API",
+    "description": "The Workday Advanced Compensation API provides RESTful access to compensation management capabilities including compensation plans, merit increases, bonuses, stock awards, compensation grades, budgets, and review processes. The API enables organizations to programmatically manage their total compensation strategy, administer compensation cycles, and integrate compensation data with other systems.\n\nContact Support:\n Name: Workday Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:04:54.000Z",
+    "updatedAt": "2026-10-21T20:04:54.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d035cf42-6ac2-4052-b6ca-c4a24c390b83"
+  },
   "item": [
     {
-      "id": "1729385c-dce2-4038-9eb2-093fb7d32f24",
-      "name": "Stock Plans",
-      "description": {
-        "content": "Manage equity and stock compensation plans",
-        "type": "text/plain"
-      },
+      "name": "stockPlans",
       "item": [
         {
-          "id": "d6481a87-f39e-4a17-acd8-b381eec35b71",
           "name": "Workday List Stock Plans",
+          "id": "7f50b8a3-d578-4eb7-9cd5-740eab7628f5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Workday List Stock Plans",
-            "description": {
-              "content": "Retrieves stock and equity compensation plans including vesting schedules, grant types, and eligibility criteria.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "stockPlans"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "100",
-                  "description": "Maximum number of records to return"
-                },
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "0",
-                  "description": "Number of records to skip"
-                }
-              ],
-              "variable": [
-                {
-                  "description": "Your Workday tenant hostname",
-                  "type": "any",
-                  "value": "{{tenant}}",
-                  "key": "tenant"
-                }
-              ]
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/stockPlans?limit=100&offset=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "stockPlans"
+              ],
+              "query": [
+                {
+                  "description": "Maximum number of records to return",
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "description": "Number of records to skip",
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Retrieves stock and equity compensation plans including vesting schedules, grant types, and eligibility criteria."
           },
           "response": [
             {
-              "id": "3bad3f4e-93b7-4b34-acb2-d6b9d3e00e39",
+              "id": "b37a0ce9-c44d-44b1-882d-8e5ae3256cff",
               "name": "A list of stock plans",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "stockPlans"
-                  ],
+                  "raw": "{{baseUrl}}/stockPlans?limit=100&offset=0",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "stockPlans"
+                  ],
                   "query": [
                     {
+                      "description": "Maximum number of records to return",
                       "key": "limit",
                       "value": "100"
                     },
                     {
+                      "description": "Number of records to skip",
                       "key": "offset",
                       "value": "0"
                     }
-                  ],
-                  "variable": [
-                    {
-                      "description": "Your Workday tenant hostname",
-                      "type": "any",
-                      "value": "{{tenant}}",
-                      "key": "tenant"
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"total\": 4,\n  \"data\": [\n    {\n      \"id\": \"SP-001\",\n      \"name\": \"Employee Stock Option Plan 2026\",\n      \"type\": \"RSU\",\n      \"vestingSchedule\": \"FOUR_YEAR_CLIFF\",\n      \"grantDateFairValue\": 50,\n      \"currency\": \"USD\"\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"total\": \"<integer>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"STOCK_OPTION\",\n      \"vestingSchedule\": \"FOUR_YEAR_CLIFF\",\n      \"grantDateFairValue\": \"<number>\",\n      \"currency\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"PERFORMANCE_SHARE\",\n      \"vestingSchedule\": \"TWO_YEAR_CLIFF\",\n      \"grantDateFairValue\": \"<number>\",\n      \"currency\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:04:55.000Z",
+              "updatedAt": "2026-10-21T20:04:55.000Z",
+              "uid": "35240-b37a0ce9-c44d-44b1-882d-8e5ae3256cff"
             },
             {
-              "id": "e687abc5-ad2f-404a-b902-687b3ef14e4e",
+              "id": "a0f67056-b2b8-4bd4-923b-d3680c86de4d",
               "name": "Authentication required",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "stockPlans"
-                  ],
+                  "raw": "{{baseUrl}}/stockPlans?limit=100&offset=0",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "stockPlans"
+                  ],
                   "query": [
                     {
+                      "description": "Maximum number of records to return",
                       "key": "limit",
                       "value": "100"
                     },
                     {
+                      "description": "Number of records to skip",
                       "key": "offset",
                       "value": "0"
                     }
-                  ],
-                  "variable": [
-                    {
-                      "description": "Your Workday tenant hostname",
-                      "type": "any",
-                      "value": "{{tenant}}",
-                      "key": "tenant"
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": \"UNAUTHORIZED\",\n  \"message\": \"Authentication required\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-10-21T20:04:55.000Z",
+              "updatedAt": "2026-10-21T20:04:55.000Z",
+              "uid": "35240-a0f67056-b2b8-4bd4-923b-d3680c86de4d"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:04:55.000Z",
+          "updatedAt": "2026-10-21T20:04:55.000Z",
+          "uid": "35240-7f50b8a3-d578-4eb7-9cd5-740eab7628f5"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Your Workday tenant hostname",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "wd2-impl-services1",
-      "key": "tenant"
-    },
-    {
-      "type": "string",
-      "value": "https://{{tenant}}.workday.com/api/compensation/v1",
-      "key": "baseUrl"
+      "id": "58cdc23f-1eb5-40f5-9c65-46f2c2d178e1",
+      "createdAt": "2026-10-21T20:04:55.000Z",
+      "updatedAt": "2026-10-21T20:04:55.000Z",
+      "uid": "35240-58cdc23f-1eb5-40f5-9c65-46f2c2d178e1"
     }
   ],
   "auth": {
@@ -207,25 +176,29 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "compensation.read compensation.write"
+        "value": "compensation.read compensation.write",
+        "type": "string"
       },
       {
         "key": "accessTokenUrl",
-        "value": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token"
+        "value": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token",
+        "type": "string"
       },
       {
         "key": "grant_type",
-        "value": "client_credentials"
+        "value": "client_credentials",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "d201c91e-93bf-49ca-aca5-f293c9641568",
-    "name": "Workday Advanced Compensation Bonus Plans Stock Plans API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Workday Advanced Compensation API provides RESTful access to compensation management capabilities including compensation plans, merit increases, bonuses, stock awards, compensation grades, budgets, and review processes. The API enables organizations to programmatically manage their total compensation strategy, administer compensation cycles, and integrate compensation data with other systems.\n\nContact Support:\n Name: Workday Developer Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "wd2-impl-services1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tenant}}.workday.com/api/compensation/v1"
     }
-  }
+  ]
 }
